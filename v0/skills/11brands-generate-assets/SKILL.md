@@ -6,8 +6,8 @@ description: Generate brand assets in the 11brands repository — favicon packag
 # Generate brand assets
 
 Three scripts under `asset-generation-scripts/`, all driven by a brand's
-`brand.md`. Each run writes a new `gen-<timestamp>` folder and never overwrites
-anything.
+`brand.md`. By default each run writes a new `gen-<timestamp>` folder. Reusing
+the same `--stamp` targets that existing folder and can overwrite its files.
 
 ## Pick the right one
 
@@ -43,9 +43,9 @@ Reuse `.venv` if it is already there. Do not install Pillow globally.
 `--all` covers every brand with a `brand.md`. Content cards need at least one
 `--title` or a `--titles-file`; ask for the titles rather than inventing them.
 
-Use `--stamp NAME` when the run is meant to be compared against another one —
-it replaces the timestamp so two runs can share a folder name. For an ordinary
-generation, leave it off.
+Use `--stamp NAME` when the output needs a deterministic folder name, such as
+when comparing it with an expected path. Do not reuse a stamp when you need to
+preserve an earlier run. For an ordinary generation, leave it off.
 
 ## Check the output before reporting
 
@@ -66,7 +66,7 @@ if a colour looks off — the brand file may be the problem, not the script.
 ## Report
 
 Give the user the folder path and what landed in it. If they intend to use the
-output somewhere, say plainly that these scripts only write into `brands/` —
+output somewhere, say plainly that generated assets are written into `brands/` —
 copying a file into another repository is a separate, deliberate step, and the
 `.ico` in particular has a live consumer.
 

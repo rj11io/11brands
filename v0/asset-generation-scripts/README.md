@@ -37,7 +37,8 @@ reproduce cards that already exist.
 
 `--all` runs every brand that has a `brand.md`. `--stamp NAME` replaces the
 timestamp in the folder name, which is what you want when generating a set you
-intend to compare against another one.
+intend to compare against another one. Reusing the same stamp targets the same
+folder and can replace files there; use a new stamp for a separate run.
 
 A titles file is one title per line; blank lines and `#` comments are skipped.
 
@@ -119,5 +120,6 @@ These scripts were written to match the assets in the `11blog` repository, and
 the match was measured rather than assumed. `../brands/BASELINE.md` records
 exactly which files come out identical, which differ, and why.
 
-The short version: every favicon is byte-identical, and the cards differ only
-where an existing file predates the rules above.
+The short version: the five favicon packages match the selected packages listed
+in the baseline, while the cards have the documented mark, row, and footer
+differences.

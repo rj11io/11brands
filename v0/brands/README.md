@@ -18,11 +18,12 @@ ever generated for it.
 
 ## Why every run gets its own folder
 
-Nothing is overwritten, ever. A generation is a dated fact: this is what these
-scripts produced from this brand file on this day. Two runs can be compared
-against each other, and against what another repository already ships, without
-either being destroyed first — which is the whole point of
-[BASELINE.md](BASELINE.md).
+By default, each run gets a new timestamped folder. A generation is a dated fact:
+this is what these scripts produced from this brand file on this day. Two runs
+can be compared against each other, and against what another repository already
+ships, without either being destroyed first — which is the whole point of
+[BASELINE.md](BASELINE.md). If you deliberately reuse `--stamp`, the scripts
+target that existing folder and can replace files there.
 
 It does mean the folders accumulate. That is fine; they are small, and deleting
 an old one is a decision someone can make later with the evidence in front of
@@ -42,10 +43,10 @@ directory explains itself without anyone having to re-derive it.
 | `intel-rj11io` | intel.rj11.io | dark | `#EF4444` red | 5.26:1 |
 
 Contrast is the signal against its own ground. A non-text graphic needs 3:1 and
-every brand clears it. The family keeps one mark and one layout and changes only
-the signal colour, so the hue carries the whole distinction — which is why it
-has to survive a 16 pixel favicon, and why it is checked with a number rather
-than an opinion.
+every brand clears it. The family keeps one mark and one layout; the signal
+colour carries the main distinction, with `www-rj11io` also using warm ground
+and ink values. The signal has to survive a 16 pixel favicon, so it is checked
+with a number rather than an opinion.
 
 ## A brand file
 
