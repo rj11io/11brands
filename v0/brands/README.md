@@ -37,6 +37,7 @@ directory explains itself without anyone having to re-derive it.
 | Key | Domain | Mode | Signal | Contrast |
 | --- | --- | --- | --- | --- |
 | `blog-rj11io` | blog.rj11.io | dark | `#2BC88F` green | 9.20:1 |
+| `blog-rj11io-11ai` | blog.rj11.io | light | `#007A55` green | 5.14:1 |
 | `www-rj11io` | www.rj11.io | dark, warm | `#F97316` orange | 7.08:1 |
 | `ai-rj11io` | ai.rj11.io | light | `#007A55` green | 5.14:1 |
 | `cv-rj11io` | cv.rj11.io | light | `#2563EB` blue | 4.95:1 |
