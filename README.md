@@ -16,6 +16,7 @@ history and a comparison baseline. Do not use it, extend it, or copy from it.
 - **Verify output** → [`v1/skills/11brands-v1-verify-assets/`](v1/skills/11brands-v1-verify-assets/)
 - **Archive / restore a brand** → [`v1/skills/11brands-v1-archive-brand/`](v1/skills/11brands-v1-archive-brand/), [`v1/skills/11brands-v1-promote-brand/`](v1/skills/11brands-v1-promote-brand/)
 - **Revisit an archived brand** → [`v1/skills/11brands-v1-generate-archived/`](v1/skills/11brands-v1-generate-archived/)
+- **Snapshot the whole system** → [`v1/skills/11brands-v1-snapshot/`](v1/skills/11brands-v1-snapshot/)
 - **Use from another repo** → [`v1/skills/11brands-v1-integration/`](v1/skills/11brands-v1-integration/)
 - **Agent ground rules** → [`AGENTS.md`](AGENTS.md)
 
@@ -29,6 +30,8 @@ v1/                 current
 ├── archive/        retired brands, out of generation, recoverable verbatim
 ├── outputs/        generated assets, one folder per stamped run
 ├── integrations/   runs triggered by consuming projects; they copy out, runs stay
+├── snapshots/      immutable full captures (active + archived + integrations)
+├── www/            snapshot explorer (Next.js)
 └── skills/         11brands-v1-* agent workflows
 
 v0/                 DEPRECATED — history only, do not touch

@@ -44,6 +44,11 @@ pick-the-winner round, the usual shape is: promote nothing (the winner was
 already copied or re-initialised under its final key), archive every losing
 candidate, and check `--list` reads as expected.
 
+## After a round
+
+Once winners are promoted and losers archived, a `11brands-v1-snapshot` captures
+the settled state — that is what the www explorer shows.
+
 ## Report
 
 Say what moved and show the `--list` state. If any archived brand's `brand.md`

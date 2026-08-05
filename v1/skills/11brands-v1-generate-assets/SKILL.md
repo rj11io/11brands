@@ -75,9 +75,15 @@ That is not this skill: runs triggered by or for a consuming repo go through
 manifest records who asked. See `11brands-v1-integration`. These generators and
 `outputs/` are the operator's workspace.
 
+## Snapshots
+
+A full capture of everything (active + archived + integrations, indexed) is
+`11brands-v1-snapshot`, not a `--all` sweep here. Reach for it when the state of
+the whole family matters — before explorer work, after a candidate round.
+
 ## Git
 
-`outputs/` and `integrations/` stay tracked but are never staged or committed
+`outputs/`, `integrations/` and `snapshots/` stay tracked but are never staged or committed
 unless the user says so. Do not add them to `.gitignore` and do not `git add`
 them.
 

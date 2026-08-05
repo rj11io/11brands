@@ -1,48 +1,69 @@
-export default function Page() {
-  return (
-    <main className="flex min-h-svh items-center justify-center bg-background px-6 py-16">
-      <section
-        className="w-full max-w-lg text-center"
-        aria-labelledby="maintenance-title"
-      >
-        <div
-          className="mx-auto mb-8 flex size-14 items-center justify-center rounded-full border border-border bg-muted"
-          aria-hidden="true"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="size-6"
-          >
-            <path d="M12 6V3" />
-            <path d="M16.25 7.75 18.4 5.6" />
-            <path d="M18 12h3" />
-            <path d="m16.25 16.25 2.15 2.15" />
-            <path d="M12 18v3" />
-            <path d="m7.75 16.25-2.15 2.15" />
-            <path d="M6 12H3" />
-            <path d="M7.75 7.75 5.6 5.6" />
-          </svg>
-        </div>
+import Link from "next/link"
 
-        <p className="mb-4 text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
-          Scheduled maintenance
-        </p>
-        <h1
-          id="maintenance-title"
-          className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
-        >
-          We&apos;ll be back soon.
+import { Badge } from "@/components/ui/badge"
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { listSnapshots } from "@/lib/snapshots"
+
+export const dynamic = "force-dynamic"
+
+export default async function Page() {
+  const snapshots = await listSnapshots()
+
+  return (
+    <main className="mx-auto w-full max-w-3xl px-6 py-16">
+      <header className="mb-10">
+        <h1 className="font-mono text-2xl font-semibold tracking-tight">
+          11brands snapshots
         </h1>
-        <p className="mx-auto mt-5 max-w-md text-base leading-7 text-muted-foreground">
-          This website is currently under maintenance. We&apos;re working to
-          bring it back online as soon as possible.
+        <p className="mt-2 text-sm text-muted-foreground">
+          Immutable captures of the whole brand system — every active brand,
+          every archived candidate, and the integration runs, as they stood.
         </p>
-      </section>
+      </header>
+
+      {snapshots.length === 0 ? (
+        <p className="text-sm text-muted-foreground">
+          No snapshots yet. Create one with{" "}
+          <code className="font-mono">
+            v1/scripts/create_snapshot.py
+          </code>
+          .
+        </p>
+      ) : (
+        <ul className="flex flex-col gap-4">
+          {snapshots.map((snapshot) => (
+            <li key={snapshot.stamp}>
+              <Link href={`/${encodeURIComponent(snapshot.stamp)}`}>
+                <Card className="transition-colors hover:bg-accent/50">
+                  <CardHeader>
+                    <CardTitle className="font-mono text-base">
+                      {snapshot.stamp}
+                    </CardTitle>
+                    <CardDescription className="flex flex-wrap gap-2 pt-1">
+                      <Badge variant="secondary">
+                        {snapshot.active} active
+                      </Badge>
+                      <Badge variant="outline">
+                        {snapshot.archived} archived
+                      </Badge>
+                      <Badge variant="outline">
+                        {snapshot.integrationRuns} integration run
+                        {snapshot.integrationRuns === 1 ? "" : "s"}
+                      </Badge>
+                      <span className="text-xs">created {snapshot.created}</span>
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </main>
   )
 }

@@ -45,6 +45,7 @@ BRANDS_DIR = V1_DIR / "brands"
 ARCHIVE_DIR = V1_DIR / "archive"
 OUTPUTS_DIR = V1_DIR / "outputs"
 INTEGRATIONS_DIR = V1_DIR / "integrations"
+SNAPSHOTS_DIR = V1_DIR / "snapshots"
 MARK_PATH = TEMPLATES_DIR / "mark.png"
 
 SCHEMA = 1

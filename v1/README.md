@@ -7,7 +7,7 @@ brand that varies the colours, the words, and — when needed — everything els
 v1/
 ├── templates/          the mark master, the two config templates, brand.md
 │                       skeleton, FONTS.md, titles example
-├── scripts/            twelve Python scripts + shared brandkit.py + .venv
+├── scripts/            thirteen Python scripts + shared brandkit.py + .venv
 ├── brands/             the active registry: one folder per brand
 │   └── <key>/
 │       ├── config.json   every generation variable; the only file scripts read
@@ -16,6 +16,8 @@ v1/
 ├── outputs/            generated assets, one folder per run
 │   └── <stamp>/<key>/{favicons,og-web,og-content}/
 ├── integrations/       same shape; runs triggered by consuming projects
+├── snapshots/          immutable point-in-time captures of the whole system
+├── www/                the snapshot explorer (Next.js)
 └── skills/             11brands-v1-* agent workflows
 ```
 
@@ -55,6 +57,12 @@ per run, shared across a batch. Nothing is overwritten across stamps, every
 kind folder carries a `MANIFEST.md` of exactly what was used, and two runs can
 always be diffed. Outputs stay tracked in git but are committed only
 deliberately.
+
+**Snapshots capture everything at once.** `create_snapshot.py` writes
+`snapshots/<stamp>/` holding freshly generated full packs for every active and
+every archived brand, a verbatim copy of `integrations/`, and a `SNAPSHOT.json`
+index. Snapshots are immutable — the script refuses an existing stamp — and are
+pruned by age. The `www/` explorer reads them.
 
 **Other projects generate into `integrations/`.** `generate_integration.py
 <key> --source <project>` is the entry point a consuming repo's agent runs:
@@ -106,6 +114,8 @@ cd v1/scripts
 .venv/bin/python generate_archived_all.py 11bench-dark-sky # same, from archive/
 
 .venv/bin/python generate_integration.py 11blog --source 11blog-site  # -> integrations/
+
+.venv/bin/python create_snapshot.py                        # -> snapshots/<stamp>/
 ```
 
 - every generator takes `<key>` or `--all`, plus `--run STAMP` to join a run;
@@ -174,5 +184,6 @@ history — nothing in it should be used or edited.
 | `skills/11brands-v1-verify-assets/` | measuring changes, gamut and icon checks |
 | `skills/11brands-v1-archive-brand/` | retiring a brand out of generation |
 | `skills/11brands-v1-generate-archived/` | revisiting a retired brand in place |
+| `skills/11brands-v1-snapshot/` | capturing the whole system, immutably |
 | `skills/11brands-v1-promote-brand/` | bringing an archived brand back |
 | `skills/11brands-v1-integration/` | teaching a consuming repo to use all of this |

@@ -9,9 +9,9 @@ import { cn } from "@/lib/utils"
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
 export const metadata: Metadata = {
-  title: "Under Maintenance",
+  title: "11brands snapshots",
   description:
-    "This website is currently under maintenance and will be back online soon.",
+    "Explorer for 11brands snapshots: every active brand, archived candidate and integration run, as captured.",
 }
 
 const fontMono = Geist_Mono({

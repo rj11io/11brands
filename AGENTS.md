@@ -24,6 +24,11 @@ one, and they encode the checks that are not obvious from the code.
   Runs for consuming projects go through `generate_integration.py --source
   <project>` into `integrations/` (same shape, source recorded in manifests);
   consumers copy out and leave the run behind — never delete their leftovers.
+- `create_snapshot.py` captures the whole system into `snapshots/<stamp>/`
+  (active + archived generated fresh, integrations copied verbatim,
+  SNAPSHOT.json index). Snapshots are immutable: never edit, regenerate or join
+  one — a wrong snapshot means a new stamp. `v1/www/` is the explorer that
+  reads them.
 - To change what an asset looks like, change the config and regenerate. Never
   edit the scripts for a colour, a string, a position or a font.
 - Retired brands live in `v1/archive/`, moved verbatim by `archive_brand.py`
@@ -34,9 +39,9 @@ one, and they encode the checks that are not obvious from the code.
 
 ## Hard rules
 
-1. **Never stage or commit anything unless explicitly told to.** `outputs/` and
-   `integrations/` are deliberately tracked-but-uncommitted; do not `git add`
-   them and do not add them to `.gitignore`.
+1. **Never stage or commit anything unless explicitly told to.** `outputs/`,
+   `integrations/` and `snapshots/` are deliberately tracked-but-uncommitted; do
+   not `git add` them and do not add them to `.gitignore`.
 2. **Never overwrite a brand or a run.** `init_brand.py` refuses existing keys —
    do not work around that. New runs get new stamps; reuse a stamp only to
    deliberately extend that run. Retiring a brand is `archive_brand.py`, never
