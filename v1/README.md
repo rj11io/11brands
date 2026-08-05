@@ -26,9 +26,15 @@ mark, different wording, another font — edit the config and regenerate; no
 script changes, ever. `brand.md` beside it records *why* the values are what
 they are, and is never parsed, so it cannot go stale as state — only as prose.
 
-**Keys are `{brand-title}-{variant}`**: `11io-dark-orange`, `blog-dark-green`,
-`cc-dark-titanium`. The variant lives in the key, so a second attempt at the
-same site is just a second brand — nothing collides.
+**Keys have three levels**, lowercase and dash-separated:
+
+| Level | Shape | Example | Meaning |
+| --- | --- | --- | --- |
+| default | `{brand}` | `11io`, `11blog` | the brand of a site |
+| secondary | `{brand}-{sub-brand}` | `11blog-11ai` | a brand carrying a sub-brand's palette, keeping its own text |
+| variant | `{brand}-{variant}` | `11ai-light-green`, `11cc-bronze` | an experiment or alternative take, sitting beside the brand without touching it |
+
+A second idea is a second key — nothing collides.
 
 **Runs are stamped.** Every generation lands in `outputs/<stamp>/`, one stamp
 per run, shared across a batch. Nothing is overwritten across stamps, every
@@ -52,7 +58,7 @@ python3 -m venv .venv
 
 ```bash
 cd v1/scripts
-.venv/bin/python init_brand.py 11io-dark-orange \
+.venv/bin/python init_brand.py 11io \
     --domain www.rj11.io --mode dark --signal '#F97316'
 ```
 
@@ -68,10 +74,10 @@ the new `brand.md`.
 
 ```bash
 cd v1/scripts
-.venv/bin/python generate_favicons.py 11io-dark-orange     # 5 PNGs + 6-frame .ico
+.venv/bin/python generate_favicons.py 11io     # 5 PNGs + 6-frame .ico
 .venv/bin/python generate_og_web.py --all                  # one 1200×630 card each
-.venv/bin/python generate_og_content.py blog-dark-green --title "Adding a Post"
-.venv/bin/python generate_og_content.py blog-dark-green --titles-file titles.txt
+.venv/bin/python generate_og_content.py 11blog --title "Adding a Post"
+.venv/bin/python generate_og_content.py 11blog --titles-file titles.txt
 .venv/bin/python generate_all.py --all                     # full pack, one run folder
 ```
 
@@ -86,7 +92,7 @@ cd v1/scripts
 ```json
 {
   "schema": 1,
-  "brand": "blog-dark-green",  "domain": "blog.rj11.io",  "mode": "dark",
+  "brand": "11blog",  "domain": "blog.rj11.io",  "mode": "dark",
   "colors": {"signal": "#2BC88F", "ground": "#0A0A0A", "ink": "#FAFAFA", "footer": "#A1A1A1"},
   "text":   {"masthead": "blog.rj11.io", "website_row": "blog.rj11.io",
              "footer_text": "AI / SOFTWARE / ...", "title": "Lorem Ipsum"},

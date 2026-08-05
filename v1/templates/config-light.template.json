@@ -1,7 +1,7 @@
 {
   "_note": "Light-mode template. Mirrors the ai.rj11.io brand. init_brand.py copies this and overwrites brand, domain and colors from operator flags; every value in a brand's config is explicit, and a text value of null draws nothing. See FONTS.md before changing the font.",
   "schema": 1,
-  "brand": "11ai-light-green",
+  "brand": "11ai",
   "domain": "ai.rj11.io",
   "mode": "light",
   "colors": {

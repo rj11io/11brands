@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "brand": "11cv",
+  "domain": "cv.rj11.io",
+  "mode": "light",
+  "colors": {
+    "signal": "#2563EB",
+    "ground": "#FAFAFA",
+    "ink": "#0A0A0A",
+    "footer": "#676767"
+  },
+  "text": {
+    "masthead": "cv.rj11.io",
+    "website_row": "cv.rj11.io",
+    "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+    "title": "Lorem Ipsum"
+  },
+  "layout": {
+    "card": [1200, 630],
+    "mark_origin": [425, 42],
+    "mark_size": 350,
+    "mark_crop": [247, 247, 1007, 1007],
+    "square": 18,
+    "gap": 20,
+    "max_row": 1040,
+    "row_top": 477,
+    "row_middle": 486,
+    "row_max_pt": 42,
+    "row_min_pt": 28,
+    "masthead_middle": 56,
+    "masthead_pt": 15,
+    "masthead_tracking": 4,
+    "footer_middle": 574,
+    "footer_pt": 15
+  },
+  "icons": {
+    "master": 512,
+    "box": [462, 368],
+    "files": [
+      {"size": 512, "name": "icon-512.png"},
+      {"size": 192, "name": "icon-192.png"},
+      {"size": 180, "name": "apple-touch-icon.png"},
+      {"size": 32, "name": "favicon-32x32.png"},
+      {"size": 16, "name": "favicon-16x16.png"}
+    ],
+    "ico_sizes": [16, 32, 48, 64, 128, 256]
+  },
+  "font": {"path": "/System/Library/Fonts/SFNSMono.ttf", "index": 0}
+}

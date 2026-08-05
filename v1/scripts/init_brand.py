@@ -1,16 +1,17 @@
 """Initialise a brand: brands/<key>/{config.json,brand.md} from the templates.
 
-The key convention is {brand-title}-{variant}, e.g. 11io-dark-orange — where
-11io is the brand title for www.rj11.io and dark-orange is what distinguishes
-this variant from any other attempt at the same brand.
+Keys are lowercase, dash-separated, three levels: {brand} for a site's default
+brand (11io, 11blog); {brand}-{sub-brand} for a brand carrying a sub-brand's
+palette with its own text (11blog-11ai); {brand}-{variant} for an experiment or
+alternative take (11ai-light-green, 11cc-bronze).
 
 The mode picks the template (config-dark or config-light); operator flags
 overwrite brand, domain and colours on top of it. Every value in the written
 config is explicit — a text flag given the literal value `none` writes JSON
 null, which draws nothing.
 
-    python3 init_brand.py 11io-dark-orange --domain www.rj11.io --mode dark --signal '#F97316'
-    python3 init_brand.py cc-dark-titanium --domain cc.rj11.io --mode dark \
+    python3 init_brand.py 11io --domain www.rj11.io --mode dark --signal '#F97316'
+    python3 init_brand.py 11cc --domain cc.rj11.io --mode dark \
         --signal '#B4BDC4' --title 'Lorem Ipsum'
 
 Prints the signal-on-ground contrast before finishing: a non-text graphic needs
@@ -25,7 +26,7 @@ import re
 
 import brandkit as kit
 
-KEY_SHAPE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)+$")
+KEY_SHAPE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 
 
 def text_value(raw: str | None, fallback):
@@ -39,8 +40,8 @@ def init(args) -> None:
     key = args.key
     if not KEY_SHAPE.match(key):
         raise SystemExit(
-            f"key {key!r} does not match the {{brand-title}}-{{variant}} "
-            f"convention, e.g. 11io-dark-orange"
+            f"key {key!r} must be lowercase dash-separated, e.g. 11io or "
+            f"11blog-11ai"
         )
     target = kit.BRANDS_DIR / key
     if target.exists():
@@ -93,7 +94,7 @@ def init(args) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("key", help="brand key, {brand-title}-{variant}, e.g. 11io-dark-orange")
+    parser.add_argument("key", help="brand key, e.g. 11io, or 11blog-11ai for a variant")
     parser.add_argument("--domain", required=True, help="e.g. www.rj11.io")
     parser.add_argument("--mode", required=True, choices=("dark", "light"))
     parser.add_argument("--signal", required=True, help="hex, e.g. '#F97316'")

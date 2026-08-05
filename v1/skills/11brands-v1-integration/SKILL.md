@@ -15,8 +15,9 @@ with a template for writing that repository's own local skill.
 it.
 
 **A brand** is `v1/brands/<key>/config.json` — every generation variable — plus
-`brand.md`, the human decision record. Keys follow `{brand-title}-{variant}`,
-e.g. `11io-dark-orange`. List brands: `ls v1/brands/`.
+`brand.md`, the human decision record. Keys have three levels: `{brand}` default (`11io`), `{brand}-{sub-brand}`
+secondary (`11blog-11ai`), `{brand}-{variant}` experiments (`11cc-bronze`).
+List brands: `ls v1/brands/`.
 
 **Generation** is four scripts, run from `v1/scripts/` with its own venv:
 

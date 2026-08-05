@@ -1,12 +1,12 @@
 # blog.rj11.io
 
-Blog-hosted content in the palette of `11intel-dark-red`. The masthead stays blog.rj11.io while the colours identify the leading brand.
+Blog-hosted content in the palette of `11intel`. The masthead stays blog.rj11.io while the colours identify the leading brand.
 
 ## Palette decision
 
 Mode dark. Signal `#EF4444` on ground `#0A0A0A`: **5.26:1**.
 
-Colours are `11intel-dark-red`'s, unmodified — see that brand.md for the reasoning. This key exists because content cards carry their consuming domain: generating against `11intel-dark-red` directly would put its own domain on a blog.rj11.io asset.
+Colours are `11intel`'s, unmodified — see that brand.md for the reasoning. This key exists because content cards carry their consuming domain: generating against `11intel` directly would put its own domain on a blog.rj11.io asset.
 
 ## Notes
 

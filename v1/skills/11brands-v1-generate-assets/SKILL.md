@@ -17,9 +17,9 @@ nothing else. Work in `v1/`; ignore `v0/` entirely — it is deprecated.
 
 ```bash
 cd v1/scripts
-.venv/bin/python generate_favicons.py 11io-dark-orange
+.venv/bin/python generate_favicons.py 11io
 .venv/bin/python generate_og_web.py --all
-.venv/bin/python generate_og_content.py blog-dark-green --title "Adding a Post"
+.venv/bin/python generate_og_content.py 11blog --title "Adding a Post"
 .venv/bin/python generate_all.py --all
 ```
 

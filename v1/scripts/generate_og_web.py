@@ -4,9 +4,9 @@ One card: the mark, the website row (the domain, unless the config says
 otherwise) framed by two signal squares, and the keyword footer. The link
 preview a site falls back to when a page has nothing more specific.
 
-    python3 generate_og_web.py 11io-dark-orange
+    python3 generate_og_web.py 11io
     python3 generate_og_web.py --all
-    python3 generate_og_web.py 11io-dark-orange --run 20260805-120000
+    python3 generate_og_web.py 11io --run 20260805-120000
 
 Output: outputs/<stamp>/<key>/og-web/<key>-og-web.png
 """
@@ -36,7 +36,7 @@ def generate(key: str, stamp: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("key", nargs="?", help="brand key, e.g. 11io-dark-orange")
+    parser.add_argument("key", nargs="?", help="brand key, e.g. 11io")
     parser.add_argument("--all", action="store_true", help="every registered brand")
     parser.add_argument("--run", help="run stamp to join; defaults to now")
     args = parser.parse_args()

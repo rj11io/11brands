@@ -1,7 +1,7 @@
 {
   "_note": "Dark-mode template. Mirrors the blog.rj11.io brand. init_brand.py copies this and overwrites brand, domain and colors from operator flags; every value in a brand's config is explicit, and a text value of null draws nothing. See FONTS.md before changing the font.",
   "schema": 1,
-  "brand": "blog-dark-green",
+  "brand": "11blog",
   "domain": "blog.rj11.io",
   "mode": "dark",
   "colors": {

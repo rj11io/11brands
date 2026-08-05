@@ -5,9 +5,9 @@ piece's title, and the domain moves up above the mark as a masthead. With no
 title given, the brand's config `text.title` is used — "Lorem Ipsum" in the
 templates — so a bare run produces a complete, obviously-placeholder card.
 
-    python3 generate_og_content.py 11io-dark-orange
-    python3 generate_og_content.py 11io-dark-orange --title "Adding a Post"
-    python3 generate_og_content.py 11io-dark-orange --titles-file titles.txt
+    python3 generate_og_content.py 11io
+    python3 generate_og_content.py 11io --title "Adding a Post"
+    python3 generate_og_content.py 11io --titles-file titles.txt
     python3 generate_og_content.py --all
 
 A titles file is one title per line; blank lines and # comments are skipped.
@@ -74,7 +74,7 @@ def generate(key: str, stamp: str, titles: list[str] | None = None) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("key", nargs="?", help="brand key, e.g. 11io-dark-orange")
+    parser.add_argument("key", nargs="?", help="brand key, e.g. 11io")
     parser.add_argument("--all", action="store_true", help="every registered brand")
     parser.add_argument("--title", action="append", help="a title; repeat for more")
     parser.add_argument("--titles-file", help="one title per line")

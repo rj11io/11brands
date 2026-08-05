@@ -3,10 +3,10 @@
 Mints one run stamp and passes it to each generator, so the whole batch —
 one brand or all of them — lands under a single outputs/<stamp>/ folder.
 
-    python3 generate_all.py 11io-dark-orange
+    python3 generate_all.py 11io
     python3 generate_all.py --all
     python3 generate_all.py --all --run 20260805-120000
-    python3 generate_all.py 11io-dark-orange --title "Adding a Post"
+    python3 generate_all.py 11io --title "Adding a Post"
 
 Titles are passed through to the content generator; with none, each brand's
 config `text.title` is used.
@@ -24,7 +24,7 @@ import generate_og_web
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("key", nargs="?", help="brand key, e.g. 11io-dark-orange")
+    parser.add_argument("key", nargs="?", help="brand key, e.g. 11io")
     parser.add_argument("--all", action="store_true", help="every registered brand")
     parser.add_argument("--title", action="append", help="content title; repeat for more")
     parser.add_argument("--titles-file", help="one content title per line")

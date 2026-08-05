@@ -16,8 +16,9 @@ one, and they encode the checks that are not obvious from the code.
 - A brand is `v1/brands/<key>/config.json` — every generation variable, the only
   file the scripts read. `brand.md` beside it is the human decision record and
   is never parsed.
-- Keys are `{brand-title}-{variant}`: `11io-dark-orange`. A new idea for the
-  same site is a new key, not an edit war.
+- Keys have three levels: `{brand}` default (`11io`), `{brand}-{sub-brand}`
+  secondary (`11blog-11ai`), `{brand}-{variant}` experiments
+  (`11ai-light-green`). A new idea is a new key, not an edit war.
 - Generators run from `v1/scripts/` (own `.venv`) and write to
   `outputs/<stamp>/<key>/<kind>/`, one stamp per run, `MANIFEST.md` per kind.
 - To change what an asset looks like, change the config and regenerate. Never

@@ -12,14 +12,16 @@ Work in `v1/`. Ignore `v0/` entirely — it is deprecated.
 
 ## The key convention
 
-`{brand-title}-{variant}`, lowercase, dash-separated: `11io-dark-orange`,
-`blog-dark-green`, `cc-dark-titanium`. The brand title is the site's short name
-(`11io` for www.rj11.io); the variant is what distinguishes this attempt from any
-other at the same brand. The script rejects keys that do not match.
+Lowercase, dash-separated, three levels:
 
-Because the variant is part of the key, a second idea for the same site is simply
-a second brand: `cc-light-bronze` next to `cc-dark-titanium`. Nothing collides
-and nothing gets overwritten.
+| Level | Shape | Example | Meaning |
+| --- | --- | --- | --- |
+| default | `{brand}` | `11io`, `11blog` | the brand of a site |
+| secondary | `{brand}-{sub-brand}` | `11blog-11ai` | a brand carrying a sub-brand's palette, keeping its own text |
+| variant | `{brand}-{variant}` | `11ai-light-green`, `11cc-bronze` | an experiment or alternative take, sitting beside the brand without touching it |
+
+Because every level is its own key, a second idea is simply a second brand.
+Nothing collides and nothing gets overwritten.
 
 ## What you need before running anything
 
@@ -75,7 +77,7 @@ Traps that have each caught someone:
 
 ```bash
 cd v1/scripts
-.venv/bin/python init_brand.py intel-dark-red --domain intel.rj11.io --mode dark --signal '#EF4444'
+.venv/bin/python init_brand.py 11intel --domain intel.rj11.io --mode dark --signal '#EF4444'
 ```
 
 Optional flags: `--ground --ink --footer` (hex overrides), `--masthead

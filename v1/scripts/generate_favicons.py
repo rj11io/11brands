@@ -4,9 +4,9 @@ Five PNGs and a six-frame favicon.ico by default (the exact set comes from the
 brand's config). Every frame is RGBA and composed at its own size — see
 write_icon_set in brandkit.py for why both rules exist.
 
-    python3 generate_favicons.py 11io-dark-orange
+    python3 generate_favicons.py 11io
     python3 generate_favicons.py --all
-    python3 generate_favicons.py 11io-dark-orange --run 20260805-120000
+    python3 generate_favicons.py 11io --run 20260805-120000
 
 Output: outputs/<stamp>/<key>/favicons/
 """
@@ -31,7 +31,7 @@ def generate(key: str, stamp: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("key", nargs="?", help="brand key, e.g. 11io-dark-orange")
+    parser.add_argument("key", nargs="?", help="brand key, e.g. 11io")
     parser.add_argument("--all", action="store_true", help="every registered brand")
     parser.add_argument("--run", help="run stamp to join; defaults to now")
     args = parser.parse_args()

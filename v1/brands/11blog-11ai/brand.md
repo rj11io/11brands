@@ -1,12 +1,12 @@
 # blog.rj11.io
 
-Blog-hosted content in the palette of `11ai-light-green`. The masthead stays blog.rj11.io while the colours identify the leading brand.
+Blog-hosted content in the palette of `11ai`. The masthead stays blog.rj11.io while the colours identify the leading brand.
 
 ## Palette decision
 
 Mode light. Signal `#007A55` on ground `#FAFAFA`: **5.14:1**.
 
-Colours are `11ai-light-green`'s, unmodified — see that brand.md for the reasoning. This key exists because content cards carry their consuming domain: generating against `11ai-light-green` directly would put its own domain on a blog.rj11.io asset.
+Colours are `11ai`'s, unmodified — see that brand.md for the reasoning. This key exists because content cards carry their consuming domain: generating against `11ai` directly would put its own domain on a blog.rj11.io asset.
 
 ## Notes
 
