@@ -1,14 +1,49 @@
 ---
 name: 11brands-generate-assets
-description: Generate brand assets in the 11brands repository — favicon packages, website Open Graph cards, and content Open Graph cards for one brand or all of them. Output goes to drafts/ by default. Use when someone wants to generate, render, produce, re-generate or refresh favicons, icons, OG images, link previews or social cards for a brand. Handles the Python environment, picks the right script, and reports where the output went.
+description: Generate brand assets in the 11brands repository — favicon packages, website Open Graph cards, and content Open Graph cards for one brand or all of them. Output goes to drafts/ by default. Also covers testing an idea by editing a brand's config.json and regenerating. Use when someone wants to generate, render, produce, re-generate or refresh favicons, icons, OG images, link previews or social cards for a brand. Handles the Python environment, picks the right script, and reports where the output went.
 ---
 
 # Generate brand assets
 
 Three scripts under `asset-generation-scripts/`, all driven by a brand's
-`brand.md`. By default each run writes a new `gen-<timestamp>` folder under
-`drafts/`. Reusing the same `--stamp` targets that existing folder and can
-overwrite its files.
+`config.json`, falling back to its `brand.md`. By default each run writes a new
+`gen-<timestamp>` folder under `drafts/`. Reusing the same `--stamp` targets that
+existing folder and can overwrite its files.
+
+## Where the values come from
+
+Every brand folder holds two files. `brand.md` is the human record and the notes;
+`config.json` is every generation variable resolved, including the layout numbers
+`brand.md` cannot express. **`config.json` is what the generators read.**
+
+A run prints a `note:` whenever the config overrides the brand file, listing each
+value. Pass that on when you report — it is the difference between "these are the
+brand's assets" and "these are an experiment".
+
+If a brand has no `config.json`, the first run creates one from `brand.md` and says
+so. It never rewrites an existing one, because a hand-edited layout value cannot be
+recovered from the markdown.
+
+## Testing an idea
+
+This is what the config is for. To try a different colour, a bigger mark, smaller
+type, different wording:
+
+1. Edit `drafts/<key>/config.json`.
+2. Re-run a generator with a `--stamp` that names the idea.
+3. Look at the result, and compare it against the run before it.
+
+```bash
+.venv/bin/python generate-content-og.py cc-rj11io --stamp bigger-mark
+```
+
+Work in `drafts/`, not `brands/`. Use a fresh `--stamp` per idea so the attempts
+sit side by side and can be diffed. When an idea is settled, fold it back into
+`brand.md` with a note saying why, so the reasoning does not live only in a JSON
+file — then `11brands-promote-draft`.
+
+Do not edit the scripts to change a colour, a position, or a string. Everything
+that affects an image is in the config.
 
 ## Output goes to drafts
 

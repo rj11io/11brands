@@ -1,13 +1,17 @@
 ---
 name: 11brands-init-brand
-description: Add a new brand to the 11brands repository as a draft — pick and check a signal colour against its ground, write drafts/<key>/brand.md, and create the three output folders. Use when someone wants to set up, initialise, register or add a brand, sub-brand or site to 11brands, or asks what colour a new brand should use. Does not generate assets; hand off to 11brands-generate-assets for that. Does not add the brand to brands/; that is 11brands-promote-draft.
+description: Add a new brand to the 11brands repository as a draft — pick and check a signal colour against its ground, write drafts/<key>/brand.md and its config.json, and create the three output folders. Use when someone wants to set up, initialise, register or add a brand, sub-brand or site to 11brands, or asks what colour a new brand should use. Does not generate assets; hand off to 11brands-generate-assets for that. Does not add the brand to brands/; that is 11brands-promote-draft.
 ---
 
 # Initialise a brand
 
-A brand starts life as one markdown file and three empty folders under
-`drafts/`. The work is not the file — it is choosing a signal colour that
-survives contact with a 16 pixel favicon, and writing down why.
+A brand starts life as two files and three empty folders under `drafts/`. The work
+is not the files — it is choosing a signal colour that survives contact with a 16
+pixel favicon, and writing down why.
+
+The two files are `brand.md`, the human record, and `config.json`, the resolved
+list of every generation variable. You write the markdown; `generate-config.py`
+writes the JSON from it. Every brand and every draft has both.
 
 New brands go to `drafts/`, never straight to `brands/`. `brands/` is the
 registered set, it has live consumers, and `brands/BASELINE.md` measures it
@@ -136,11 +140,22 @@ The notes section is not decoration. Every existing brand file records the
 reasoning behind its colour, and that is what stops the next person repeating a
 mistake.
 
-## Then create the folders
+## Then create the config and the folders
 
 ```bash
 mkdir -p drafts/<key>/{favicons,web-og,content-og}
+cd asset-generation-scripts && .venv/bin/python generate-config.py <key>
 ```
+
+`generate-config.py` resolves `brand.md` against the family defaults and writes
+`drafts/<key>/config.json`: the colours, all four text fields, the whole layout,
+the icon sizes and the font. From then on that file is what the generators read,
+so it is where someone tests an idea — change `mark_size` or a colour, re-run a
+generator, look at the result. It never needs to be written by hand.
+
+Do not hand-edit the new `config.json` at this point. It should match `brand.md`
+exactly on the day the brand is created; a divergence on day one is just a brand
+file that is wrong.
 
 ## Finally
 

@@ -35,17 +35,27 @@ a live site, and `brands/BASELINE.md` measures that folder against what the
 `11blog` repository ships.
 
 The two folders have the same shape, so promoting is a copy rather than a
-translation. What moves is the `brand.md` — a definition should have one home,
-because two copies drift and the scripts read whichever root they are writing to.
-What copies is the generated run, because it is dated evidence and cheap to keep.
+translation: both definition files and the approved run are copied across, and the
+draft keeps its own. The draft is the sandbox and stays one, so it will diverge as
+soon as someone tests the next idea. That is intended, and it is kept honest by two
+rules: the generators read the definition in the root they are writing to, and every
+run records the definition and config it used.
 
-## Brands are data, including their words
+## Brands are data, all the way down
 
-Three fields are required — domain, mode, signal — and everything else has a
-default. That includes every string drawn on every asset: the masthead, the
-website card's main row, the footer keyword line, and the title a content card
-falls back to. Any of them can be changed per brand, or set to `none` to draw
-nothing. Nothing is fixed at the point of drawing.
+Every brand folder, draft or registered, holds two files:
+
+- **`brand.md`** — the human record. Three required fields (domain, mode, signal)
+  and, more importantly, the notes explaining why the colour is what it is.
+- **`config.json`** — every generation variable, resolved: the four colours, all
+  four drawn strings, the whole layout, the icon sizes, the font.
+
+`config.json` is what the generators read, and that is the point. To test an idea —
+a different signal, a bigger mark, smaller type, other wording — change a value and
+re-run a generator. Nothing is fixed at the point of drawing and no script needs
+editing. A run reports every value where the config overrides `brand.md`, so an
+experiment is never mistaken for the brand, and the defaults reproduce the whole
+published family byte for byte.
 
 A content run given no title uses the brand's default title, which is
 `Lorem Ipsum`. A bare run therefore produces a complete, obviously-placeholder

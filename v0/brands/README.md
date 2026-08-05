@@ -5,7 +5,8 @@ ever generated for it.
 
 ```
 <brand-key>/
-├── brand.md          what the brand is: domain, mode, signal colour
+├── brand.md          what the brand is, and why: domain, mode, signal, notes
+├── config.json       every generation variable, resolved; wins over brand.md
 ├── favicons/
 │   └── gen-<timestamp>/    icon-512, icon-192, apple-touch-icon,
 │                           favicon-32x32, favicon-16x16, favicon.ico,

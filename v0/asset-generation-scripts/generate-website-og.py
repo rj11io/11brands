@@ -9,7 +9,8 @@ brand can put something else there with **Website row:** in its brand.md. There
 is no masthead; that belongs on a content card, where the main row is already
 spoken for by a title.
 
-Output goes to drafts/ unless --into brands is given.
+Output goes to drafts/ unless --into brands is given. Values come from the
+brand's config.json when it has one, and a missing one is created on first run.
 
     python3 generate-website-og.py b2b-rj11io
     python3 generate-website-og.py --all
@@ -25,6 +26,7 @@ import brandkit as kit
 
 def generate(key: str, stamp: str | None = None, into: str = kit.DEFAULT_OUTPUT) -> None:
     brand = kit.load_brand(key, prefer=into)
+    kit.ensure_config(brand)
     masks = kit.build_masks()
     directory = kit.open_output_dir(brand, "web-og", stamp, into)
 

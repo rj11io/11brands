@@ -9,11 +9,22 @@ translation:
 
 ```
 <key>/
-├── brand.md
+├── brand.md          the human record: fields plus the notes
+├── config.json       every generation variable; what the scripts read
 ├── favicons/gen-<timestamp>/
 ├── web-og/gen-<timestamp>/
 └── content-og/gen-<timestamp>/
 ```
+
+Every draft has both definition files, exactly like a registered brand. That is
+what makes a draft a place to work: edit a value in `config.json`, re-run a
+generator, look at the result. A run reports any value where the config overrides
+`brand.md`, so an experiment is never mistaken for the brand.
+
+A promoted brand keeps its draft copies, so `drafts/<key>/` and `brands/<key>/` can
+hold definitions that have since diverged. That is intended — the draft is the
+sandbox. `diff brands/<key>/config.json drafts/<key>/config.json` shows whether it
+has moved on.
 
 ## Why drafts exist
 
@@ -30,8 +41,9 @@ ships. Anything that lands in it should have been looked at first.
 ## Two kinds of folder live here
 
 **Work in progress**, keyed the same as the brand it will become — `cc-rj11io`
-while `cc.rj11.io` is still being decided. Promotion moves its `brand.md` into
-`brands/` and copies the chosen run across.
+while `cc.rj11.io` is still being decided. Promotion copies its two definition
+files and the chosen run into `brands/`, and the draft keeps its own copies so it
+stays a place to work.
 
 **Rejected attempts**, kept for reference, keyed with what made them distinct.
 `cc.rj11.io` took three tries and the first two are both here:

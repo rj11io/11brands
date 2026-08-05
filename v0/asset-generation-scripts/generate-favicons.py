@@ -5,7 +5,8 @@ carrying six frames. Everything is RGBA and every size is composed at that size
 rather than shrunk from a bigger one — see write_icon_set in brandkit.py for why
 both of those matter.
 
-Output goes to drafts/ unless --into brands is given. Promoting a draft is a
+Output goes to drafts/ unless --into brands is given. Values come from the
+brand's config.json when it has one, and a missing one is created on first run. Promoting a draft is a
 separate step; see skills/11brands-promote-draft/.
 
     python3 generate-favicons.py b2b-rj11io
@@ -22,6 +23,7 @@ import brandkit as kit
 
 def generate(key: str, stamp: str | None = None, into: str = kit.DEFAULT_OUTPUT) -> None:
     brand = kit.load_brand(key, prefer=into)
+    kit.ensure_config(brand)
     masks = kit.build_masks()
     directory = kit.open_output_dir(brand, "favicons", stamp, into)
 

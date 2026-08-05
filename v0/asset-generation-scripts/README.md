@@ -1,6 +1,6 @@
 # Asset generation scripts
 
-Three scripts and one shared module. They read a brand's markdown file, draw its
+Four scripts and one shared module. They read a brand's definition, draw its
 assets, and write them into a timestamped folder — under `../drafts/` by default,
 and under `../brands/` only when told.
 
@@ -9,9 +9,37 @@ and under `../brands/` only when told.
 | `generate-favicons.py` | 5 PNGs and a 6-frame `.ico` | `drafts/<brand>/favicons/gen-<timestamp>/` |
 | `generate-website-og.py` | one 1200×630 card | `drafts/<brand>/web-og/gen-<timestamp>/` |
 | `generate-content-og.py` | one 1200×630 card per title | `drafts/<brand>/content-og/gen-<timestamp>/` |
+| `generate-config.py` | a brand's `config.json` | beside its `brand.md` |
 
-`brandkit.py` holds everything shared: the brand file reader, the colour tables,
-the text defaults, the card and icon geometry, and the drawing itself.
+`brandkit.py` holds everything shared: the definition reader, the colour tables,
+the text and layout defaults, and the drawing itself.
+
+## A brand is two files
+
+Every brand folder, in `brands/` and in `drafts/` alike, holds both:
+
+| File | What it is | Who reads it |
+| --- | --- | --- |
+| `brand.md` | the human record: three required fields, plus the notes explaining why the colour is what it is | people, and the scripts as a fallback |
+| `config.json` | every generation variable, fully resolved, including the layout numbers `brand.md` has no syntax for | the scripts, first |
+
+**`config.json` wins.** That is the point of it: change a value, re-run a
+generator, look at the result. Nothing else needs editing and nothing needs
+recompiling.
+
+Because it wins, any disagreement with `brand.md` is reported rather than left to
+be discovered later from an asset nobody can explain:
+
+```
+note: drafts/cc-rj11io/config.json overrides brand.md, and is what was used:
+         signal #B4BDC4 -> #FF6B35
+         mark_size 350 -> 300
+       Update brand.md to match once an idea is settled, so the reasoning stays
+       with the values.
+```
+
+Each run's `MANIFEST.md` also records the config it used and lists any layout
+value that differs from the family default, so a folder still explains itself.
 
 ## Getting set up
 
@@ -107,8 +135,8 @@ and handed over.
 
 ## Adding a brand
 
-Write `../drafts/<key>/brand.md` and run the scripts. The file needs three
-things:
+Write `../drafts/<key>/brand.md`, then run `generate-config.py <key>` to give it a
+`config.json`, then run the generators. The markdown file needs three things:
 
 ```markdown
 **Domain:** example.rj11.io
@@ -122,6 +150,85 @@ things:
 | --- | --- | --- | --- |
 | dark | `#0A0A0A` | `#FAFAFA` | `#A1A1A1` |
 | light | `#FAFAFA` | `#0A0A0A` | `#676767` |
+
+## Every variable, and where it lives
+
+`config.json` is the full list. `brand.md` can set the colours and the text but
+not the layout, so the two overlap rather than duplicate.
+
+```json
+{
+  "brand": "cc-rj11io",
+  "domain": "cc.rj11.io",
+  "mode": "dark",
+  "colours": {"signal": "#B4BDC4", "ground": "#0A0A0A", "ink": "#FAFAFA", "footer": "#A1A1A1"},
+  "text": {
+    "masthead": "cc.rj11.io",
+    "website_row": "cc.rj11.io",
+    "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+    "default_title": "Lorem Ipsum"
+  },
+  "layout": {
+    "card": [1200, 630],
+    "mark_origin": [425, 42],
+    "mark_size": 350,
+    "mark_crop": [247, 247, 1007, 1007],
+    "square": 18,
+    "gap": 20,
+    "max_row": 1040,
+    "row_top": 477,
+    "row_middle": 486,
+    "title_max_pt": 42,
+    "title_min_pt": 28,
+    "masthead_middle": 56,
+    "masthead_pt": 15,
+    "masthead_tracking": 4,
+    "footer_middle": 574,
+    "footer_pt": 15
+  },
+  "icons": {
+    "master": 512,
+    "box": [462, 368],
+    "files": [{"size": 512, "name": "icon-512.png"}],
+    "ico_sizes": [16, 32, 48, 64, 128, 256]
+  },
+  "font": {"mono": "/System/Library/Fonts/SFNSMono.ttf"}
+}
+```
+
+What the layout numbers mean:
+
+| Key | Meaning |
+| --- | --- |
+| `card` | card size in pixels |
+| `mark_origin`, `mark_size` | where the mark sits on a card, and how big |
+| `mark_crop` | the region of the mark master to use |
+| `square`, `gap` | the signal square, and its distance from the row text |
+| `max_row` | widest a framed row may be before the type steps down |
+| `row_top`, `row_middle` | the main row's top edge and text baseline centre |
+| `title_max_pt`, `title_min_pt` | the range the row steps through to fit |
+| `masthead_middle`, `masthead_pt`, `masthead_tracking` | the content card's top line |
+| `footer_middle`, `footer_pt` | the keyword line |
+| `icons.master`, `icons.box` | the reference size and the margin the artwork fits inside |
+| `icons.files` | which PNG sizes to write, and under what names |
+| `icons.ico_sizes` | which frames go in the `.ico` |
+
+A text value of `null` draws nothing. Every value shown above is the family
+default, so a config that changes none of them reproduces its existing assets byte
+for byte — which was measured, not assumed.
+
+### Creating and refreshing a config
+
+```bash
+.venv/bin/python generate-config.py b2b-rj11io
+.venv/bin/python generate-config.py --all --drafts
+.venv/bin/python generate-config.py b2b-rj11io --refresh
+```
+
+An existing `config.json` is left alone by default, and the three generators
+create one only when it is missing. Nothing ever rewrites one silently, because a
+hand-edited layout value cannot be recovered from `brand.md`. `--refresh` is the
+explicit way to discard those edits and rebuild from the record.
 
 ## Every field a brand file can set
 

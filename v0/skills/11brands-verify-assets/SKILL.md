@@ -12,8 +12,16 @@ consuming repository ships. `brands/BASELINE.md` records the expected answer for
 `11blog`.
 
 **Is the output correct in itself?** Every pixel of a brand asset should be a
-blend of that brand's three colours — ground, ink, signal — and nothing else. A
-pixel outside that set is a resampling artefact.
+blend of that brand's own colours and nothing else. A pixel outside that set is
+either a resampling artefact or a brand whose palette does not agree with itself.
+
+Note **four** colours, not three. The mark uses ground, ink and signal; the footer
+and masthead are drawn in a fourth, `**Footer:**`. In every standard mode the
+footer happens to sit exactly on the line between ground and ink — `#A1A1A1` is
+62.9 per cent of the way from `#0A0A0A` to `#FAFAFA` — so its anti-aliased blends
+land on the triangle's own edge and a three-colour test passes anyway. Override
+ground or ink without warming the footer to match and that stops being true. See
+"When a brand's palette disagrees with itself" below.
 
 Never answer either by looking at an image. Both are measurements.
 
@@ -21,6 +29,22 @@ Runs live under two roots. `drafts/<key>/` holds work in progress and rejected
 attempts; `brands/<key>/` holds the registered set. The most common comparison in
 this repository is now a draft against the promoted run it would replace, which
 answers "what would promoting this actually change".
+
+Take the colours from the run's own `MANIFEST.md`, or from the brand's
+`config.json` — never from `brand.md`, and never by retyping them. `config.json` is
+what the generators read, so a run made from a tweaked config was drawn with values
+`brand.md` does not mention. The manifest records which config was used and lists
+any layout value that differs from the family default.
+
+A third question is worth asking before either of the two below:
+
+**Did the definition change, or did the code?** If two runs of the same brand
+differ, compare the definitions first — it is one command and it usually explains
+everything:
+
+```bash
+diff brands/<key>/config.json drafts/<key>/config.json
+```
 
 ## Comparing two sets
 
@@ -62,39 +86,85 @@ for size in sorted(im.ico.sizes()):
 ## Checking a set on its own
 
 Ask it as a forward question: could the drawing code have produced this colour at
-all? `compose` in `brandkit.py` can only ever emit
-`round(ground·(1−i−s) + ink·i + signal·s)` for some coverage pair on the simplex,
-so a colour no pair produces is an artefact, and every other colour is fine by
-construction.
+all? Build the set of everything `compose` in `brandkit.py` can emit, then subtract.
+
+The coverage pair comes from two 8-bit masks, so `i` and `s` are always `k/255`,
+and `compose` renormalises the pair when `i + s` exceeds 1. Enumerate exactly
+that, and the answer is exact:
 
 ```python
-def achievable(c, ground, ink, signal, step=0.001):
-    """Is there a coverage pair whose rounded blend is exactly this colour?"""
-    n = int(1 / step)
-    for i_step in range(n + 1):
-        i = i_step * step
-        for s_step in range(n - i_step + 1):
-            s = s_step * step
-            if all(
-                round(ground[ch] * (1 - i - s) + ink[ch] * i + signal[ch] * s) == c[ch]
-                for ch in range(3)
-            ):
-                return (i, s)
-    return None
+def emittable(ground, ink, signal):
+    """Every colour compose() can produce. 65,536 pairs, so just enumerate them."""
+    out = set()
+    for a in range(256):
+        for b in range(256 - a):                    # i + s <= 1, drawn as given
+            i, s = a / 255, b / 255
+            out.add(tuple(
+                round(ground[c] * (1 - i - s) + ink[c] * i + signal[c] * s)
+                for c in range(3)
+            ))
+    for a in range(256):                            # i + s > 1, renormalised
+        for b in range(256):
+            if a + b <= 255:
+                continue
+            t = (a + b) / 255
+            i, s = (a / 255) / t, (b / 255) / t
+            out.add(tuple(
+                round(ground[c] * (1 - i - s) + ink[c] * i + signal[c] * s)
+                for c in range(3)
+            ))
+    return out
 
 
-def artefacts(path, ground, ink, signal):
+def artefacts(paths, ground, ink, signal):
     """Distinct colours the drawing code could not have produced."""
-    im = Image.open(path).convert("RGB")
-    return [c for c in set(im.get_flattened_data()) if achievable(c, ground, ink, signal) is None]
+    ok = emittable(ground, ink, signal)
+    seen = set()
+    for path in paths:
+        seen |= set(Image.open(path).convert("RGB").get_flattened_data())
+    return sorted(seen - ok)
 ```
 
-Anything in that list means resampling has invented a colour. Read the brand's
-colours and text from the run's `MANIFEST.md` rather than retyping them.
+Anything in that list is real. Read the brand's colours and text from the run's
+`MANIFEST.md` rather than retyping them.
 
-Run it over `set(...)`, never over the pixels. A card has around 300 distinct
-colours and 756,000 pixels, so the set makes the difference between a second and
-an hour.
+Two things that will bite you:
+
+**Enumerate, do not search with a step size.** An earlier version of this check
+searched coverage on an arbitrary grid (`step=0.001`) and asked whether any point
+hit the colour exactly. A grid that does not include the true coverage value misses
+it, so the test reports an artefact that is not there. At `step=0.002` it invented
+phantom artefacts in nine brands out of ten. `k/255` is not a tuning parameter, it
+is the actual domain.
+
+**Compare against `set(...)`, never against the pixels.** A card has around 300
+distinct colours and 756,000 pixels.
+
+### When a brand's palette disagrees with itself
+
+A non-empty result is not always a resampling bug. If the artefacts all lie on the
+ramp from the ground to some other brand colour, the palette itself is
+inconsistent, and the fix is the brand file rather than the code:
+
+```python
+ramp = {
+    tuple(round(ground[c] + (a / 255) * (other[c] - ground[c])) for c in range(3))
+    for a in range(256)
+}
+print(len(set(bad) & ramp), "of", len(bad), "lie on the ground->other ramp")
+```
+
+`www-rj11io` is the worked example. It overrides ground and ink to warm neutrals
+but leaves `**Footer:**` at the family's cool `#A1A1A1`, so every anti-aliased
+pixel of its footer and masthead is a blend of a cool grey into a warm ground:
+164 of 164 artefacts on its website card sit exactly on that ramp, and its
+favicons, which carry no text, are clean. Check the footer against the ground-to-ink
+line before blaming the resampler:
+
+```python
+ts = [(footer[c] - ground[c]) / (ink[c] - ground[c]) for c in range(3) if ink[c] != ground[c]]
+# max(ts) - min(ts) near zero means the footer is a true blend of ground and ink
+```
 
 ### Why not test it the other way round
 

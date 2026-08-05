@@ -24,6 +24,10 @@ v0/
 └── skills/                     repo-local workflow guides
 ```
 
+Each brand folder, in `drafts/` and `brands/` alike, holds a `brand.md` for the
+record and a `config.json` holding every generation variable. Change a value in the
+config and re-run a generator to test an idea.
+
 Generated assets and manifests are written under `v0/drafts/` by default, and
 reach `v0/brands/` only by promotion. Copying an asset into a consuming site is a
 further separate step.

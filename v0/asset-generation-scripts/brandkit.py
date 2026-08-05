@@ -2,7 +2,7 @@
 
 Everything that more than one script needs lives here, so the scripts themselves
 are short enough to read in one go. Nothing in here writes a file except
-open_output_dir.
+open_output_dir and write_config.
 
 The one idea worth understanding
 --------------------------------
@@ -18,18 +18,27 @@ why an earlier 16 pixel icon in the 11blog repository carried a #2FE0A1 square
 the brand never had. Resizing coverage cannot do that, because every output
 pixel ends up a blend of exactly three known colours.
 
-Two other things to know
-------------------------
+Three other things to know
+--------------------------
 
 Output goes to drafts/ by default, not brands/. Promoting a draft into the
 registered set is a separate step, described in skills/11brands-promote-draft/.
 
-Every string drawn on any asset is a brand field, and every one of them can be
-overridden or omitted in brand.md. Nothing is hardcoded where it is drawn.
+Nothing that affects an image is hardcoded where it is drawn. Colours, every
+drawn string, and the whole layout come from the brand, so they can all be
+changed per brand.
+
+Each brand folder holds two files. brand.md is the human record: the three
+required fields and, more importantly, the notes explaining why the colour is
+what it is. config.json is the machine-readable, fully resolved version of every
+variable, including the layout numbers brand.md has no syntax for. When both
+exist, config.json wins and any disagreement is reported, so tweaking a config to
+test an idea is a two-line job and never a silent one.
 """
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 from dataclasses import dataclass, field
@@ -50,52 +59,20 @@ MARK_PATH = SCRIPTS_DIR / "assets/mark-xl-dot-centered.png"
 OUTPUT_ROOTS = {"drafts": DRAFTS_DIR, "brands": BRANDS_DIR}
 DEFAULT_OUTPUT = "drafts"
 
+BRAND_NAME = "brand.md"
+CONFIG_NAME = "config.json"
+
 # macOS ships this. On any other machine, point it at a monospaced .ttf with the
 # same metrics or the cards will not match what is already published.
 MONO_FONT = "/System/Library/Fonts/SFNSMono.ttf"
 
-# ---------------------------------------------------------------- card geometry
-CARD = (1200, 630)
-MARK_ORIGIN = (425, 42)
-MARK_SIZE = 350
-MARK_CROP = (247, 247, 1007, 1007)
-
-SQUARE = 18
-GAP = 20
-MAX_ROW = 1040
-ROW_TOP = 477
-ROW_MIDDLE = 486
-TITLE_MAX_PT = 42
-TITLE_MIN_PT = 28
-
-MASTHEAD_MIDDLE = 56
-MASTHEAD_PT = 15
-MASTHEAD_TRACKING = 4
-
-FOOTER_MIDDLE = 574
-FOOTER_PT = 15
-
 # ------------------------------------------------------------------ text tables
-# Every string drawn on any asset comes from one of these, and every one of them
-# is overridable per brand. Nothing is hardcoded at the point of drawing.
 DEFAULT_FOOTER_TEXT = "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY"
 DEFAULT_CONTENT_TITLE = "Lorem Ipsum"
 
-# A text field set to this, in any capitalisation, draws nothing at all.
+# A text field set to this, in any capitalisation, draws nothing at all. In
+# config.json, JSON null means the same thing and reads better.
 OMIT = "none"
-
-# ---------------------------------------------------------------- icon geometry
-ICON_MASTER = 512
-ICON_BOX = (462, 368)
-ICON_PNG_SIZES = [512, 192, 180, 32, 16]
-ICON_PNG_NAMES = {
-    512: "icon-512.png",
-    192: "icon-192.png",
-    180: "apple-touch-icon.png",
-    32: "favicon-32x32.png",
-    16: "favicon-16x16.png",
-}
-ICO_SIZES = [(16, 16), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)]
 
 # ------------------------------------------------------------------ mode tables
 # A mode fixes the three colours a signal has to work against. Overriding any of
@@ -114,6 +91,49 @@ MODES = {
     },
 }
 
+# ---------------------------------------------------------------- layout tables
+# Every number that positions or sizes something. These are the values the whole
+# published family was drawn with, so a brand that overrides none of them
+# reproduces its existing assets byte for byte.
+DEFAULT_LAYOUT = {
+    "card": [1200, 630],
+    "mark_origin": [425, 42],
+    "mark_size": 350,
+    "mark_crop": [247, 247, 1007, 1007],
+    "square": 18,
+    "gap": 20,
+    "max_row": 1040,
+    "row_top": 477,
+    "row_middle": 486,
+    "title_max_pt": 42,
+    "title_min_pt": 28,
+    "masthead_middle": 56,
+    "masthead_pt": 15,
+    "masthead_tracking": 4,
+    "footer_middle": 574,
+    "footer_pt": 15,
+}
+
+DEFAULT_ICONS = {
+    "master": 512,
+    "box": [462, 368],
+    "files": [
+        {"size": 512, "name": "icon-512.png"},
+        {"size": 192, "name": "icon-192.png"},
+        {"size": 180, "name": "apple-touch-icon.png"},
+        {"size": 32, "name": "favicon-32x32.png"},
+        {"size": 16, "name": "favicon-16x16.png"},
+    ],
+    "ico_sizes": [16, 32, 48, 64, 128, 256],
+}
+
+CONFIG_NOTE = (
+    "Every variable used to generate this brand's assets. Generated from "
+    "brand.md, and authoritative over it once it exists: edit a value here and "
+    "re-run a generator to test an idea. A text field set to null draws nothing. "
+    "See asset-generation-scripts/README.md."
+)
+
 
 # ------------------------------------------------------------------------ brand
 @dataclass
@@ -125,16 +145,35 @@ class Brand:
     ground: tuple[int, int, int]
     ink: tuple[int, int, int]
     footer: tuple[int, int, int]
-    # Every drawn string. Each defaults to something sensible, so a brand file
-    # that sets none of them behaves exactly as it did before these existed.
+    # Every drawn string. Each defaults to something sensible, so a brand that
+    # sets none of them behaves exactly as it did before these existed.
     masthead: str = ""       # content cards, above the mark; defaults to domain
     website_row: str = ""    # website card main row; defaults to domain
     footer_text: str = DEFAULT_FOOTER_TEXT
     default_title: str = DEFAULT_CONTENT_TITLE
+    # Every number, and the font. Same story: defaults reproduce the family.
+    layout: dict = field(default_factory=lambda: dict(DEFAULT_LAYOUT))
+    icons: dict = field(default_factory=lambda: json.loads(json.dumps(DEFAULT_ICONS)))
+    font_path: str = MONO_FONT
     source: Path | None = field(default=None, repr=False)
+    config_source: Path | None = field(default=None, repr=False)
 
     def directory_in(self, root: str = DEFAULT_OUTPUT) -> Path:
         return OUTPUT_ROOTS[root] / self.key
+
+    # Layout access, so the drawing code reads like the old constants did.
+    def L(self, name: str):
+        try:
+            return self.layout[name]
+        except KeyError:
+            raise SystemExit(
+                f"{self.key}: layout is missing {name!r}. Delete config.json and "
+                f"regenerate it, or add the key."
+            ) from None
+
+    @property
+    def card(self) -> tuple[int, int]:
+        return tuple(self.L("card"))
 
 
 def strip_value(value: str) -> str:
@@ -153,19 +192,21 @@ def parse_hex(value: str) -> tuple[int, int, int]:
     return tuple(int(text[i : i + 2], 16) for i in (0, 2, 4))
 
 
-def parse_text(value: str) -> str:
-    """An optional text field, where the literal `none` means draw nothing.
+def parse_text(value) -> str:
+    """An optional text field. `none`, or JSON null, means draw nothing.
 
-    That word is the only way to say "this brand has no footer": the field reader
-    needs a value to see the line at all, so an empty one would be invisible to
-    it.
+    The word is needed in brand.md because the field reader has to see a value to
+    notice the line at all, so an empty one would be invisible to it. In
+    config.json, null says the same thing without the magic word.
     """
-    text = strip_value(value)
+    if value is None:
+        return ""
+    text = strip_value(str(value))
     return "" if text.lower() == OMIT else text
 
 
 def hex_of(colour) -> str:
-    return "#%02X%02X%02X" % colour
+    return "#%02X%02X%02X" % tuple(colour)
 
 
 def brand_file(key: str, prefer: str = DEFAULT_OUTPUT) -> Path:
@@ -180,25 +221,23 @@ def brand_file(key: str, prefer: str = DEFAULT_OUTPUT) -> Path:
     """
     order = [prefer] + [name for name in OUTPUT_ROOTS if name != prefer]
     for name in order:
-        path = OUTPUT_ROOTS[name] / key / "brand.md"
+        path = OUTPUT_ROOTS[name] / key / BRAND_NAME
         if path.exists():
             return path
     looked = ", ".join(
-        str((OUTPUT_ROOTS[name] / key / "brand.md").relative_to(V0_DIR))
+        str((OUTPUT_ROOTS[name] / key / BRAND_NAME).relative_to(V0_DIR))
         for name in order
     )
     raise SystemExit(f"no brand named {key!r}. Looked for: {looked}")
 
 
-def load_brand(key: str, prefer: str = DEFAULT_OUTPUT) -> Brand:
-    """Read one brand's markdown file.
+def _from_markdown(key: str, path: Path) -> Brand:
+    """Read brand.md into a Brand carrying the default layout.
 
     The format is deliberately loose: any line shaped `**Key:** value` counts,
     anywhere in the document, so the file stays something a person writes rather
     than a config file wearing a disguise.
     """
-    path = brand_file(key, prefer)
-
     fields = {
         match.group(1).strip().lower(): match.group(2).strip()
         for match in re.finditer(r"^\*\*(.+?):\*\*\s*(.+?)\s*$", path.read_text(), re.M)
@@ -239,6 +278,171 @@ def load_brand(key: str, prefer: str = DEFAULT_OUTPUT) -> Brand:
     )
 
 
+def config_of(brand: Brand) -> dict:
+    """The full resolved configuration, ready to write as JSON."""
+    return {
+        "_note": CONFIG_NOTE,
+        "brand": brand.key,
+        "domain": brand.domain,
+        "mode": brand.mode,
+        "colours": {
+            "signal": hex_of(brand.signal),
+            "ground": hex_of(brand.ground),
+            "ink": hex_of(brand.ink),
+            "footer": hex_of(brand.footer),
+        },
+        "text": {
+            "masthead": brand.masthead or None,
+            "website_row": brand.website_row or None,
+            "footer_text": brand.footer_text or None,
+            "default_title": brand.default_title or None,
+        },
+        "layout": dict(brand.layout),
+        "icons": json.loads(json.dumps(brand.icons)),
+        "font": {"mono": brand.font_path},
+    }
+
+
+def _apply_config(brand: Brand, path: Path, quiet: bool = False) -> Brand:
+    """Overlay config.json onto a Brand read from brand.md, and report drift.
+
+    config.json wins. That is the point of it: change a number, regenerate, look
+    at the result. But brand.md is where the reasoning lives, so a disagreement
+    between the two is worth saying out loud rather than discovering later from an
+    asset nobody can explain.
+    """
+    try:
+        cfg = json.loads(path.read_text())
+    except json.JSONDecodeError as error:
+        raise SystemExit(f"{path.relative_to(V0_DIR)}: invalid JSON — {error}") from None
+
+    drift = []
+
+    if "domain" in cfg and cfg["domain"] != brand.domain:
+        drift.append(f"domain {brand.domain!r} -> {cfg['domain']!r}")
+        brand.domain = cfg["domain"]
+    if "mode" in cfg and cfg["mode"] != brand.mode:
+        drift.append(f"mode {brand.mode!r} -> {cfg['mode']!r}")
+        brand.mode = cfg["mode"]
+
+    for name in ("signal", "ground", "ink", "footer"):
+        raw = cfg.get("colours", {}).get(name)
+        if raw is None:
+            continue
+        value = parse_hex(raw)
+        if value != getattr(brand, name):
+            drift.append(f"{name} {hex_of(getattr(brand, name))} -> {hex_of(value)}")
+            setattr(brand, name, value)
+
+    for name in ("masthead", "website_row", "footer_text", "default_title"):
+        section = cfg.get("text", {})
+        if name not in section:
+            continue
+        value = parse_text(section[name])
+        if value != getattr(brand, name):
+            drift.append(
+                f"{name} {getattr(brand, name) or '(omitted)'!r} -> "
+                f"{value or '(omitted)'!r}"
+            )
+            setattr(brand, name, value)
+
+    brand.layout = {**DEFAULT_LAYOUT, **cfg.get("layout", {})}
+    layout_drift = [
+        f"{k} {DEFAULT_LAYOUT[k]} -> {v}"
+        for k, v in brand.layout.items()
+        if k in DEFAULT_LAYOUT and v != DEFAULT_LAYOUT[k]
+    ]
+    brand.icons = {**json.loads(json.dumps(DEFAULT_ICONS)), **cfg.get("icons", {})}
+    brand.font_path = cfg.get("font", {}).get("mono", brand.font_path)
+    brand.config_source = path
+
+    if not quiet and (drift or layout_drift):
+        lines = [
+            f"note: {path.relative_to(V0_DIR)} overrides {BRAND_NAME}, and is what "
+            f"was used:",
+        ]
+        lines += [f"         {d}" for d in drift + layout_drift]
+        lines.append(
+            "       Update brand.md to match once an idea is settled, so the "
+            "reasoning stays with the values."
+        )
+        print("\n".join(lines), file=sys.stderr)
+
+    return brand
+
+
+def load_brand(
+    key: str, prefer: str = DEFAULT_OUTPUT, use_config: bool = True, quiet: bool = False
+) -> Brand:
+    """Read one brand: brand.md for the record, config.json for the values."""
+    path = brand_file(key, prefer)
+    brand = _from_markdown(key, path)
+    config = path.parent / CONFIG_NAME
+    if use_config and config.exists():
+        brand = _apply_config(brand, config, quiet=quiet)
+    return brand
+
+
+def _pretty_json(value, indent: int = 0) -> str:
+    """JSON that a person can edit: short flat collections stay on one line.
+
+    The stock encoder puts every element of `[1200, 630]` on its own line, which
+    turns a config of forty values into two hundred lines and buries the layout
+    section. This is the same output, wrapped only where wrapping helps.
+    """
+    pad = " " * indent
+    if isinstance(value, dict):
+        if not value:
+            return "{}"
+        flat = all(not isinstance(v, (dict, list)) for v in value.values())
+        if flat:
+            one = "{" + ", ".join(
+                f"{json.dumps(k)}: {json.dumps(v)}" for k, v in value.items()
+            ) + "}"
+            if len(one) + indent <= 78:
+                return one
+        body = ",\n".join(
+            f"{pad}  {json.dumps(k)}: {_pretty_json(v, indent + 2)}"
+            for k, v in value.items()
+        )
+        return "{\n" + body + f"\n{pad}}}"
+    if isinstance(value, list):
+        if not value:
+            return "[]"
+        if all(not isinstance(v, (dict, list)) for v in value):
+            return "[" + ", ".join(json.dumps(v) for v in value) + "]"
+        body = ",\n".join(f"{pad}  {_pretty_json(v, indent + 2)}" for v in value)
+        return "[\n" + body + f"\n{pad}]"
+    return json.dumps(value)
+
+
+def write_config(brand: Brand, directory: Path | None = None) -> Path:
+    """Write config.json beside a brand's brand.md.
+
+    Regenerating one is always safe in the sense that nothing is lost that was not
+    already expressible: it is the resolved view of brand.md plus the defaults. It
+    is not safe for hand-edited layout values, which is why the generators only
+    ever create a missing one and never refresh an existing one.
+    """
+    directory = directory or (brand.source.parent if brand.source else None)
+    if directory is None:
+        raise SystemExit(f"{brand.key}: nowhere to write {CONFIG_NAME}")
+    path = directory / CONFIG_NAME
+    path.write_text(_pretty_json(config_of(brand)) + "\n")
+    return path
+
+
+def ensure_config(brand: Brand, quiet: bool = False) -> Path | None:
+    """Create config.json if the brand has none. Never overwrites one."""
+    if brand.config_source is not None:
+        return None
+    path = write_config(brand)
+    brand.config_source = path
+    if not quiet:
+        print(f"    wrote {path.relative_to(V0_DIR)}")
+    return path
+
+
 def every_brand() -> list[str]:
     """The registered family: every key with a brand.md in brands/.
 
@@ -247,7 +451,12 @@ def every_brand() -> list[str]:
     rejected draft because it still has a brand.md is a good way to resurrect a
     colour someone already decided against. A draft is named explicitly.
     """
-    return sorted(path.parent.name for path in BRANDS_DIR.glob("*/brand.md"))
+    return sorted(path.parent.name for path in BRANDS_DIR.glob(f"*/{BRAND_NAME}"))
+
+
+def every_draft() -> list[str]:
+    """Every key with a brand.md in drafts/. Never used for --all; see above."""
+    return sorted(path.parent.name for path in DRAFTS_DIR.glob(f"*/{BRAND_NAME}"))
 
 
 # ------------------------------------------------------------------------ masks
@@ -291,12 +500,14 @@ def union_box(masks):
 
 def compose(masks, box, size, ground, ink_colour, signal_colour):
     """Paint the mark at one size, on a solid ground, guaranteed in gamut."""
+    box = tuple(box)
+    size = tuple(size)
     ink_mask, signal_mask = (
         mask.crop(box).resize(size, Image.Resampling.LANCZOS) for mask in masks
     )
     ink_px, signal_px = ink_mask.load(), signal_mask.load()
 
-    tile = Image.new("RGB", size, ground)
+    tile = Image.new("RGB", size, tuple(ground))
     out = tile.load()
 
     for y in range(size[1]):
@@ -326,44 +537,49 @@ def compose(masks, box, size, ground, ink_colour, signal_colour):
 
 
 # ------------------------------------------------------------------------- type
-def font(points: int) -> ImageFont.FreeTypeFont:
+def font(points: int, path: str = MONO_FONT) -> ImageFont.FreeTypeFont:
     try:
-        return ImageFont.truetype(MONO_FONT, points)
+        return ImageFont.truetype(path, points)
     except OSError as error:  # pragma: no cover - environment dependent
         raise SystemExit(
-            f"could not open {MONO_FONT}. Set MONO_FONT in brandkit.py to a "
+            f"could not open {path}. Set the font in the brand's "
+            f"{CONFIG_NAME} (font.mono), or MONO_FONT in brandkit.py, to a "
             "monospaced .ttf with the same metrics."
         ) from error
 
 
-def text_width(draw: ImageDraw.ImageDraw, value: str, points: int) -> int:
-    box = draw.textbbox((0, 0), value, font=font(points))
+def text_width(draw: ImageDraw.ImageDraw, value: str, points: int,
+               path: str = MONO_FONT) -> int:
+    box = draw.textbbox((0, 0), value, font=font(points, path))
     return box[2] - box[0]
 
 
-def draw_tracked(draw, value, centre_x, middle_y, points, fill, tracking):
+def draw_tracked(draw, value, centre_x, middle_y, points, fill, tracking,
+                 path: str = MONO_FONT):
     """Mono with extra letter spacing, drawn centred, one glyph at a time.
 
     Pillow has no tracking. The domain needs it: unspaced, a short string at
     this size looks dropped into the space rather than placed in it.
     """
-    glyphs = [(char, text_width(draw, char, points)) for char in value]
+    glyphs = [(char, text_width(draw, char, points, path)) for char in value]
     total = sum(w for _, w in glyphs) + tracking * (len(glyphs) - 1)
     x = centre_x - total / 2
     for char, width in glyphs:
-        draw.text((x, middle_y), char, font=font(points), fill=fill, anchor="lm")
+        draw.text((x, middle_y), char, font=font(points, path), fill=fill, anchor="lm")
         x += width + tracking
 
 
-def fit_row(draw, text: str) -> tuple[int, int, int]:
+def fit_row(draw, text: str, brand: Brand) -> tuple[int, int, int]:
     """Largest point size whose framed row fits, with that row's measurements."""
-    fixed = SQUARE + GAP + GAP + SQUARE
-    for points in range(TITLE_MAX_PT, TITLE_MIN_PT - 1, -1):
-        width = text_width(draw, text, points)
-        if fixed + width <= MAX_ROW:
+    square, gap = brand.L("square"), brand.L("gap")
+    fixed = square + gap + gap + square
+    top, bottom = brand.L("title_max_pt"), brand.L("title_min_pt")
+    for points in range(top, bottom - 1, -1):
+        width = text_width(draw, text, points, brand.font_path)
+        if fixed + width <= brand.L("max_row"):
             return points, width, fixed + width
-    width = text_width(draw, text, TITLE_MIN_PT)
-    return TITLE_MIN_PT, width, fixed + width
+    width = text_width(draw, text, bottom, brand.font_path)
+    return bottom, width, fixed + width
 
 
 def draw_framed_row(draw, text: str, brand: Brand) -> None:
@@ -379,17 +595,22 @@ def draw_framed_row(draw, text: str, brand: Brand) -> None:
     if not text:
         return
 
-    points, width, row_width = fit_row(draw, text)
-    start = round(CARD[0] / 2 - row_width / 2)
+    points, width, row_width = fit_row(draw, text, brand)
+    square, gap = brand.L("square"), brand.L("gap")
+    row_top, row_middle = brand.L("row_top"), brand.L("row_middle")
+    start = round(brand.card[0] / 2 - row_width / 2)
 
     draw.rectangle(
-        (start, ROW_TOP, start + SQUARE - 1, ROW_TOP + SQUARE - 1), fill=brand.signal
+        (start, row_top, start + square - 1, row_top + square - 1), fill=brand.signal
     )
-    left = start + SQUARE + GAP
-    draw.text((left, ROW_MIDDLE), text, font=font(points), fill=brand.ink, anchor="lm")
-    right = left + width + GAP
+    left = start + square + gap
+    draw.text(
+        (left, row_middle), text, font=font(points, brand.font_path),
+        fill=brand.ink, anchor="lm",
+    )
+    right = left + width + gap
     draw.rectangle(
-        (right, ROW_TOP, right + SQUARE - 1, ROW_TOP + SQUARE - 1), fill=brand.signal
+        (right, row_top, right + square - 1, row_top + square - 1), fill=brand.signal
     )
 
 
@@ -400,11 +621,12 @@ def draw_masthead(draw, brand: Brand) -> None:
     draw_tracked(
         draw,
         brand.masthead,
-        CARD[0] / 2,
-        MASTHEAD_MIDDLE,
-        MASTHEAD_PT,
+        brand.card[0] / 2,
+        brand.L("masthead_middle"),
+        brand.L("masthead_pt"),
         brand.footer,
-        MASTHEAD_TRACKING,
+        brand.L("masthead_tracking"),
+        brand.font_path,
     )
 
 
@@ -412,9 +634,9 @@ def draw_footer(draw, brand: Brand) -> None:
     if not brand.footer_text:
         return
     draw.text(
-        (CARD[0] / 2, FOOTER_MIDDLE),
+        (brand.card[0] / 2, brand.L("footer_middle")),
         brand.footer_text,
-        font=font(FOOTER_PT),
+        font=font(brand.L("footer_pt"), brand.font_path),
         fill=brand.footer,
         anchor="mm",
     )
@@ -422,12 +644,16 @@ def draw_footer(draw, brand: Brand) -> None:
 
 def new_card(brand: Brand, masks) -> tuple[Image.Image, ImageDraw.ImageDraw]:
     """A blank card with the mark already on it."""
-    image = Image.new("RGB", CARD, brand.ground)
+    image = Image.new("RGB", brand.card, tuple(brand.ground))
+    size = brand.L("mark_size")
     # Composed on the card's own ground and pasted opaquely, which is exact
     # because they are the same colour.
     image.paste(
-        compose(masks, MARK_CROP, (MARK_SIZE, MARK_SIZE), brand.ground, brand.ink, brand.signal),
-        MARK_ORIGIN,
+        compose(
+            masks, brand.L("mark_crop"), (size, size),
+            brand.ground, brand.ink, brand.signal,
+        ),
+        tuple(brand.L("mark_origin")),
     )
     return image, ImageDraw.Draw(image)
 
@@ -435,15 +661,16 @@ def new_card(brand: Brand, masks) -> tuple[Image.Image, ImageDraw.ImageDraw]:
 # ------------------------------------------------------------------------ icons
 def icon_at(masks, box, artwork_size, size, brand: Brand) -> Image.Image:
     """One square icon, artwork scaled to the shared margin and centred."""
+    icon_box = brand.icons["box"]
     scale = min(
-        ICON_BOX[0] / artwork_size[0], ICON_BOX[1] / artwork_size[1]
-    ) * (size / ICON_MASTER)
+        icon_box[0] / artwork_size[0], icon_box[1] / artwork_size[1]
+    ) * (size / brand.icons["master"])
     target = (
         max(1, round(artwork_size[0] * scale)),
         max(1, round(artwork_size[1] * scale)),
     )
 
-    icon = Image.new("RGB", (size, size), brand.ground)
+    icon = Image.new("RGB", (size, size), tuple(brand.ground))
     icon.paste(
         compose(masks, box, target, brand.ground, brand.ink, brand.signal),
         ((size - target[0]) // 2, (size - target[1]) // 2),
@@ -452,7 +679,7 @@ def icon_at(masks, box, artwork_size, size, brand: Brand) -> Image.Image:
 
 
 def write_icon_set(masks, brand: Brand, directory: Path) -> list[Path]:
-    """Five PNGs and a six-frame .ico, every one composed at its own size.
+    """The PNGs and a multi-frame .ico, every one composed at its own size.
 
     Two rules are load bearing here, both learned by breaking something:
 
@@ -471,19 +698,20 @@ def write_icon_set(masks, brand: Brand, directory: Path) -> list[Path]:
     directory.mkdir(parents=True, exist_ok=True)
 
     written = []
-    for size in ICON_PNG_SIZES:
-        path = directory / ICON_PNG_NAMES[size]
-        icon_at(masks, box, artwork_size, size, brand).convert("RGBA").save(
+    for entry in brand.icons["files"]:
+        path = directory / entry["name"]
+        icon_at(masks, box, artwork_size, entry["size"], brand).convert("RGBA").save(
             path, optimize=True
         )
         written.append(path)
 
+    ico_sizes = [(n, n) for n in brand.icons["ico_sizes"]]
     frames = [
         icon_at(masks, box, artwork_size, width, brand).convert("RGBA")
-        for width, _ in sorted(ICO_SIZES, reverse=True)
+        for width, _ in sorted(ico_sizes, reverse=True)
     ]
     ico = directory / "favicon.ico"
-    frames[0].save(ico, format="ICO", sizes=ICO_SIZES, append_images=frames[1:])
+    frames[0].save(ico, format="ICO", sizes=ico_sizes, append_images=frames[1:])
     written.append(ico)
     return written
 
@@ -513,8 +741,8 @@ def open_output_dir(
         print(
             f"warning: writing into brands/ from a definition still in drafts/\n"
             f"         definition: {brand.source.relative_to(V0_DIR)}\n"
-            f"         brands/{brand.key}/ will hold runs with no brand.md beside "
-            f"them.\n"
+            f"         brands/{brand.key}/ will hold runs with no {BRAND_NAME} "
+            f"beside them.\n"
             f"         To register the brand properly, use "
             f"skills/11brands-promote-draft/.",
             file=sys.stderr,
@@ -534,13 +762,27 @@ def _text_row(label: str, value: str) -> str:
 def write_manifest(directory: Path, brand: Brand, kind: str, entries: list[str]) -> Path:
     """What was made, from what, so a directory explains itself later.
 
-    Records the text as well as the colours. A card's strings are as much a part
-    of what was generated as its palette, and once they are variables they can no
-    longer be re-derived from the domain alone.
+    Records the text and any changed layout as well as the colours. A card's
+    strings and positions are as much a part of what was generated as its palette,
+    and once they are variables they can no longer be re-derived from the domain
+    alone.
     """
     path = directory / "MANIFEST.md"
-    source = (
-        str(brand.source.relative_to(V0_DIR)) if brand.source else "unknown"
+    source = str(brand.source.relative_to(V0_DIR)) if brand.source else "unknown"
+    config = (
+        str(brand.config_source.relative_to(V0_DIR)) if brand.config_source else "none"
+    )
+    changed = {
+        k: v for k, v in brand.layout.items()
+        if k in DEFAULT_LAYOUT and v != DEFAULT_LAYOUT[k]
+    }
+    layout_section = (
+        "## Layout\n\nDefault for the family.\n\n"
+        if not changed
+        else "## Layout\n\nChanged from the family default:\n\n"
+        + "| Key | Default | Used |\n| --- | --- | --- |\n"
+        + "".join(f"| {k} | `{DEFAULT_LAYOUT[k]}` | `{v}` |\n" for k, v in changed.items())
+        + "\n"
     )
     path.write_text(
         f"# {brand.domain} — {kind}\n\n"
@@ -550,6 +792,7 @@ def write_manifest(directory: Path, brand: Brand, kind: str, entries: list[str])
         f"| Brand | `{brand.key}` |\n"
         f"| Domain | {brand.domain} |\n"
         f"| Definition | `{source}` |\n"
+        f"| Config | `{config}` |\n"
         f"| Mode | {brand.mode} |\n"
         f"| Signal | `{hex_of(brand.signal)}` |\n"
         f"| Ground | `{hex_of(brand.ground)}` |\n"
@@ -561,6 +804,7 @@ def write_manifest(directory: Path, brand: Brand, kind: str, entries: list[str])
         + _text_row("Website row", brand.website_row)
         + _text_row("Footer text", brand.footer_text)
         + _text_row("Default title", brand.default_title)
-        + "\n## Files\n\n" + "\n".join(f"- `{name}`" for name in entries) + "\n"
+        + "\n" + layout_section
+        + "## Files\n\n" + "\n".join(f"- `{name}`" for name in entries) + "\n"
     )
     return path

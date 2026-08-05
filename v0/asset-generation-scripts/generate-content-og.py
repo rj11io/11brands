@@ -15,7 +15,8 @@ With no title given, the brand's **Default title:** is used, which is
 complete, obviously-placeholder set — useful when what is being reviewed is the
 brand rather than the words.
 
-Output goes to drafts/ unless --into brands is given.
+Output goes to drafts/ unless --into brands is given. Values come from the
+brand's config.json when it has one, and a missing one is created on first run.
 
     python3 generate-content-og.py b2b-rj11io
     python3 generate-content-og.py b2b-rj11io --title "Adding a publication or post"
@@ -68,6 +69,7 @@ def generate(
     into: str = kit.DEFAULT_OUTPUT,
 ) -> None:
     brand = kit.load_brand(key, prefer=into)
+    kit.ensure_config(brand)
     used_default = not titles
     titles = titles or [brand.default_title]
 
