@@ -12,6 +12,7 @@ history and a comparison baseline. Do not use it, extend it, or copy from it.
 - **Add a brand** → [`v1/skills/11brands-v1-init-brand/`](v1/skills/11brands-v1-init-brand/)
 - **Generate assets** → [`v1/skills/11brands-v1-generate-assets/`](v1/skills/11brands-v1-generate-assets/)
 - **Verify output** → [`v1/skills/11brands-v1-verify-assets/`](v1/skills/11brands-v1-verify-assets/)
+- **Archive / restore a brand** → [`v1/skills/11brands-v1-archive-brand/`](v1/skills/11brands-v1-archive-brand/), [`v1/skills/11brands-v1-promote-brand/`](v1/skills/11brands-v1-promote-brand/)
 - **Use from another repo** → [`v1/skills/11brands-v1-integration/`](v1/skills/11brands-v1-integration/)
 - **Agent ground rules** → [`AGENTS.md`](AGENTS.md)
 
@@ -20,8 +21,9 @@ history and a comparison baseline. Do not use it, extend it, or copy from it.
 ```text
 v1/                 current
 ├── templates/      mark master, config templates, FONTS.md
-├── scripts/        init + three generators + full-pack runner
-├── brands/         the registry: config.json + brand.md per brand
+├── scripts/        init, three generators, full-pack runner, archive/promote
+├── brands/         the active registry: config.json + brand.md per brand
+├── archive/        retired brands, out of generation, recoverable verbatim
 ├── outputs/        generated assets, one folder per stamped run
 └── skills/         11brands-v1-* agent workflows
 

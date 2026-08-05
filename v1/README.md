@@ -7,11 +7,12 @@ brand that varies the colours, the words, and — when needed — everything els
 v1/
 ├── templates/          the mark master, the two config templates, brand.md
 │                       skeleton, FONTS.md, titles example
-├── scripts/            five Python scripts + shared brandkit.py + .venv
-├── brands/             the registry: one folder per brand
+├── scripts/            seven Python scripts + shared brandkit.py + .venv
+├── brands/             the active registry: one folder per brand
 │   └── <key>/
 │       ├── config.json   every generation variable; the only file scripts read
 │       └── brand.md      the decision record; never parsed
+├── archive/            retired brands, same shape, invisible to generation
 ├── outputs/            generated assets, one folder per run
 │   └── <stamp>/<key>/{favicons,og-web,og-content}/
 └── skills/             11brands-v1-* agent workflows
@@ -35,6 +36,12 @@ they are, and is never parsed, so it cannot go stale as state — only as prose.
 | variant | `{brand}-{variant}` | `11ai-light-green`, `11cc-bronze` | an experiment or alternative take, sitting beside the brand without touching it |
 
 A second idea is a second key — nothing collides.
+
+**Brands retire to `archive/`, not to deletion.** `archive_brand.py <key>` moves
+`brands/<key>/` to `archive/<key>/` verbatim; `promote_brand.py <key>` moves it
+back. Contents never change, so a promoted brand generates exactly what it did
+before. Archived brands are invisible to the generators: not generatable, skipped
+by `--all`, key kept reserved. Past runs in `outputs/` stay put.
 
 **Runs are stamped.** Every generation lands in `outputs/<stamp>/`, one stamp
 per run, shared across a batch. Nothing is overwritten across stamps, every
@@ -83,6 +90,7 @@ cd v1/scripts
 
 - every generator takes `<key>` or `--all`, plus `--run STAMP` to join a run;
   the stamp defaults to now, and `generate_all.py` mints one for the whole batch
+- `--all` means every brand in `brands/`; `archive/` is never swept
 - a content run with **no title** uses the config's `text.title` — the templates
   ship `"Lorem Ipsum"`, so a bare run produces a complete placeholder card
 - a titles file is one title per line; blank lines and `#` comments are skipped
@@ -142,4 +150,6 @@ history — nothing in it should be used or edited.
 | `skills/11brands-v1-init-brand/` | choosing a signal colour and registering a brand |
 | `skills/11brands-v1-generate-assets/` | running the generators, testing config ideas |
 | `skills/11brands-v1-verify-assets/` | measuring changes, gamut and icon checks |
+| `skills/11brands-v1-archive-brand/` | retiring a brand out of generation |
+| `skills/11brands-v1-promote-brand/` | bringing an archived brand back |
 | `skills/11brands-v1-integration/` | teaching a consuming repo to use all of this |

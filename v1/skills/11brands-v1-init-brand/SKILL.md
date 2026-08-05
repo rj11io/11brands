@@ -21,7 +21,9 @@ Lowercase, dash-separated, three levels:
 | variant | `{brand}-{variant}` | `11ai-light-green`, `11cc-bronze` | an experiment or alternative take, sitting beside the brand without touching it |
 
 Because every level is its own key, a second idea is simply a second brand.
-Nothing collides and nothing gets overwritten.
+Nothing collides and nothing gets overwritten. When a candidate round is over,
+losers go to `archive/` via `11brands-v1-archive-brand` — their keys stay
+reserved, so check `archive/` too before reusing a name.
 
 ## What you need before running anything
 

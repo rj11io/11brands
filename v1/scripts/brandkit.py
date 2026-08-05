@@ -21,6 +21,11 @@ A brand is brands/<key>/config.json (every variable, the only file the scripts
 read) plus brands/<key>/brand.md (the decision record, never parsed). Templates
 for both live in templates/. Output goes to outputs/<stamp>/<key>/<kind>/, one
 stamp per run, shared across a batch.
+
+archive/ holds retired brands, moved there verbatim by archive_brand.py and
+back by promote_brand.py. Nothing else ever reads it: the generators resolve
+keys through brands/ only, so an archived brand cannot be generated, swept up
+by --all, or collide with a new brand of the same key.
 """
 
 from __future__ import annotations
@@ -37,6 +42,7 @@ SCRIPTS_DIR = Path(__file__).resolve().parent
 V1_DIR = SCRIPTS_DIR.parent
 TEMPLATES_DIR = V1_DIR / "templates"
 BRANDS_DIR = V1_DIR / "brands"
+ARCHIVE_DIR = V1_DIR / "archive"
 OUTPUTS_DIR = V1_DIR / "outputs"
 MARK_PATH = TEMPLATES_DIR / "mark.png"
 
@@ -132,9 +138,13 @@ def load_config(path: Path) -> dict:
 def load_brand(key: str) -> Brand:
     path = BRANDS_DIR / key / CONFIG_NAME
     if not path.exists():
+        hint = (
+            "It is archived; promote it with promote_brand.py first."
+            if (ARCHIVE_DIR / key / CONFIG_NAME).exists()
+            else "Initialise it with init_brand.py."
+        )
         raise SystemExit(
-            f"no brand named {key!r} (no {path.relative_to(V1_DIR)}). "
-            f"Initialise it with init_brand.py."
+            f"no brand named {key!r} (no {path.relative_to(V1_DIR)}). {hint}"
         )
     cfg = load_config(path)
     if cfg["brand"] != key:
@@ -164,7 +174,12 @@ def load_brand(key: str) -> Brand:
 
 
 def every_brand() -> list[str]:
+    """Active brands only. archive/ is deliberately invisible to generation."""
     return sorted(p.parent.name for p in BRANDS_DIR.glob(f"*/{CONFIG_NAME}"))
+
+
+def every_archived() -> list[str]:
+    return sorted(p.parent.name for p in ARCHIVE_DIR.glob(f"*/{CONFIG_NAME}"))
 
 
 def resolve_keys(key: str | None, all_flag: bool) -> list[str]:

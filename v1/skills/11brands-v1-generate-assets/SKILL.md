@@ -78,7 +78,12 @@ so. Do not add it to `.gitignore` and do not `git add` it.
 **`could not open <font>`** — the config's `font.path` is wrong for this machine.
 `templates/FONTS.md` lists what exists. Do not silently swap a font.
 
-**`no brand named 'X'`** — not initialised. Use `11brands-v1-init-brand`.
+**`no brand named 'X'... Initialise it`** — not initialised. Use
+`11brands-v1-init-brand`.
+
+**`no brand named 'X'... It is archived`** — retired brand. `--all` skips
+`archive/` on purpose; if the user genuinely wants it generated, that is
+`11brands-v1-promote-brand` first, not a workaround.
 
 **`schema is None/0/2...`** — the config predates or postdates these scripts.
 Stop and say so rather than editing the check away.

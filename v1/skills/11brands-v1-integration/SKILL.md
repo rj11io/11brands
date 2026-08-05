@@ -17,7 +17,8 @@ it.
 **A brand** is `v1/brands/<key>/config.json` — every generation variable — plus
 `brand.md`, the human decision record. Keys have three levels: `{brand}` default (`11io`), `{brand}-{sub-brand}`
 secondary (`11blog-11ai`), `{brand}-{variant}` experiments (`11cc-bronze`).
-List brands: `ls v1/brands/`.
+List brands: `ls v1/brands/`. Retired brands sit in `v1/archive/` and cannot be
+generated; if you need one, ask the 11brands operator to promote it.
 
 **Generation** is four scripts, run from `v1/scripts/` with its own venv:
 

@@ -23,6 +23,9 @@ one, and they encode the checks that are not obvious from the code.
   `outputs/<stamp>/<key>/<kind>/`, one stamp per run, `MANIFEST.md` per kind.
 - To change what an asset looks like, change the config and regenerate. Never
   edit the scripts for a colour, a string, a position or a font.
+- Retired brands live in `v1/archive/`, moved verbatim by `archive_brand.py`
+  and back by `promote_brand.py`. Never move brand folders by hand, and never
+  generate from `archive/` — the generators only read `brands/`.
 
 ## Hard rules
 
@@ -31,7 +34,8 @@ one, and they encode the checks that are not obvious from the code.
    to `.gitignore`.
 2. **Never overwrite a brand or a run.** `init_brand.py` refuses existing keys —
    do not work around that. New runs get new stamps; reuse a stamp only to
-   deliberately extend that run.
+   deliberately extend that run. Retiring a brand is `archive_brand.py`, never
+   deletion and never a hand-move.
 3. **Do not resize, re-encode or palette-convert generated images.** Every file
    is composed at its exact size; downscaling invents out-of-palette colours and
    a palette-mode icon breaks Next.js builds. This is the project's founding
