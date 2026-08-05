@@ -1,6 +1,6 @@
 {
   "name": "@rj11io/11brands",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "description": "Brand definitions, asset generators and snapshots for the rj11.io family",
   "repository": {
