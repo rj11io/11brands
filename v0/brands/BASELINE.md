@@ -9,6 +9,21 @@ guess.
 Measured on 2026-08-02, against `11blog` at that date. Every number below came
 from a pixel comparison, not an eye.
 
+## Scope
+
+This file covers the five brands that existed on 2026-08-02: `blog-rj11io`,
+`www-rj11io`, `ai-rj11io`, `intel-rj11io` and `cv-rj11io`. Brands registered
+since — `blog-rj11io-11ai`, `b2b-rj11io`, `cc-rj11io` — have no counterpart in
+`11blog`, so there is nothing to compare them against and their absence here is
+not a gap.
+
+**Still valid after the 2026-08-05 changes.** The scripts gained two output roots
+and made every card's text a brand field. Neither disturbed this baseline, and that
+was measured rather than assumed: `blog-rj11io` was regenerated with
+`--into brands --stamp RG` and compared against the run below, giving
+byte-identical favicons, website card and content card. A brand file that sets none
+of the new text fields produces exactly what it did before they existed.
+
 ## Favicons: everything matches
 
 All five packages, all six files each — **30 of 30 byte-identical**.
@@ -88,7 +103,14 @@ something changed, and the order to check it in is:
    is a copy of the one in `11blog`; if either moves, the mark moves.
 3. **Pillow.** Resampling and PNG encoding are its job. This baseline was taken
    with Pillow 12.3.0.
-4. **A brand file.** A changed colour changes every asset for that brand.
+4. **A brand file.** A changed colour changes every asset for that brand, and so
+   does a changed text field. Check the `## Text` table in the run's `MANIFEST.md`
+   against the brand file: a `**Footer text:**` or `**Masthead:**` that has been
+   set, or set to `none`, moves or removes a whole region of the card. Comparing
+   the two manifests answers this faster than comparing the images.
+5. **The output root.** Runs land in `drafts/` by default now. A comparison that
+   finds nothing to compare is usually looking in `brands/` for a run that was
+   never promoted.
 
 If the goal is to bring `11blog` into line rather than to match it, the three
 website cards and the whole content set can be replaced with the output here.

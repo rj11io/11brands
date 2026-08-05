@@ -17,11 +17,21 @@ the ground, brighter than the numeral, and more saturated than the signal. It is
 why an earlier 16 pixel icon in the 11blog repository carried a #2FE0A1 square
 the brand never had. Resizing coverage cannot do that, because every output
 pixel ends up a blend of exactly three known colours.
+
+Two other things to know
+------------------------
+
+Output goes to drafts/ by default, not brands/. Promoting a draft into the
+registered set is a separate step, described in skills/11brands-promote-draft/.
+
+Every string drawn on any asset is a brand field, and every one of them can be
+overridden or omitted in brand.md. Nothing is hardcoded where it is drawn.
 """
 
 from __future__ import annotations
 
 import re
+import sys
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
@@ -31,7 +41,14 @@ from PIL import Image, ImageDraw, ImageFont
 SCRIPTS_DIR = Path(__file__).resolve().parent
 V0_DIR = SCRIPTS_DIR.parent
 BRANDS_DIR = V0_DIR / "brands"
+DRAFTS_DIR = V0_DIR / "drafts"
 MARK_PATH = SCRIPTS_DIR / "assets/mark-xl-dot-centered.png"
+
+# Two output roots. Work lands in drafts by default and is promoted into brands
+# as a separate, deliberate step, so nothing reaches the registered set without
+# someone choosing to put it there.
+OUTPUT_ROOTS = {"drafts": DRAFTS_DIR, "brands": BRANDS_DIR}
+DEFAULT_OUTPUT = "drafts"
 
 # macOS ships this. On any other machine, point it at a monospaced .ttf with the
 # same metrics or the cards will not match what is already published.
@@ -57,7 +74,15 @@ MASTHEAD_TRACKING = 4
 
 FOOTER_MIDDLE = 574
 FOOTER_PT = 15
+
+# ------------------------------------------------------------------ text tables
+# Every string drawn on any asset comes from one of these, and every one of them
+# is overridable per brand. Nothing is hardcoded at the point of drawing.
 DEFAULT_FOOTER_TEXT = "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY"
+DEFAULT_CONTENT_TITLE = "Lorem Ipsum"
+
+# A text field set to this, in any capitalisation, draws nothing at all.
+OMIT = "none"
 
 # ---------------------------------------------------------------- icon geometry
 ICON_MASTER = 512
@@ -100,35 +125,79 @@ class Brand:
     ground: tuple[int, int, int]
     ink: tuple[int, int, int]
     footer: tuple[int, int, int]
+    # Every drawn string. Each defaults to something sensible, so a brand file
+    # that sets none of them behaves exactly as it did before these existed.
+    masthead: str = ""       # content cards, above the mark; defaults to domain
+    website_row: str = ""    # website card main row; defaults to domain
     footer_text: str = DEFAULT_FOOTER_TEXT
+    default_title: str = DEFAULT_CONTENT_TITLE
     source: Path | None = field(default=None, repr=False)
 
-    @property
-    def directory(self) -> Path:
-        return BRANDS_DIR / self.key
+    def directory_in(self, root: str = DEFAULT_OUTPUT) -> Path:
+        return OUTPUT_ROOTS[root] / self.key
+
+
+def strip_value(value: str) -> str:
+    """Unwrap a field value: surrounding space, then backticks, then space again.
+
+    Every field goes through this, so a brand file can quote any value the way it
+    quotes a colour without the quoting leaking into a card or a manifest.
+    """
+    return value.strip().strip("`").strip()
 
 
 def parse_hex(value: str) -> tuple[int, int, int]:
-    text = value.strip().strip("`").lstrip("#")
+    text = strip_value(value).lstrip("#")
     if len(text) != 6:
         raise ValueError(f"expected a six digit hex colour, got {value!r}")
     return tuple(int(text[i : i + 2], 16) for i in (0, 2, 4))
+
+
+def parse_text(value: str) -> str:
+    """An optional text field, where the literal `none` means draw nothing.
+
+    That word is the only way to say "this brand has no footer": the field reader
+    needs a value to see the line at all, so an empty one would be invisible to
+    it.
+    """
+    text = strip_value(value)
+    return "" if text.lower() == OMIT else text
 
 
 def hex_of(colour) -> str:
     return "#%02X%02X%02X" % colour
 
 
-def load_brand(key: str) -> Brand:
+def brand_file(key: str, prefer: str = DEFAULT_OUTPUT) -> Path:
+    """Find a brand's markdown file, looking in the preferred root first.
+
+    A key can exist in both roots at once: a promoted brand in brands/ that is
+    being reworked in drafts/. Whichever root is being written to is the one whose
+    definition wins, so drafting reads the draft and promoting reads the promoted
+    copy. The chosen path is reported and recorded in every manifest, because
+    "which file did this come from" is the first question a surprising asset
+    raises.
+    """
+    order = [prefer] + [name for name in OUTPUT_ROOTS if name != prefer]
+    for name in order:
+        path = OUTPUT_ROOTS[name] / key / "brand.md"
+        if path.exists():
+            return path
+    looked = ", ".join(
+        str((OUTPUT_ROOTS[name] / key / "brand.md").relative_to(V0_DIR))
+        for name in order
+    )
+    raise SystemExit(f"no brand named {key!r}. Looked for: {looked}")
+
+
+def load_brand(key: str, prefer: str = DEFAULT_OUTPUT) -> Brand:
     """Read one brand's markdown file.
 
     The format is deliberately loose: any line shaped `**Key:** value` counts,
     anywhere in the document, so the file stays something a person writes rather
     than a config file wearing a disguise.
     """
-    path = BRANDS_DIR / key / "brand.md"
-    if not path.exists():
-        raise SystemExit(f"no brand at {path}")
+    path = brand_file(key, prefer)
 
     fields = {
         match.group(1).strip().lower(): match.group(2).strip()
@@ -148,23 +217,37 @@ def load_brand(key: str) -> Brand:
         if name in fields:
             palette[name] = parse_hex(fields[name])
 
+    domain = strip_value(fields["domain"])
+    # The two rows that describe the site default to the domain, because that is
+    # what they are for. Overriding either is what makes them variables. All four
+    # text fields honour `none` the same way, including the title: a brand that
+    # says it has no default title gets a card with no title row, not a silent
+    # fallback to the built-in one.
     return Brand(
         key=key,
-        domain=fields["domain"],
+        domain=domain,
         mode=mode,
         signal=parse_hex(fields["signal"]),
         ground=palette["ground"],
         ink=palette["ink"],
         footer=palette["footer"],
-        footer_text=fields.get("footer text", DEFAULT_FOOTER_TEXT),
+        masthead=parse_text(fields.get("masthead", domain)),
+        website_row=parse_text(fields.get("website row", domain)),
+        footer_text=parse_text(fields.get("footer text", DEFAULT_FOOTER_TEXT)),
+        default_title=parse_text(fields.get("default title", DEFAULT_CONTENT_TITLE)),
         source=path,
     )
 
 
 def every_brand() -> list[str]:
-    return sorted(
-        path.parent.name for path in BRANDS_DIR.glob("*/brand.md")
-    )
+    """The registered family: every key with a brand.md in brands/.
+
+    Deliberately not "every key in either root". drafts/ holds work in progress
+    and rejected attempts, and neither belongs in a sweep — regenerating a
+    rejected draft because it still has a brand.md is a good way to resurrect a
+    colour someone already decided against. A draft is named explicitly.
+    """
+    return sorted(path.parent.name for path in BRANDS_DIR.glob("*/brand.md"))
 
 
 # ------------------------------------------------------------------------ masks
@@ -289,7 +372,13 @@ def draw_framed_row(draw, text: str, brand: Brand) -> None:
     Two squares rather than one. A single square reads as a bullet pointing at
     the text; a pair frames it, and it centres against the mark above and the
     footer below, both of which were already centred.
+
+    An empty string draws nothing, squares included — a row framing no text is
+    two floating dots, not a design.
     """
+    if not text:
+        return
+
     points, width, row_width = fit_row(draw, text)
     start = round(CARD[0] / 2 - row_width / 2)
 
@@ -304,7 +393,24 @@ def draw_framed_row(draw, text: str, brand: Brand) -> None:
     )
 
 
+def draw_masthead(draw, brand: Brand) -> None:
+    """The tracked domain line above the mark, on content cards only."""
+    if not brand.masthead:
+        return
+    draw_tracked(
+        draw,
+        brand.masthead,
+        CARD[0] / 2,
+        MASTHEAD_MIDDLE,
+        MASTHEAD_PT,
+        brand.footer,
+        MASTHEAD_TRACKING,
+    )
+
+
 def draw_footer(draw, brand: Brand) -> None:
+    if not brand.footer_text:
+        return
     draw.text(
         (CARD[0] / 2, FOOTER_MIDDLE),
         brand.footer_text,
@@ -388,22 +494,54 @@ def slugify(value: str) -> str:
     return slug or "untitled"
 
 
-def open_output_dir(brand: Brand, kind: str, stamp: str | None = None) -> Path:
-    """brands/<brand>/<kind>/gen-<timestamp>/, created.
+def open_output_dir(
+    brand: Brand,
+    kind: str,
+    stamp: str | None = None,
+    into: str = DEFAULT_OUTPUT,
+) -> Path:
+    """<root>/<brand>/<kind>/gen-<timestamp>/, created.
 
-    Every run writes a new directory. Nothing is ever overwritten, so two runs
-    can be diffed against each other, and against what a repository already
-    ships, without either being lost first.
+    The root is drafts/ unless told otherwise. Every run writes a new directory.
+    Nothing is ever overwritten, so two runs can be diffed against each other,
+    and against what a repository already ships, without either being lost first.
     """
+    if into == "brands" and brand.source and DRAFTS_DIR in brand.source.parents:
+        # Allowed, because --into brands is explicit, but it leaves the registered
+        # set holding runs whose definition lives somewhere else, which is the one
+        # state this layout exists to prevent. Say so rather than doing it quietly.
+        print(
+            f"warning: writing into brands/ from a definition still in drafts/\n"
+            f"         definition: {brand.source.relative_to(V0_DIR)}\n"
+            f"         brands/{brand.key}/ will hold runs with no brand.md beside "
+            f"them.\n"
+            f"         To register the brand properly, use "
+            f"skills/11brands-promote-draft/.",
+            file=sys.stderr,
+        )
+
     stamp = stamp or datetime.now().strftime("%Y%m%d-%H%M%S")
-    directory = brand.directory / kind / f"gen-{stamp}"
+    directory = brand.directory_in(into) / kind / f"gen-{stamp}"
     directory.mkdir(parents=True, exist_ok=True)
     return directory
 
 
+def _text_row(label: str, value: str) -> str:
+    """A manifest row for a text field, showing an omitted one as such."""
+    return f"| {label} | {'*(omitted)*' if not value else value} |\n"
+
+
 def write_manifest(directory: Path, brand: Brand, kind: str, entries: list[str]) -> Path:
-    """What was made, from what, so a directory explains itself later."""
+    """What was made, from what, so a directory explains itself later.
+
+    Records the text as well as the colours. A card's strings are as much a part
+    of what was generated as its palette, and once they are variables they can no
+    longer be re-derived from the domain alone.
+    """
     path = directory / "MANIFEST.md"
+    source = (
+        str(brand.source.relative_to(V0_DIR)) if brand.source else "unknown"
+    )
     path.write_text(
         f"# {brand.domain} — {kind}\n\n"
         f"Generated {datetime.now().isoformat(timespec='seconds')} "
@@ -411,11 +549,18 @@ def write_manifest(directory: Path, brand: Brand, kind: str, entries: list[str])
         f"| Setting | Value |\n| --- | --- |\n"
         f"| Brand | `{brand.key}` |\n"
         f"| Domain | {brand.domain} |\n"
+        f"| Definition | `{source}` |\n"
         f"| Mode | {brand.mode} |\n"
         f"| Signal | `{hex_of(brand.signal)}` |\n"
         f"| Ground | `{hex_of(brand.ground)}` |\n"
         f"| Ink | `{hex_of(brand.ink)}` |\n"
         f"| Footer | `{hex_of(brand.footer)}` |\n\n"
-        "## Files\n\n" + "\n".join(f"- `{name}`" for name in entries) + "\n"
+        "## Text\n\n"
+        f"| Field | Value |\n| --- | --- |\n"
+        + _text_row("Masthead", brand.masthead)
+        + _text_row("Website row", brand.website_row)
+        + _text_row("Footer text", brand.footer_text)
+        + _text_row("Default title", brand.default_title)
+        + "\n## Files\n\n" + "\n".join(f"- `{name}`" for name in entries) + "\n"
     )
     return path

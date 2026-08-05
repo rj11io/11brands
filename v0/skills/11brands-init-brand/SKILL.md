@@ -1,13 +1,18 @@
 ---
 name: 11brands-init-brand
-description: Add a new brand to the 11brands repository — pick and check a signal colour against its ground, write brands/<key>/brand.md, and create the three output folders. Use when someone wants to set up, initialise, register or add a brand, sub-brand or site to 11brands, or asks what colour a new brand should use. Does not generate assets; hand off to 11brands-generate-assets for that.
+description: Add a new brand to the 11brands repository as a draft — pick and check a signal colour against its ground, write drafts/<key>/brand.md, and create the three output folders. Use when someone wants to set up, initialise, register or add a brand, sub-brand or site to 11brands, or asks what colour a new brand should use. Does not generate assets; hand off to 11brands-generate-assets for that. Does not add the brand to brands/; that is 11brands-promote-draft.
 ---
 
 # Initialise a brand
 
-A brand in this repository is one markdown file and three empty folders. The
-work is not the file — it is choosing a signal colour that survives contact with
-a 16 pixel favicon, and writing down why.
+A brand starts life as one markdown file and three empty folders under
+`drafts/`. The work is not the file — it is choosing a signal colour that
+survives contact with a 16 pixel favicon, and writing down why.
+
+New brands go to `drafts/`, never straight to `brands/`. `brands/` is the
+registered set, it has live consumers, and `brands/BASELINE.md` measures it
+against another repository. Getting into it is a separate step —
+`11brands-promote-draft`.
 
 ## What you need before writing anything
 
@@ -18,6 +23,10 @@ Ask for whatever is missing:
 - **Light or dark.**
 - **A signal colour**, or a direction like "red" or "something warmer than the
   orange one".
+
+Anything else — the footer wording, the masthead, a default title — has a working
+default. Do not ask about them up front. Mention them once the brand exists, if
+the brand sounds like it wants different wording.
 
 ## Choose the signal, then prove it
 
@@ -64,9 +73,26 @@ overrides them.
 **Report the number to the user before writing the file.** If it is under 3:1,
 say so and propose a darker or lighter step instead of writing it.
 
+### If the signal is a neutral
+
+A silver, grey or off-white needs two checks the others do not, because it has
+almost no hue to separate it from anything. Measure it against three things:
+
+| Gap | Why | Floor |
+| --- | --- | --- |
+| vs the ground | the standard non-text graphic minimum | 3:1 |
+| vs the ink | the signal square sits beside the numeral in the mark | 3:1, or a stated decision to go below |
+| vs the footer grey | the accent must not be the same value as de-emphasised text | not equal |
+
+Chromatic signals routinely sit at 1.60:1 to 3.61:1 against the ink and look
+fine, because chroma does the separating. A neutral has nothing else. If the user
+wants a bright neutral anyway, that is a legitimate choice — it makes the mark
+read as monochrome with a highlight rather than ink plus colour — but say so and
+record it in the notes. `cc-rj11io` is the worked example.
+
 ## Write the file
 
-`brands/<key>/brand.md`:
+`drafts/<key>/brand.md`:
 
 ```markdown
 # <domain>
@@ -85,9 +111,26 @@ otherwise have to re-derive.>
 Contrast of the signal on its ground: **N.NN:1**.
 ```
 
-Only `Domain`, `Mode` and `Signal` are read by the scripts. Add
-`**Ground:**`, `**Ink:**` or `**Footer:**` only if the brand genuinely deviates
-— `www-rj11io` is the one that does, because its ground and ink are warm.
+Only `Domain`, `Mode` and `Signal` are required. Add a colour override —
+`**Ground:**`, `**Ink:**` or `**Footer:**` — only if the brand genuinely
+deviates; `www-rj11io` is the one that does, because its ground and ink are warm.
+
+Add a text field only if the brand actually wants different wording:
+
+| Field | Default | Set it when |
+| --- | --- | --- |
+| `**Masthead:**` | the domain | content cards should say something other than the domain |
+| `**Website row:**` | the domain | the site card's main row is not the domain |
+| `**Footer text:**` | the standard keyword line | this site's keywords differ |
+| `**Default title:**` | `Lorem Ipsum` | placeholder cards should say something else |
+
+Any of them set to `none` draws nothing at all, including `**Default title:**`,
+which then gives a content card with no title row. Document any field you set in
+the notes, in the same way a colour is documented — someone reading a card later
+should be able to find out why it says what it says.
+
+Backticks are stripped from every field, so quoting a value is safe and never
+reaches a card.
 
 The notes section is not decoration. Every existing brand file records the
 reasoning behind its colour, and that is what stops the next person repeating a
@@ -96,12 +139,15 @@ mistake.
 ## Then create the folders
 
 ```bash
-mkdir -p brands/<key>/{favicons,web-og,content-og}
+mkdir -p drafts/<key>/{favicons,web-og,content-og}
 ```
 
 ## Finally
 
-Add the brand to the table in `brands/README.md`, with its contrast figure.
+Do **not** add the brand to the table in `brands/README.md`. That table lists the
+registered set, and this brand is not in it yet; `11brands-promote-draft` adds the
+row when the draft is approved. Adding it early makes the table describe assets
+that do not exist.
 
-Tell the user the brand is registered and that nothing has been generated yet,
-and offer to run `11brands-generate-assets`.
+Tell the user the brand is drafted and that nothing has been generated yet, give
+them the contrast figure, and offer to run `11brands-generate-assets`.

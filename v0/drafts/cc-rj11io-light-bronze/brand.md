@@ -1,10 +1,27 @@
-# cc.rj11.io
+# cc.rj11.io — light bronze (rejected)
 
-Gold on the standard light ground. The light-mode counterpart to `b2b-rj11io`.
+An archived attempt at `cc.rj11.io`, kept for reference. Not promoted. The
+registered brand is `../../brands/cc-rj11io/`, which is dark mode with bright
+titanium `#B4BDC4`.
+
+Gold on the standard light ground. Was intended as the light-mode counterpart to
+`b2b-rj11io`.
 
 **Domain:** cc.rj11.io
 **Mode:** light
 **Signal:** `#B45309`
+
+## Why it was rejected
+
+The colour was not right for this brand. Nothing measured wrong: it clears its
+floor at 4.81:1 and the geometry below still holds. It was the wrong direction for
+`cc.rj11.io`, which went dark with a metallic signal instead.
+
+The output was reviewed and kept rather than deleted, because the analysis under
+"Why this exact value" is the reason nobody should reach for amber 600 on a light
+ground again.
+
+Superseded by `../cc-rj11io-dark-pewter/`, and then by the registered titanium.
 
 ## Notes
 

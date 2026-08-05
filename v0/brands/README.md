@@ -76,4 +76,38 @@ stays something a person writes rather than a config file in disguise —
 everything outside those lines is notes, and the notes are the point. Each of
 these files records why its colour is what it is.
 
-See `../asset-generation-scripts/README.md` for how to add one.
+### Colour
+
+| Field | Default | What it sets |
+| --- | --- | --- |
+| `**Signal:**` | required | the accent colour |
+| `**Ground:**` | from mode | background |
+| `**Ink:**` | from mode | the numeral, and the main row text |
+| `**Footer:**` | from mode | the footer and masthead text colour |
+
+### Text
+
+Every string drawn on any asset is one of these four, and each can be changed or
+switched off per brand:
+
+| Field | Default | Where it appears |
+| --- | --- | --- |
+| `**Masthead:**` | the domain | the small tracked line above the mark, content cards only |
+| `**Website row:**` | the domain | the framed main row on the website card |
+| `**Footer text:**` | `AI / SOFTWARE / …` | the keyword line at the bottom of every card |
+| `**Default title:**` | `Lorem Ipsum` | the main row of a content card, when no title is given |
+
+Set any of them to `none` to draw nothing there. A brand with
+`**Footer text:** none` gets cards with no footer line at all, and
+`**Default title:** none` gets a content card with no title row when no title is
+passed. The word is needed because the reader has to see a value to notice the
+line, so a blank field would be invisible to it.
+
+The only text that does not come from a brand file is a title passed on the
+command line, and that falls back to `**Default title:**` when it is left out.
+
+Backticks are stripped from every field, `**Domain:**` included, so a brand file
+can quote any value without the quoting reaching a card.
+
+See `../asset-generation-scripts/README.md` for the full field table, and
+`../drafts/README.md` for where new assets land before they arrive here.

@@ -58,19 +58,31 @@ in the mark, so a band of ground separates the two shapes, and the 10.39:1 again
 that ground is the ratio the 3:1 floor actually governs. Position and shape carry
 the signal here; colour supports it.
 
-An earlier draft used pewter `#64748B`, which measured 4.56:1 against the ink and
-separated far more strongly, but read as dark grey rather than as silver. It was
-rejected on those grounds. The light-mode gold attempt before it is kept in
-`../../drafts/cc-rj11io/`.
+Two earlier attempts are kept as drafts, each with its own notes:
+
+- `../../drafts/cc-rj11io-dark-pewter/` — pewter `#64748B`, which measured 4.56:1
+  against the ink and separated far more strongly, but read as dark grey rather
+  than as silver.
+- `../../drafts/cc-rj11io-light-bronze/` — the light-mode gold tried before the
+  brand went dark.
 
 ### One note for whoever verifies this
 
-The gamut check in `skills/11brands-verify-assets/` reports false positives on
-this brand. It tests whether each colour is a blend of ground, ink and signal, and
-with a near-neutral signal that triangle is a sliver — 8.4 degrees off the ink
-axis, against 31.2 for `b2b-rj11io` gold — so one bit of rounding exceeds its
-±0.01 tolerance. Use the forward test instead: ask whether a valid coverage pair
-exists whose rounded blend equals the colour. Every colour in this brand's output
-passes that test.
+This brand is why `../../skills/11brands-verify-assets/` checks the gamut the way
+it does.
+
+The intuitive check is an inverse one: solve for each colour's position in the
+triangle formed by ground, ink and signal, and flag anything outside it. That
+breaks here. A near-neutral signal sits close to the line from ground to ink, so
+the triangle collapses to a sliver — this signal is 8.4 degrees off the ink axis
+where `b2b-rj11io` gold is 31.2 — and one bit of rounding then reads as a
+coefficient about 1 per cent outside the triangle. It flagged 11 colours across 7
+files here and none at all in any chromatic brand.
+
+The skill uses a forward test instead: given that the drawing code can only emit
+`round(ground·(1−i−s) + ink·i + signal·s)`, is there a coverage pair that produces
+this exact colour? All 306 distinct colours in this brand's output return one, so
+the output is in gamut and always was. Use that test, not the inverse one, and the
+question does not come up again.
 
 Contrast of the signal on its ground: **10.39:1**.
