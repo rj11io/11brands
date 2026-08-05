@@ -40,3 +40,12 @@ v0/                 DEPRECATED — history only, do not touch
 Generated assets land in `v1/outputs/` and are tracked but committed only
 deliberately. Copying an asset into a consuming site is a separate step, done
 from an outputs run, unmodified.
+
+## Releases
+
+Releases are automated by semantic-release on every push to `main`
+(`.github/workflows/release.yml`): commit analysis, `CHANGELOG.md`, the
+`package.json` version bump, a `chore(release)` commit, a tag and a GitHub
+release. Commit messages must follow Conventional Commits — `feat`, `fix` and
+breaking changes cut a release; `chore`, `docs`, `refactor` and `test` do not.
+Nothing is ever published to npm.

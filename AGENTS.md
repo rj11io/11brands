@@ -60,6 +60,11 @@ one, and they encode the checks that are not obvious from the code.
    coefficient test, never a step-grid search) and the icon checks.
 7. **Report honestly.** Print the run stamp and paths, quote contrast figures,
    and if any check failed or was skipped, say so plainly.
+8. **Commits are Conventional Commits, and they drive releases.** semantic-release
+   cuts a release from every `feat`/`fix`/breaking push to `main` and writes
+   `CHANGELOG.md`, the root `package.json` version and the tag itself. Never edit
+   `CHANGELOG.md` or the root `package.json` version by hand, and never create
+   tags — the `chore(release)` commits are the bot's.
 
 ## Environment
 
