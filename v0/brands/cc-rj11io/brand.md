@@ -68,7 +68,7 @@ Two earlier attempts are kept as drafts, each with its own notes:
 
 ### One note for whoever verifies this
 
-This brand is why `../../skills/11brands-verify-assets/` checks the gamut the way
+This brand is why `../../skills/11brands-v0-verify-assets/` checks the gamut the way
 it does.
 
 The intuitive check is an inverse one: solve for each colour's position in the

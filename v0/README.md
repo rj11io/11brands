@@ -19,10 +19,10 @@ v0/
 
 ## Start here
 
-- **Adding a brand** → `skills/11brands-init-brand/`
-- **Making assets** → `skills/11brands-generate-assets/`
-- **Checking output** → `skills/11brands-verify-assets/`
-- **Approving a draft** → `skills/11brands-promote-draft/`
+- **Adding a brand** → `skills/11brands-v0-init-brand/`
+- **Making assets** → `skills/11brands-v0-generate-assets/`
+- **Checking output** → `skills/11brands-v0-verify-assets/`
+- **Approving a draft** → `skills/11brands-v0-promote-draft/`
 - **How the scripts work** → `asset-generation-scripts/README.md`
 - **What exists today** → `brands/README.md`
 - **What is still being decided** → `drafts/README.md`

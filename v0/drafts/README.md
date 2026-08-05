@@ -2,7 +2,7 @@
 
 Where generated assets land first. Everything the scripts make comes here unless
 someone passes `--into brands`, and moving a set into `../brands/` is a separate,
-deliberate step — see [`../skills/11brands-promote-draft/`](../skills/11brands-promote-draft/).
+deliberate step — see [`../skills/11brands-v0-promote-draft/`](../skills/11brands-v0-promote-draft/).
 
 The layout is identical to `../brands/`, so a promotion is a copy rather than a
 translation:

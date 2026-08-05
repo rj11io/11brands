@@ -7,10 +7,10 @@ the repo-local workflow guides for using them.
 
 ## Start here
 
-- **Add a brand** → [`v0/skills/11brands-init-brand/`](v0/skills/11brands-init-brand/)
-- **Generate assets** → [`v0/skills/11brands-generate-assets/`](v0/skills/11brands-generate-assets/)
-- **Verify generated assets** → [`v0/skills/11brands-verify-assets/`](v0/skills/11brands-verify-assets/)
-- **Promote a draft** → [`v0/skills/11brands-promote-draft/`](v0/skills/11brands-promote-draft/)
+- **Add a brand** → [`v0/skills/11brands-v0-init-brand/`](v0/skills/11brands-v0-init-brand/)
+- **Generate assets** → [`v0/skills/11brands-v0-generate-assets/`](v0/skills/11brands-v0-generate-assets/)
+- **Verify generated assets** → [`v0/skills/11brands-v0-verify-assets/`](v0/skills/11brands-v0-verify-assets/)
+- **Promote a draft** → [`v0/skills/11brands-v0-promote-draft/`](v0/skills/11brands-v0-promote-draft/)
 - **Read the v0 overview** → [`v0/README.md`](v0/README.md)
 - **Browse the registered brands** → [`v0/brands/README.md`](v0/brands/README.md)
 

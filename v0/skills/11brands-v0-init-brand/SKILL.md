@@ -1,6 +1,6 @@
 ---
-name: 11brands-init-brand
-description: Add a new brand to the 11brands repository as a draft — pick and check a signal colour against its ground, write drafts/<key>/brand.md and its config.json, and create the three output folders. Use when someone wants to set up, initialise, register or add a brand, sub-brand or site to 11brands, or asks what colour a new brand should use. Does not generate assets; hand off to 11brands-generate-assets for that. Does not add the brand to brands/; that is 11brands-promote-draft.
+name: 11brands-v0-init-brand
+description: Add a new brand to the 11brands repository as a draft — pick and check a signal colour against its ground, write drafts/<key>/brand.md and its config.json, and create the three output folders. Use when someone wants to set up, initialise, register or add a brand, sub-brand or site to 11brands, or asks what colour a new brand should use. Does not generate assets; hand off to 11brands-v0-generate-assets for that. Does not add the brand to brands/; that is 11brands-v0-promote-draft.
 ---
 
 # Initialise a brand
@@ -16,7 +16,7 @@ writes the JSON from it. Every brand and every draft has both.
 New brands go to `drafts/`, never straight to `brands/`. `brands/` is the
 registered set, it has live consumers, and `brands/BASELINE.md` measures it
 against another repository. Getting into it is a separate step —
-`11brands-promote-draft`.
+`11brands-v0-promote-draft`.
 
 ## What you need before writing anything
 
@@ -160,9 +160,9 @@ file that is wrong.
 ## Finally
 
 Do **not** add the brand to the table in `brands/README.md`. That table lists the
-registered set, and this brand is not in it yet; `11brands-promote-draft` adds the
+registered set, and this brand is not in it yet; `11brands-v0-promote-draft` adds the
 row when the draft is approved. Adding it early makes the table describe assets
 that do not exist.
 
 Tell the user the brand is drafted and that nothing has been generated yet, give
-them the contrast figure, and offer to run `11brands-generate-assets`.
+them the contrast figure, and offer to run `11brands-v0-generate-assets`.

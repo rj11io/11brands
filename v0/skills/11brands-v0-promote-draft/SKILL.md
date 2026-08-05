@@ -1,5 +1,5 @@
 ---
-name: 11brands-promote-draft
+name: 11brands-v0-promote-draft
 description: Promote a draft brand in the 11brands repository into the registered set — copy its brand.md and config.json from drafts/ to brands/, copy the approved generation run across, and add or update its row in brands/README.md. Use when someone approves a draft, says a colour or a set is final, or asks to promote, register, publish, accept, or land a draft brand. Also handles the reverse: demoting a registered brand back to drafts, and archiving a rejected attempt under its own key.
 ---
 

@@ -22,7 +22,7 @@ Three other things to know
 --------------------------
 
 Output goes to drafts/ by default, not brands/. Promoting a draft into the
-registered set is a separate step, described in skills/11brands-promote-draft/.
+registered set is a separate step, described in skills/11brands-v0-promote-draft/.
 
 Nothing that affects an image is hardcoded where it is drawn. Colours, every
 drawn string, and the whole layout come from the brand, so they can all be
@@ -744,7 +744,7 @@ def open_output_dir(
             f"         brands/{brand.key}/ will hold runs with no {BRAND_NAME} "
             f"beside them.\n"
             f"         To register the brand properly, use "
-            f"skills/11brands-promote-draft/.",
+            f"skills/11brands-v0-promote-draft/.",
             file=sys.stderr,
         )
 

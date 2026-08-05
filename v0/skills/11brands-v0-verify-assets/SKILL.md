@@ -1,5 +1,5 @@
 ---
-name: 11brands-verify-assets
+name: 11brands-v0-verify-assets
 description: Check generated brand assets in the 11brands repository — compare a draft run against a promoted run, against another run, or against the assets a consuming repository already ships, and check every pixel sits inside the brand's own colours. Use when someone asks whether the output matches, is the same as before, still reproduces 11blog, is correct, or has drifted; or when a generator or brand file has changed and the effect needs measuring.
 ---
 

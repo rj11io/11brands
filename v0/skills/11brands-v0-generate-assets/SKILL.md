@@ -1,5 +1,5 @@
 ---
-name: 11brands-generate-assets
+name: 11brands-v0-generate-assets
 description: Generate brand assets in the 11brands repository — favicon packages, website Open Graph cards, and content Open Graph cards for one brand or all of them. Output goes to drafts/ by default. Also covers testing an idea by editing a brand's config.json and regenerating. Use when someone wants to generate, render, produce, re-generate or refresh favicons, icons, OG images, link previews or social cards for a brand. Handles the Python environment, picks the right script, and reports where the output went.
 ---
 
@@ -40,7 +40,7 @@ type, different wording:
 Work in `drafts/`, not `brands/`. Use a fresh `--stamp` per idea so the attempts
 sit side by side and can be diffed. When an idea is settled, fold it back into
 `brand.md` with a note saying why, so the reasoning does not live only in a JSON
-file — then `11brands-promote-draft`.
+file — then `11brands-v0-promote-draft`.
 
 Do not edit the scripts to change a colour, a position, or a string. Everything
 that affects an image is in the config.
@@ -50,7 +50,7 @@ that affects an image is in the config.
 `drafts/<brand>/` is the default and is almost always right. `brands/` is the
 registered set: it has live consumers, and `brands/BASELINE.md` measures it
 against the `11blog` repository. Assets arrive there by promotion, not by
-generation — see `11brands-promote-draft`.
+generation — see `11brands-v0-promote-draft`.
 
 Only pass `--into brands` when the user has explicitly asked to write into the
 registered set, or when you are regenerating a promoted brand in place and they
@@ -64,7 +64,7 @@ warning: writing into brands/ from a definition still in drafts/
 
 It means the brand is not registered and you have just put assets in the
 registered set without its definition. Either the user wanted
-`11brands-promote-draft`, or they wanted `drafts/`. Say which you think it is.
+`11brands-v0-promote-draft`, or they wanted `drafts/`. Say which you think it is.
 
 A key can have a `brand.md` in both roots — a registered brand being reworked as
 a draft. The root you write to is the one whose definition is read. Every run
@@ -164,7 +164,7 @@ substitute changes the metrics and will not reproduce existing cards; say so
 rather than quietly swapping a font.
 
 **`no brand named 'X'. Looked for: …`** — the brand is not drafted or
-registered. The message lists both paths it tried. Use `11brands-init-brand`.
+registered. The message lists both paths it tried. Use `11brands-v0-init-brand`.
 
 **`mode must be one of dark, light`** — the brand file has a typo.
 

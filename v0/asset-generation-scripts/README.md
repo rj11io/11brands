@@ -76,7 +76,7 @@ A titles file is one title per line; blank lines and `#` comments are skipped.
 
 Everything lands in `../drafts/<brand>/` unless you pass `--into brands`.
 Promoting a draft into the registered set is a separate step, described in
-`../skills/11brands-promote-draft/`.
+`../skills/11brands-v0-promote-draft/`.
 
 ```bash
 .venv/bin/python generate-favicons.py b2b-rj11io               # -> drafts/
@@ -277,7 +277,7 @@ the draft when there is not. That fallback is allowed but warns, because it leav
 warning: writing into brands/ from a definition still in drafts/
 ```
 
-If you see that, you wanted `11brands-promote-draft` instead.
+If you see that, you wanted `11brands-v0-promote-draft` instead.
 
 ### Choosing a signal colour
 
