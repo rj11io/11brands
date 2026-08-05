@@ -43,13 +43,21 @@ directory explains itself without anyone having to re-derive it.
 | `cv-rj11io` | cv.rj11.io | light | `#2563EB` blue | 4.95:1 |
 | `intel-rj11io` | intel.rj11.io | dark | `#EF4444` red | 5.26:1 |
 | `b2b-rj11io` | b2b.rj11.io | dark | `#FBBF24` gold | 11.86:1 |
-| `cc-rj11io` | cc.rj11.io | light | `#B45309` gold | 4.81:1 |
+| `cc-rj11io` | cc.rj11.io | dark | `#B4BDC4` titanium | 10.39:1 |
 
 Contrast is the signal against its own ground. A non-text graphic needs 3:1 and
 every brand clears it. The family keeps one mark and one layout; the signal
 colour carries the main distinction, with `www-rj11io` also using warm ground
 and ink values. The signal has to survive a 16 pixel favicon, so it is checked
 with a number rather than an opinion.
+
+`cc-rj11io` is the one signal that is a neutral rather than a colour, and a
+neutral has to be measured against three things rather than one. Every chromatic
+signal separates from the numeral by hue, so its lightness against the ink can be
+low and no one notices; a titanium has only lightness, so the ink and the footer
+grey both matter as well as the ground. Its brand file records all three numbers,
+and records that its low ink figure is a deliberate choice: that mark reads as
+monochrome with a highlight rather than ink plus colour.
 
 ## A brand file
 
