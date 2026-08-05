@@ -7,7 +7,7 @@ brand that varies the colours, the words, and — when needed — everything els
 v1/
 ├── templates/          the mark master, the two config templates, brand.md
 │                       skeleton, FONTS.md, titles example
-├── scripts/            seven Python scripts + shared brandkit.py + .venv
+├── scripts/            eleven Python scripts + shared brandkit.py + .venv
 ├── brands/             the active registry: one folder per brand
 │   └── <key>/
 │       ├── config.json   every generation variable; the only file scripts read
@@ -40,8 +40,14 @@ A second idea is a second key — nothing collides.
 **Brands retire to `archive/`, not to deletion.** `archive_brand.py <key>` moves
 `brands/<key>/` to `archive/<key>/` verbatim; `promote_brand.py <key>` moves it
 back. Contents never change, so a promoted brand generates exactly what it did
-before. Archived brands are invisible to the generators: not generatable, skipped
-by `--all`, key kept reserved. Past runs in `outputs/` stay put.
+before. The ordinary generators never see the archive: an archived key is not
+generatable there, `--all` skips it, and the key stays reserved. Past runs in
+`outputs/` stay put.
+
+**Archived brands can still be revisited in place.** The `generate_archived_*`
+scripts mirror the ordinary generators exactly but read `archive/` instead of
+`brands/` — same output location, manifests recording the `archive/` config they
+used. Their `--all` sweeps archived brands only; no run ever mixes the roots.
 
 **Runs are stamped.** Every generation lands in `outputs/<stamp>/`, one stamp
 per run, shared across a batch. Nothing is overwritten across stamps, every
@@ -86,11 +92,15 @@ cd v1/scripts
 .venv/bin/python generate_og_content.py 11blog --title "Adding a Post"
 .venv/bin/python generate_og_content.py 11blog --titles-file titles.txt
 .venv/bin/python generate_all.py --all                     # full pack, one run folder
+
+.venv/bin/python generate_archived_all.py 11bench-dark-sky # same, from archive/
 ```
 
 - every generator takes `<key>` or `--all`, plus `--run STAMP` to join a run;
   the stamp defaults to now, and `generate_all.py` mints one for the whole batch
-- `--all` means every brand in `brands/`; `archive/` is never swept
+- `--all` is root-scoped: on the ordinary generators it means every brand in
+  `brands/`, on the `generate_archived_*` scripts every brand in `archive/` —
+  never both in one run
 - a content run with **no title** uses the config's `text.title` — the templates
   ship `"Lorem Ipsum"`, so a bare run produces a complete placeholder card
 - a titles file is one title per line; blank lines and `#` comments are skipped
@@ -151,5 +161,6 @@ history — nothing in it should be used or edited.
 | `skills/11brands-v1-generate-assets/` | running the generators, testing config ideas |
 | `skills/11brands-v1-verify-assets/` | measuring changes, gamut and icon checks |
 | `skills/11brands-v1-archive-brand/` | retiring a brand out of generation |
+| `skills/11brands-v1-generate-archived/` | revisiting a retired brand in place |
 | `skills/11brands-v1-promote-brand/` | bringing an archived brand back |
 | `skills/11brands-v1-integration/` | teaching a consuming repo to use all of this |

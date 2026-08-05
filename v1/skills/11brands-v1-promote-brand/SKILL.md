@@ -25,6 +25,12 @@ definition. Surface it to the user — the resolution is theirs (usually renamin
 one, which means fixing the `brand` field inside its config to match the new
 folder name).
 
+## Promote only for active duty
+
+If the user just wants to look at a retired brand's assets again, they do not
+need this skill: `11brands-v1-generate-archived` generates from `archive/` in
+place. Promote when the brand is genuinely returning to use.
+
 ## After promoting
 
 - Check the brand's `brand.md`: if it was archived as a losing candidate, its

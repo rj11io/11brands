@@ -24,8 +24,10 @@ one, and they encode the checks that are not obvious from the code.
 - To change what an asset looks like, change the config and regenerate. Never
   edit the scripts for a colour, a string, a position or a font.
 - Retired brands live in `v1/archive/`, moved verbatim by `archive_brand.py`
-  and back by `promote_brand.py`. Never move brand folders by hand, and never
-  generate from `archive/` — the generators only read `brands/`.
+  and back by `promote_brand.py`. Never move brand folders by hand. The ordinary
+  generators read `brands/` only; revisiting an archived brand in place is the
+  `generate_archived_*` scripts, whose `--all` sweeps `archive/` only — the two
+  roots never mix in one run.
 
 ## Hard rules
 

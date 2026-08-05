@@ -48,8 +48,8 @@ def unique_name(slug: str, taken: set[str]) -> str:
     return name
 
 
-def generate(key: str, stamp: str, titles: list[str] | None = None) -> None:
-    brand = kit.load_brand(key)
+def generate(key: str, stamp: str, titles: list[str] | None = None, root: str = "brands") -> None:
+    brand = kit.load_brand(key, root)
     titles = titles or [brand.title]
     masks = kit.build_masks()
     directory = kit.output_dir(brand, "og-content", stamp)

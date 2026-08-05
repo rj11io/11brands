@@ -82,8 +82,9 @@ so. Do not add it to `.gitignore` and do not `git add` it.
 `11brands-v1-init-brand`.
 
 **`no brand named 'X'... It is archived`** — retired brand. `--all` skips
-`archive/` on purpose; if the user genuinely wants it generated, that is
-`11brands-v1-promote-brand` first, not a workaround.
+`archive/` on purpose. To revisit it in place, that is
+`11brands-v1-generate-archived`; to return it to active duty,
+`11brands-v1-promote-brand`. Never a workaround.
 
 **`schema is None/0/2...`** — the config predates or postdates these scripts.
 Stop and say so rather than editing the check away.

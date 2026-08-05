@@ -19,9 +19,10 @@ cd v1/scripts
 brand.md keep their exact contents, so promotion restores a brand that generates
 exactly what it did before. An archived brand:
 
-- cannot be generated (a run against its key says it is archived and how to get
-  it back)
-- is skipped by every `--all`
+- is invisible to the ordinary generators (a run against its key points at the
+  alternatives) — revisiting it in place is `11brands-v1-generate-archived`,
+  which reads `archive/` directly
+- is skipped by the ordinary generators' `--all`
 - keeps its key reserved — `init_brand.py` scans only `brands/`, so if a new
   brand should take the key, decide about the archived one first
 

@@ -135,14 +135,30 @@ def load_config(path: Path) -> dict:
     return cfg
 
 
-def load_brand(key: str) -> Brand:
-    path = BRANDS_DIR / key / CONFIG_NAME
+ROOTS = {"brands": None, "archive": None}  # bound below, after the dirs exist
+
+
+def load_brand(key: str, root: str = "brands") -> Brand:
+    """Load a brand from brands/ (default) or archive/.
+
+    The two roots are the same shape; which one a script reads is the script's
+    identity — the active generators read brands/, the generate_archived_*
+    scripts read archive/. Never both.
+    """
+    base = BRANDS_DIR if root == "brands" else ARCHIVE_DIR
+    other = ARCHIVE_DIR if root == "brands" else BRANDS_DIR
+    path = base / key / CONFIG_NAME
     if not path.exists():
-        hint = (
-            "It is archived; promote it with promote_brand.py first."
-            if (ARCHIVE_DIR / key / CONFIG_NAME).exists()
-            else "Initialise it with init_brand.py."
-        )
+        if (other / key / CONFIG_NAME).exists():
+            hint = (
+                "It is archived: generate it in place with the "
+                "generate_archived_* scripts, or reactivate it with "
+                "promote_brand.py."
+                if root == "brands"
+                else "It is active: use the ordinary generators."
+            )
+        else:
+            hint = "Initialise it with init_brand.py."
         raise SystemExit(
             f"no brand named {key!r} (no {path.relative_to(V1_DIR)}). {hint}"
         )
@@ -182,12 +198,17 @@ def every_archived() -> list[str]:
     return sorted(p.parent.name for p in ARCHIVE_DIR.glob(f"*/{CONFIG_NAME}"))
 
 
-def resolve_keys(key: str | None, all_flag: bool) -> list[str]:
-    """The brand list a generator should run over, from its CLI arguments."""
+def resolve_keys(key: str | None, all_flag: bool, root: str = "brands") -> list[str]:
+    """The brand list a generator should run over, from its CLI arguments.
+
+    --all is root-scoped: the active generators sweep brands/, the archived ones
+    sweep archive/, and no run ever mixes the two — a mixed sweep is how a
+    retired candidate sneaks back into a "regenerate everything" batch.
+    """
     if all_flag:
-        keys = every_brand()
+        keys = every_brand() if root == "brands" else every_archived()
         if not keys:
-            raise SystemExit("no brands registered yet; initialise one first")
+            raise SystemExit(f"no brands in {root}/")
         return keys
     if key:
         return [key]
@@ -526,7 +547,7 @@ def write_manifest(directory: Path, brand: Brand, kind: str, entries: list[str])
     path.write_text(
         f"# {brand.domain} — {kind}\n\n"
         f"Generated {datetime.now().isoformat(timespec='seconds')} by "
-        f"`v1/scripts/` from `brands/{brand.key}/{CONFIG_NAME}`.\n\n"
+        f"`v1/scripts/` from `{brand.source.relative_to(V1_DIR)}`.\n\n"
         f"| Setting | Value |\n| --- | --- |\n"
         f"| Brand | `{brand.key}` |\n"
         f"| Domain | {brand.domain} |\n"

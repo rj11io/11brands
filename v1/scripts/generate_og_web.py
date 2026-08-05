@@ -18,8 +18,8 @@ import argparse
 import brandkit as kit
 
 
-def generate(key: str, stamp: str) -> None:
-    brand = kit.load_brand(key)
+def generate(key: str, stamp: str, root: str = "brands") -> None:
+    brand = kit.load_brand(key, root)
     masks = kit.build_masks()
     directory = kit.output_dir(brand, "og-web", stamp)
 
