@@ -68,10 +68,18 @@ structurally-valid output:
 - Text missing? A null in the config draws nothing on purpose — check the config
   before calling it a bug.
 
+## Generating for another project
+
+That is not this skill: runs triggered by or for a consuming repo go through
+`generate_integration.py --source <project>` into `integrations/`, so the
+manifest records who asked. See `11brands-v1-integration`. These generators and
+`outputs/` are the operator's workspace.
+
 ## Git
 
-`outputs/` stays tracked but is never staged or committed unless the user says
-so. Do not add it to `.gitignore` and do not `git add` it.
+`outputs/` and `integrations/` stay tracked but are never staged or committed
+unless the user says so. Do not add them to `.gitignore` and do not `git add`
+them.
 
 ## If something breaks
 

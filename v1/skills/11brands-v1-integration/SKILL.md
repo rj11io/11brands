@@ -1,6 +1,6 @@
 ---
 name: 11brands-v1-integration
-description: Teach another repository or agent to use 11brands v1 — the paths, script contracts, and rules for generating brand assets from outside, plus a template for writing that repo's own skill. Use when a consuming project (a website, blog, app) wants favicons or OG images from 11brands, wants to automate asset generation, or asks how to integrate with or build a skill for 11brands.
+description: Teach another repository or agent to use 11brands v1 — the generate_integration.py contract, the integrations/ workspace, and the rules for consuming brand assets from outside, plus a template for writing that repo's own skill. Use when a consuming project (a website, blog, app) wants favicons or OG images from 11brands, wants to automate asset generation, or asks how to integrate with or build a skill for 11brands.
 ---
 
 # Integrating with 11brands v1
@@ -15,34 +15,44 @@ with a template for writing that repository's own local skill.
 it.
 
 **A brand** is `v1/brands/<key>/config.json` — every generation variable — plus
-`brand.md`, the human decision record. Keys have three levels: `{brand}` default (`11io`), `{brand}-{sub-brand}`
-secondary (`11blog-11ai`), `{brand}-{variant}` experiments (`11cc-bronze`).
-List brands: `ls v1/brands/`. Retired brands sit in `v1/archive/` and cannot be
-generated; if you need one, ask the 11brands operator to promote it.
+`brand.md`, the human decision record. Keys have three levels: `{brand}` default
+(`11io`), `{brand}-{sub-brand}` secondary (`11blog-11ai`), `{brand}-{variant}`
+experiments (`11cc-bronze`). List brands: `ls v1/brands/`. Retired brands sit in
+`v1/archive/` and are not available to consumers; if you need one, ask the
+11brands operator.
 
-**Generation** is four scripts, run from `v1/scripts/` with its own venv:
+**Generation from outside is ONE script**, run from `v1/scripts/` with its venv:
 
 ```bash
 cd <11brands>/v1/scripts
-.venv/bin/python generate_favicons.py <key>            # 5 PNGs + favicon.ico
-.venv/bin/python generate_og_web.py <key>              # <key>-og-web.png
-.venv/bin/python generate_og_content.py <key> --title "Post Title"
-.venv/bin/python generate_all.py <key>                 # everything
+.venv/bin/python generate_integration.py <key> --source <your-project>
+.venv/bin/python generate_integration.py <key> --source <your-project> --kind favicons
+.venv/bin/python generate_integration.py <key> --source <your-project> \
+    --kind og-content --title "Post Title"
 ```
 
-All accept `--all` instead of a key, and `--run STAMP` to land in a chosen run
-folder. `generate_og_content.py` with no title uses the brand's config
-`text.title` (a "Lorem Ipsum" placeholder card). First-time setup:
-`python3 -m venv .venv && .venv/bin/pip install Pillow`. macOS only by default —
-the configs point at `/System/Library/Fonts/`.
+- `--source` is required: your project's name, lowercase
+  (`11blog-site`, `bench-app`). It is recorded in every manifest of the run, so
+  the generation is attributable forever.
+- Default is the full pack; `--kind` (repeatable: `favicons`, `og-web`,
+  `og-content`) narrows it.
+- `og-content` with no `--title` produces the brand's placeholder card
+  ("Lorem Ipsum" unless the brand overrides it).
+- First-time setup: `python3 -m venv .venv && .venv/bin/pip install Pillow`.
+  macOS only by default — the configs point at `/System/Library/Fonts/`.
 
-**Output** lands in `v1/outputs/<stamp>/<key>/{favicons,og-web,og-content}/`,
-each kind with a `MANIFEST.md` recording exactly what was used. Outputs are never
-overwritten across stamps; a fresh run is a fresh folder.
+**Output** lands in `integrations/<stamp>/<key>/{favicons,og-web,og-content}/`,
+each kind with a `MANIFEST.md` recording exactly what was used and who asked.
+The script prints the stamp and the path — read them from stdout.
 
-**Consuming an asset = copying it out.** Nothing in 11brands deploys anything.
-Copy from an `outputs/` run into your repository, and note the source stamp in
-your commit message so the asset stays traceable.
+Stamp policy: pass `--run <stamp>` to choose your own (an existing folder is
+joined); otherwise the default is `{datetime}`, falling back to
+`{datetime}-{source}` on a collision, joining if even that exists.
+
+**The flow**: run the script → read the stamp → copy what you need out of
+`integrations/<stamp>/<key>/` → **leave the run behind**. It is the record on
+the 11brands side; never delete, move or tidy it. `outputs/` is the operator's
+workspace — consumers copy from `integrations/` only.
 
 ## Rules for outside agents
 
@@ -52,7 +62,7 @@ your commit message so the asset stays traceable.
    an asset looks wrong, the brand's config is the interface — and changing a
    brand's config is the 11brands operator's call, not yours. Ask.
 3. **Never stage or commit inside 11brands.** Generate, copy out, leave the
-   working tree alone. Outputs are deliberately tracked-but-uncommitted.
+   working tree alone. `integrations/` is deliberately tracked-but-uncommitted.
 4. **Do not resize or re-encode the assets you copy.** Every file was composed
    at its exact size for a reason: downscaling a finished image invents colours
    outside the brand's palette, and re-encoding an icon to palette-PNG breaks
@@ -80,27 +90,30 @@ Assets come from the 11brands repo at <path-to-11brands>, brand key
 ## Generate
 
     cd <path-to-11brands>/v1/scripts
-    .venv/bin/python generate_all.py <key>
+    .venv/bin/python generate_integration.py <key> --source <project>
 
 For post/article cards:
 
-    .venv/bin/python generate_og_content.py <key> --title "<post title>"
+    .venv/bin/python generate_integration.py <key> --source <project> \
+        --kind og-content --title "<post title>"
 
-Output: <path-to-11brands>/v1/outputs/<stamp>/<key>/
+The script prints the run stamp. Output:
+<path-to-11brands>/v1/integrations/<stamp>/<key>/
 
 ## Import
 
-Copy what this project ships, unmodified:
+Copy what this project ships, unmodified, then leave the run folder behind —
+it is 11brands' record of the generation:
 
-    cp <outputs>/<stamp>/<key>/favicons/favicon.ico   <project>/app/favicon.ico
-    cp <outputs>/<stamp>/<key>/og-web/<key>-og-web.png <project>/public/og.png
+    cp <integrations>/<stamp>/<key>/favicons/favicon.ico   <project>/app/favicon.ico
+    cp <integrations>/<stamp>/<key>/og-web/<key>-og-web.png <project>/public/og.png
     # ...project-specific destinations
 
 Record the source stamp in the commit. Never resize, re-encode or palette-
-convert an asset; never edit anything inside the 11brands repo; never commit
-there. If the brand itself needs changing, ask the 11brands operator.
+convert an asset; never edit, delete or commit anything inside the 11brands
+repo. If the brand itself needs changing, ask the 11brands operator.
 ```
 
-Fill in: the path to 11brands, the brand key, the project's real destination
-paths, and any project-specific kinds (a blog wants og-content per post; a
-landing page may only want favicons + og-web).
+Fill in: the path to 11brands, the brand key, your project name for `--source`,
+the real destination paths, and any project-specific kinds (a blog wants
+og-content per post; a landing page may only want favicons + og-web).

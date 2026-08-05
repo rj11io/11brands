@@ -18,10 +18,11 @@ import argparse
 import brandkit as kit
 
 
-def generate(key: str, stamp: str, root: str = "brands") -> None:
+def generate(key: str, stamp: str, root: str = "brands",
+             base=None, source: str | None = None) -> None:
     brand = kit.load_brand(key, root)
     masks = kit.build_masks()
-    directory = kit.output_dir(brand, "og-web", stamp)
+    directory = kit.output_dir(brand, "og-web", stamp, base)
 
     image, draw = kit.new_card(brand, masks)
     kit.draw_framed_row(draw, brand, brand.website_row)
@@ -29,7 +30,7 @@ def generate(key: str, stamp: str, root: str = "brands") -> None:
 
     name = f"{brand.key}-og-web.png"
     image.save(directory / name, optimize=True)
-    kit.write_manifest(directory, brand, "website OG", [name])
+    kit.write_manifest(directory, brand, "website OG", [name], source)
 
     print(f"{brand.domain} -> {(directory / name).relative_to(kit.V1_DIR)}")
 

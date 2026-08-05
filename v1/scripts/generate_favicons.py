@@ -18,13 +18,14 @@ import argparse
 import brandkit as kit
 
 
-def generate(key: str, stamp: str, root: str = "brands") -> None:
+def generate(key: str, stamp: str, root: str = "brands",
+             base=None, source: str | None = None) -> None:
     brand = kit.load_brand(key, root)
     masks = kit.build_masks()
-    directory = kit.output_dir(brand, "favicons", stamp)
+    directory = kit.output_dir(brand, "favicons", stamp, base)
 
     written = kit.write_icon_set(masks, brand, directory)
-    kit.write_manifest(directory, brand, "favicons", [p.name for p in written])
+    kit.write_manifest(directory, brand, "favicons", [p.name for p in written], source)
 
     print(f"{brand.domain} -> {directory.relative_to(kit.V1_DIR)}  ({len(written)} files)")
 

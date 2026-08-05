@@ -44,6 +44,7 @@ TEMPLATES_DIR = V1_DIR / "templates"
 BRANDS_DIR = V1_DIR / "brands"
 ARCHIVE_DIR = V1_DIR / "archive"
 OUTPUTS_DIR = V1_DIR / "outputs"
+INTEGRATIONS_DIR = V1_DIR / "integrations"
 MARK_PATH = TEMPLATES_DIR / "mark.png"
 
 SCHEMA = 1
@@ -505,15 +506,17 @@ def new_stamp() -> str:
     return datetime.now().strftime("%Y%m%d-%H%M%S")
 
 
-def output_dir(brand: Brand, kind: str, stamp: str) -> Path:
-    """outputs/<stamp>/<key>/<kind>/, created.
+def output_dir(brand: Brand, kind: str, stamp: str, base: Path | None = None) -> Path:
+    """<base>/<stamp>/<key>/<kind>/, created. base defaults to outputs/.
 
     One stamp per run; a batch passes the same stamp to every generator so the
     whole run lands in one folder. Reusing a stamp adds to that run.
+    integrations/ shares the exact same shape, so every rule about runs applies
+    there unchanged.
     """
     if kind not in KINDS:
         raise SystemExit(f"unknown kind {kind!r}, expected one of {KINDS}")
-    directory = OUTPUTS_DIR / stamp / brand.key / kind
+    directory = (base or OUTPUTS_DIR) / stamp / brand.key / kind
     directory.mkdir(parents=True, exist_ok=True)
     return directory
 
@@ -522,12 +525,14 @@ def _text_row(label: str, value: str) -> str:
     return f"| {label} | {'*(omitted)*' if not value else value} |\n"
 
 
-def write_manifest(directory: Path, brand: Brand, kind: str, entries: list[str]) -> Path:
-    """What was made, from what, so a run explains itself later.
+def write_manifest(directory: Path, brand: Brand, kind: str, entries: list[str],
+                   source: str | None = None) -> Path:
+    """What was made, from what — and for whom, when another project asked.
 
     Records the full palette and text, and any layout value that differs from
     the brand's mode template — a config tweak should be visible here, not
-    re-derived from the pixels.
+    re-derived from the pixels. An integration run also records its source: the
+    consuming project that triggered it.
     """
     try:
         defaults = template_config(brand.mode)[1].get("layout", {})
@@ -556,7 +561,8 @@ def write_manifest(directory: Path, brand: Brand, kind: str, entries: list[str])
         f"| Ground | `{hex_of(brand.ground)}` |\n"
         f"| Ink | `{hex_of(brand.ink)}` |\n"
         f"| Footer | `{hex_of(brand.footer)}` |\n"
-        f"| Font | `{brand.font_path}` index {brand.font_index} |\n\n"
+        f"| Font | `{brand.font_path}` index {brand.font_index} |\n"
+        + (f"| Source | {source} |\n" if source else "") + "\n"
         "## Text\n\n| Field | Value |\n| --- | --- |\n"
         + _text_row("Masthead", brand.masthead)
         + _text_row("Website row", brand.website_row)

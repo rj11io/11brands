@@ -48,11 +48,12 @@ def unique_name(slug: str, taken: set[str]) -> str:
     return name
 
 
-def generate(key: str, stamp: str, titles: list[str] | None = None, root: str = "brands") -> None:
+def generate(key: str, stamp: str, titles: list[str] | None = None,
+             root: str = "brands", base=None, source: str | None = None) -> None:
     brand = kit.load_brand(key, root)
     titles = titles or [brand.title]
     masks = kit.build_masks()
-    directory = kit.output_dir(brand, "og-content", stamp)
+    directory = kit.output_dir(brand, "og-content", stamp, base)
 
     taken: set[str] = set()
     written: list[str] = []
@@ -66,7 +67,7 @@ def generate(key: str, stamp: str, titles: list[str] | None = None, root: str = 
         image.save(directory / name, optimize=True)
         written.append(f"{name} — {title or '(no title row)'}")
 
-    kit.write_manifest(directory, brand, "content OG", written)
+    kit.write_manifest(directory, brand, "content OG", written, source)
     print(f"{brand.domain} -> {directory.relative_to(kit.V1_DIR)}  ({len(written)} cards)")
     for line in written:
         print(f"    {line}")

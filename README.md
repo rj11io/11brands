@@ -26,6 +26,7 @@ v1/                 current
 ├── brands/         the active registry: config.json + brand.md per brand
 ├── archive/        retired brands, out of generation, recoverable verbatim
 ├── outputs/        generated assets, one folder per stamped run
+├── integrations/   runs triggered by consuming projects; they copy out, runs stay
 └── skills/         11brands-v1-* agent workflows
 
 v0/                 DEPRECATED — history only, do not touch

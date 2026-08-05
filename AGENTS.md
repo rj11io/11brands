@@ -21,6 +21,9 @@ one, and they encode the checks that are not obvious from the code.
   (`11ai-light-green`). A new idea is a new key, not an edit war.
 - Generators run from `v1/scripts/` (own `.venv`) and write to
   `outputs/<stamp>/<key>/<kind>/`, one stamp per run, `MANIFEST.md` per kind.
+  Runs for consuming projects go through `generate_integration.py --source
+  <project>` into `integrations/` (same shape, source recorded in manifests);
+  consumers copy out and leave the run behind — never delete their leftovers.
 - To change what an asset looks like, change the config and regenerate. Never
   edit the scripts for a colour, a string, a position or a font.
 - Retired brands live in `v1/archive/`, moved verbatim by `archive_brand.py`
@@ -31,9 +34,9 @@ one, and they encode the checks that are not obvious from the code.
 
 ## Hard rules
 
-1. **Never stage or commit anything unless explicitly told to.** `outputs/` is
-   deliberately tracked-but-uncommitted; do not `git add` it and do not add it
-   to `.gitignore`.
+1. **Never stage or commit anything unless explicitly told to.** `outputs/` and
+   `integrations/` are deliberately tracked-but-uncommitted; do not `git add`
+   them and do not add them to `.gitignore`.
 2. **Never overwrite a brand or a run.** `init_brand.py` refuses existing keys —
    do not work around that. New runs get new stamps; reuse a stamp only to
    deliberately extend that run. Retiring a brand is `archive_brand.py`, never

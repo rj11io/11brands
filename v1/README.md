@@ -7,7 +7,7 @@ brand that varies the colours, the words, and — when needed — everything els
 v1/
 ├── templates/          the mark master, the two config templates, brand.md
 │                       skeleton, FONTS.md, titles example
-├── scripts/            eleven Python scripts + shared brandkit.py + .venv
+├── scripts/            twelve Python scripts + shared brandkit.py + .venv
 ├── brands/             the active registry: one folder per brand
 │   └── <key>/
 │       ├── config.json   every generation variable; the only file scripts read
@@ -15,6 +15,7 @@ v1/
 ├── archive/            retired brands, same shape, invisible to generation
 ├── outputs/            generated assets, one folder per run
 │   └── <stamp>/<key>/{favicons,og-web,og-content}/
+├── integrations/       same shape; runs triggered by consuming projects
 └── skills/             11brands-v1-* agent workflows
 ```
 
@@ -55,6 +56,15 @@ kind folder carries a `MANIFEST.md` of exactly what was used, and two runs can
 always be diffed. Outputs stay tracked in git but are committed only
 deliberately.
 
+**Other projects generate into `integrations/`.** `generate_integration.py
+<key> --source <project>` is the entry point a consuming repo's agent runs:
+same run shape as `outputs/`, but every manifest records the source, and the
+default stamp falls back to `{datetime}-{source}` on a collision (an explicit
+`--run` is honoured verbatim, joining like everywhere else). The consumer
+copies what it needs and leaves the run behind as the record. `outputs/` is the
+operator's workspace; `integrations/` is the only copy-out point for outsiders.
+Same git policy: tracked, committed only deliberately.
+
 ## Setup (once)
 
 Needs Python 3 and Pillow. macOS assumed — the configs point at
@@ -94,6 +104,8 @@ cd v1/scripts
 .venv/bin/python generate_all.py --all                     # full pack, one run folder
 
 .venv/bin/python generate_archived_all.py 11bench-dark-sky # same, from archive/
+
+.venv/bin/python generate_integration.py 11blog --source 11blog-site  # -> integrations/
 ```
 
 - every generator takes `<key>` or `--all`, plus `--run STAMP` to join a run;
