@@ -42,6 +42,8 @@ directory explains itself without anyone having to re-derive it.
 | `ai-rj11io` | ai.rj11.io | light | `#007A55` green | 5.14:1 |
 | `cv-rj11io` | cv.rj11.io | light | `#2563EB` blue | 4.95:1 |
 | `intel-rj11io` | intel.rj11.io | dark | `#EF4444` red | 5.26:1 |
+| `b2b-rj11io` | b2b.rj11.io | dark | `#FBBF24` gold | 11.86:1 |
+| `cc-rj11io` | cc.rj11.io | light | `#B45309` gold | 4.81:1 |
 
 Contrast is the signal against its own ground. A non-text graphic needs 3:1 and
 every brand clears it. The family keeps one mark and one layout; the signal
