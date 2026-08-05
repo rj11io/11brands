@@ -1,6 +1,8 @@
 # 11brands
 
-Brand definitions and generated image assets for the `rj11.io` family: favicon
+## Branding factory for personal projects
+
+Brand definitions and generated image assets for the `*.rj11.io` universe: favicon
 packages and Open Graph cards, all drawn by script from one config per brand.
 
 **The current version is [`v1/`](v1/). `v0/` is deprecated** — kept only as
