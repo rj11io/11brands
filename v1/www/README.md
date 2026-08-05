@@ -1,5 +1,7 @@
 # v0 app boilerplate
 
+Deployed at https://brands.rj11.io/
+
 The reusable Next.js and shadcn/ui starter for v0 benchmark apps. It includes
 TypeScript, Tailwind CSS, theming, path aliases, and the shared UI component
 set.
