@@ -1,0 +1,6 @@
+# One title per line. Blank lines and lines starting with # are skipped.
+# Use with: generate_og_content.py <brand> --titles-file titles.txt
+
+A Tour of the Platform
+How Pages Are Rendered
+Adding a Publication or Post

@@ -1,0 +1,62 @@
+# Agent instructions — 11brands
+
+## Version
+
+**Work in `v1/` only. `v0/` is deprecated: ignore it entirely.** Do not read it
+for guidance, extend it, regenerate from it, or "fix" anything in it. It exists
+as history and as the byte-comparison baseline that validated v1's port. If a
+task seems to require v0, stop and ask.
+
+Start every task by reading [`v1/README.md`](v1/README.md). For workflows, use
+the skills in `v1/skills/` — init, generate, verify, and integration each have
+one, and they encode the checks that are not obvious from the code.
+
+## The model, in four lines
+
+- A brand is `v1/brands/<key>/config.json` — every generation variable, the only
+  file the scripts read. `brand.md` beside it is the human decision record and
+  is never parsed.
+- Keys are `{brand-title}-{variant}`: `11io-dark-orange`. A new idea for the
+  same site is a new key, not an edit war.
+- Generators run from `v1/scripts/` (own `.venv`) and write to
+  `outputs/<stamp>/<key>/<kind>/`, one stamp per run, `MANIFEST.md` per kind.
+- To change what an asset looks like, change the config and regenerate. Never
+  edit the scripts for a colour, a string, a position or a font.
+
+## Hard rules
+
+1. **Never stage or commit anything unless explicitly told to.** `outputs/` is
+   deliberately tracked-but-uncommitted; do not `git add` it and do not add it
+   to `.gitignore`.
+2. **Never overwrite a brand or a run.** `init_brand.py` refuses existing keys —
+   do not work around that. New runs get new stamps; reuse a stamp only to
+   deliberately extend that run.
+3. **Do not resize, re-encode or palette-convert generated images.** Every file
+   is composed at its exact size; downscaling invents out-of-palette colours and
+   a palette-mode icon breaks Next.js builds. This is the project's founding
+   scar tissue — respect it.
+4. **Do not edit `v1/templates/mark.png`** or the template configs' layout
+   sections without being asked; the templates are the family defaults.
+5. **Colour choices need numbers.** A signal must clear 3:1 on its own ground
+   (compute it, never eyeball it); a neutral signal additionally needs checking
+   against the ink and the footer grey. The init skill has the doctrine.
+6. **Verify by measurement, not by looking.** The verify skill has the exact
+   gamut test (enumerate what `compose()` can emit — never an inverse
+   coefficient test, never a step-grid search) and the icon checks.
+7. **Report honestly.** Print the run stamp and paths, quote contrast figures,
+   and if any check failed or was skipped, say so plainly.
+
+## Environment
+
+macOS assumed: configs point at `/System/Library/Fonts/`. Font changes go
+through the config's `font.path`/`font.index` — `v1/templates/FONTS.md` has the
+machine's inventory and the `.ttc` index trap (PT Mono regular is index 1, not
+0). Python env: `cd v1/scripts && python3 -m venv .venv && .venv/bin/pip install
+Pillow` if missing.
+
+## For other repositories
+
+A consuming project (website, blog, app) integrates via
+[`v1/skills/11brands-v1-integration/`](v1/skills/11brands-v1-integration/): it
+defines the contract — generate, copy out unmodified, record the stamp, never
+commit here — and includes a template for writing that repo's own skill.

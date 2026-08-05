@@ -1,33 +1,33 @@
 # 11brands
 
-Reusable brand definitions and generated image assets for the `rj11.io` family.
-The current version lives under `v0/` and contains the Python generators, one
-Markdown definition per brand, generated favicon and Open Graph assets, and
-the repo-local workflow guides for using them.
+Brand definitions and generated image assets for the `rj11.io` family: favicon
+packages and Open Graph cards, all drawn by script from one config per brand.
+
+**The current version is [`v1/`](v1/). `v0/` is deprecated** — kept only as
+history and a comparison baseline. Do not use it, extend it, or copy from it.
 
 ## Start here
 
-- **Add a brand** → [`v0/skills/11brands-v0-init-brand/`](v0/skills/11brands-v0-init-brand/)
-- **Generate assets** → [`v0/skills/11brands-v0-generate-assets/`](v0/skills/11brands-v0-generate-assets/)
-- **Verify generated assets** → [`v0/skills/11brands-v0-verify-assets/`](v0/skills/11brands-v0-verify-assets/)
-- **Promote a draft** → [`v0/skills/11brands-v0-promote-draft/`](v0/skills/11brands-v0-promote-draft/)
-- **Read the v0 overview** → [`v0/README.md`](v0/README.md)
-- **Browse the registered brands** → [`v0/brands/README.md`](v0/brands/README.md)
+- **Read the v1 overview** → [`v1/README.md`](v1/README.md)
+- **Add a brand** → [`v1/skills/11brands-v1-init-brand/`](v1/skills/11brands-v1-init-brand/)
+- **Generate assets** → [`v1/skills/11brands-v1-generate-assets/`](v1/skills/11brands-v1-generate-assets/)
+- **Verify output** → [`v1/skills/11brands-v1-verify-assets/`](v1/skills/11brands-v1-verify-assets/)
+- **Use from another repo** → [`v1/skills/11brands-v1-integration/`](v1/skills/11brands-v1-integration/)
+- **Agent ground rules** → [`AGENTS.md`](AGENTS.md)
 
 ## Layout
 
 ```text
-v0/
-├── asset-generation-scripts/   Python generators and their shared module
-├── drafts/                     where generated assets land first
-├── brands/                     the registered set and its generated output
-└── skills/                     repo-local workflow guides
+v1/                 current
+├── templates/      mark master, config templates, FONTS.md
+├── scripts/        init + three generators + full-pack runner
+├── brands/         the registry: config.json + brand.md per brand
+├── outputs/        generated assets, one folder per stamped run
+└── skills/         11brands-v1-* agent workflows
+
+v0/                 DEPRECATED — history only, do not touch
 ```
 
-Each brand folder, in `drafts/` and `brands/` alike, holds a `brand.md` for the
-record and a `config.json` holding every generation variable. Change a value in the
-config and re-run a generator to test an idea.
-
-Generated assets and manifests are written under `v0/drafts/` by default, and
-reach `v0/brands/` only by promotion. Copying an asset into a consuming site is a
-further separate step.
+Generated assets land in `v1/outputs/` and are tracked but committed only
+deliberately. Copying an asset into a consuming site is a separate step, done
+from an outputs run, unmodified.
