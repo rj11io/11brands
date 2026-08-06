@@ -1,3 +1,13 @@
+# [1.2.0](https://github.com/rj11io/11brands/compare/v1.1.0...v1.2.0) (2026-08-06)
+
+
+### Features
+
+* 11archive brand and 11blog-11archive sub-brand ([ff82dfd](https://github.com/rj11io/11brands/commit/ff82dfd9d540c01addbbfb4b49178508d0911464)), closes [#0F766E](https://github.com/rj11io/11brands/issues/0F766E) [#FAFAFA](https://github.com/rj11io/11brands/issues/FAFAFA)
+* 11pc and 11gw dark-mode candidate rounds, six variants each ([84cac88](https://github.com/rj11io/11brands/commit/84cac88faa53cfbbbcc3fa22eb6082ad85e7c5a5)), closes [#EF4444](https://github.com/rj11io/11brands/issues/EF4444)
+* 11sponsors light-mode candidate round, six pink and six green ([5bc2975](https://github.com/rj11io/11brands/commit/5bc297567ec2671acf23636901d2af144a6ea3e4)), closes [#EC4899](https://github.com/rj11io/11brands/issues/EC4899) [#2BC88F](https://github.com/rj11io/11brands/issues/2BC88F)
+* 11support brand and 11blog-11support sub-brand ([4fccb42](https://github.com/rj11io/11brands/commit/4fccb42acbf6f77213b0786ad88f6e49ae55b8ef)), closes [#EC4899](https://github.com/rj11io/11brands/issues/EC4899)
+
 # [1.1.0](https://github.com/rj11io/11brands/compare/v1.0.0...v1.1.0) (2026-08-05)
 
 
