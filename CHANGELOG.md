@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/rj11io/11brands/compare/v1.0.0...v1.1.0) (2026-08-05)
+
+
+### Features
+
+* **www:** apply 11brands favicon and og-web from snapshot ([77041be](https://github.com/rj11io/11brands/commit/77041be7da364a01b8cd62a9541dce3c6b5380eb))
+
 # 1.0.0 (2026-08-05)
 
 
