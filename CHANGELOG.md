@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/rj11io/11brands/compare/v1.2.0...v1.3.0) (2026-08-07)
+
+
+### Features
+
+* 11sponsors brand and 11blog-11sponsors sub-brand ([e0fca92](https://github.com/rj11io/11brands/commit/e0fca92de7320e3c4cd10c1c0dd3f937c37ff6f6)), closes [#2BC88F](https://github.com/rj11io/11brands/issues/2BC88F) [#FAFAFA](https://github.com/rj11io/11brands/issues/FAFAFA)
+
 # [1.2.0](https://github.com/rj11io/11brands/compare/v1.1.0...v1.2.0) (2026-08-06)
 
 
