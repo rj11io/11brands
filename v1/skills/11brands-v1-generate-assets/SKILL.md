@@ -21,6 +21,7 @@ cd v1/scripts
 .venv/bin/python generate_og_web.py --all
 .venv/bin/python generate_og_content.py 11blog --title "Adding a Post"
 .venv/bin/python generate_all.py --all
+.venv/bin/python generate_color_sweep.py 11colorlab
 ```
 
 If `.venv` is missing: `python3 -m venv .venv && .venv/bin/pip install Pillow`.
@@ -56,6 +57,28 @@ Do not edit the scripts to change a colour, position, string or font — everyth
 that affects an image is in the config. Font changes have their own reference:
 `templates/FONTS.md`, including the `.ttc` index trap. When an idea is settled,
 record the why in `brands/<key>/brand.md`.
+
+## Exhaustive Tailwind colour experiments
+
+For a broad colour round, use one testing brand and the dedicated sweep tool:
+
+```bash
+cd v1/scripts
+.venv/bin/python generate_color_sweep.py 11colorlab
+```
+
+The checked-in palette covers Tailwind v4.3.2's 288 default tokens: 26 colour
+families at 50 through 950, plus black and white. Each token renders against
+both the dark and light contexts. Contrast is reported but never filters the
+experiment. The tool reads the test config and never changes it.
+
+Output goes to `/private/tmp/11colorlab/<stamp>/index.html`; the same folder
+contains `COLOR-SWEEP.json`, exact-size 16px and 32px previews, and 1200x630
+cards. The source palette is `scripts/data/tailwind-v4.3.2.css` and the
+reference is https://tailwindcss.com/docs/colors.
+
+Use normal stamped generators for finalists. Do not copy sweep previews into a
+consumer project or treat them as a canonical brand pack.
 
 ## Check before reporting
 

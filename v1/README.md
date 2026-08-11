@@ -110,6 +110,7 @@ cd v1/scripts
 .venv/bin/python generate_og_content.py 11blog --title "Adding a Post"
 .venv/bin/python generate_og_content.py 11blog --titles-file titles.txt
 .venv/bin/python generate_all.py --all                     # full pack, one run folder
+.venv/bin/python generate_color_sweep.py 11colorlab        # Tailwind atlas, temp output
 
 .venv/bin/python generate_archived_all.py 11bench-dark-sky # same, from archive/
 
@@ -126,6 +127,9 @@ cd v1/scripts
 - a content run with **no title** uses the config's `text.title` — the templates
   ship `"Lorem Ipsum"`, so a bare run produces a complete placeholder card
 - a titles file is one title per line; blank lines and `#` comments are skipped
+- `generate_color_sweep.py` renders all 288 Tailwind v4.3.2 tokens against both
+  dark and light contexts, reports contrast without filtering, and writes an
+  HTML atlas under `/private/tmp/11colorlab/<stamp>/`
 
 ## The config, briefly
 
@@ -181,6 +185,7 @@ history — nothing in it should be used or edited.
 | --- | --- |
 | `skills/11brands-v1-init-brand/` | choosing a signal colour and registering a brand |
 | `skills/11brands-v1-generate-assets/` | running the generators, testing config ideas |
+| `scripts/generate_color_sweep.py` | exhaustive Tailwind colour experiments from one test brand |
 | `skills/11brands-v1-verify-assets/` | measuring changes, gamut and icon checks |
 | `skills/11brands-v1-archive-brand/` | retiring a brand out of generation |
 | `skills/11brands-v1-generate-archived/` | revisiting a retired brand in place |

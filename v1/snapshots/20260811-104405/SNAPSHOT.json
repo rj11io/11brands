@@ -1,0 +1,2530 @@
+{
+  "stamp": "20260811-104405",
+  "created": "2026-08-11T10:44:05",
+  "sections": {
+    "brands": {
+      "brands": [
+        {
+          "key": "11ai",
+          "domain": "ai.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#007A55",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 5.14,
+          "text": {
+            "masthead": "ai.rj11.io",
+            "website_row": "ai.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11ai-og-web.png"]
+          }
+        },
+        {
+          "key": "11archive",
+          "domain": "archive.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#0F766E",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 5.24,
+          "text": {
+            "masthead": "archive.rj11.io",
+            "website_row": "archive.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11archive-og-web.png"]
+          }
+        },
+        {
+          "key": "11b2b",
+          "domain": "b2b.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#FBBF24",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 11.86,
+          "text": {
+            "masthead": "b2b.rj11.io",
+            "website_row": "b2b.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11b2b-og-web.png"]
+          }
+        },
+        {
+          "key": "11bench",
+          "domain": "bench.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#22D3EE",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 10.96,
+          "text": {
+            "masthead": "bench.rj11.io",
+            "website_row": "bench.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11bench-og-web.png"]
+          }
+        },
+        {
+          "key": "11blog",
+          "domain": "blog.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#2BC88F",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 9.2,
+          "text": {
+            "masthead": "blog.rj11.io",
+            "website_row": "blog.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11blog-og-web.png"]
+          }
+        },
+        {
+          "key": "11blog-11ai",
+          "domain": "blog.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#007A55",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 5.14,
+          "text": {
+            "masthead": "blog.rj11.io",
+            "website_row": "blog.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11blog-11ai-og-web.png"]
+          }
+        },
+        {
+          "key": "11blog-11archive",
+          "domain": "blog.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#0F766E",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 5.24,
+          "text": {
+            "masthead": "blog.rj11.io",
+            "website_row": "blog.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11blog-11archive-og-web.png"]
+          }
+        },
+        {
+          "key": "11blog-11b2b",
+          "domain": "blog.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#FBBF24",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 11.86,
+          "text": {
+            "masthead": "blog.rj11.io",
+            "website_row": "blog.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11blog-11b2b-og-web.png"]
+          }
+        },
+        {
+          "key": "11blog-11bench",
+          "domain": "blog.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#22D3EE",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 10.96,
+          "text": {
+            "masthead": "blog.rj11.io",
+            "website_row": "blog.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11blog-11bench-og-web.png"]
+          }
+        },
+        {
+          "key": "11blog-11brands",
+          "domain": "blog.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#F472B6",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 7.48,
+          "text": {
+            "masthead": "blog.rj11.io",
+            "website_row": "blog.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11blog-11brands-og-web.png"]
+          }
+        },
+        {
+          "key": "11blog-11cc",
+          "domain": "blog.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#B4BDC4",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 10.39,
+          "text": {
+            "masthead": "blog.rj11.io",
+            "website_row": "blog.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11blog-11cc-og-web.png"]
+          }
+        },
+        {
+          "key": "11blog-11cv",
+          "domain": "blog.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#2563EB",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 4.95,
+          "text": {
+            "masthead": "blog.rj11.io",
+            "website_row": "blog.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11blog-11cv-og-web.png"]
+          }
+        },
+        {
+          "key": "11blog-11intel",
+          "domain": "blog.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#EF4444",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 5.26,
+          "text": {
+            "masthead": "blog.rj11.io",
+            "website_row": "blog.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11blog-11intel-og-web.png"]
+          }
+        },
+        {
+          "key": "11blog-11io",
+          "domain": "blog.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#F97316",
+            "ground": "#0C0907",
+            "ink": "#FAF8F6",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 7.08,
+          "text": {
+            "masthead": "blog.rj11.io",
+            "website_row": "blog.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11blog-11io-og-web.png"]
+          }
+        },
+        {
+          "key": "11blog-11labs",
+          "domain": "blog.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#EA580C",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.41,
+          "text": {
+            "masthead": "blog.rj11.io",
+            "website_row": "blog.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11blog-11labs-og-web.png"]
+          }
+        },
+        {
+          "key": "11blog-11sponsors",
+          "domain": "blog.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#2BC88F",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 2.06,
+          "text": {
+            "masthead": "blog.rj11.io",
+            "website_row": "blog.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11blog-11sponsors-og-web.png"]
+          }
+        },
+        {
+          "key": "11blog-11support",
+          "domain": "blog.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#EC4899",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.38,
+          "text": {
+            "masthead": "blog.rj11.io",
+            "website_row": "blog.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11blog-11support-og-web.png"]
+          }
+        },
+        {
+          "key": "11brands",
+          "domain": "brands.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#F472B6",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 7.48,
+          "text": {
+            "masthead": "brands.rj11.io",
+            "website_row": "brands.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11brands-og-web.png"]
+          }
+        },
+        {
+          "key": "11cc",
+          "domain": "cc.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#B4BDC4",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 10.39,
+          "text": {
+            "masthead": "cc.rj11.io",
+            "website_row": "cc.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11cc-og-web.png"]
+          }
+        },
+        {
+          "key": "11colorlab",
+          "domain": "colorlab.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#F97316",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 7.06,
+          "text": {
+            "masthead": "colorlab.rj11.io",
+            "website_row": "colorlab.rj11.io",
+            "footer_text": "TAILWIND COLOR LAB",
+            "title": "Tailwind Color Sweep"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["tailwind-color-sweep-og-content.png"],
+            "og-web": ["11colorlab-og-web.png"]
+          }
+        },
+        {
+          "key": "11cv",
+          "domain": "cv.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#2563EB",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 4.95,
+          "text": {
+            "masthead": "cv.rj11.io",
+            "website_row": "cv.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11cv-og-web.png"]
+          }
+        },
+        {
+          "key": "11intel",
+          "domain": "intel.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#EF4444",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 5.26,
+          "text": {
+            "masthead": "intel.rj11.io",
+            "website_row": "intel.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11intel-og-web.png"]
+          }
+        },
+        {
+          "key": "11io",
+          "domain": "www.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#F97316",
+            "ground": "#0C0907",
+            "ink": "#FAF8F6",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 7.08,
+          "text": {
+            "masthead": "www.rj11.io",
+            "website_row": "www.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11io-og-web.png"]
+          }
+        },
+        {
+          "key": "11labs",
+          "domain": "labs.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#EA580C",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.41,
+          "text": {
+            "masthead": "labs.rj11.io",
+            "website_row": "labs.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11labs-og-web.png"]
+          }
+        },
+        {
+          "key": "11sponsors",
+          "domain": "sponsors.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#2BC88F",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 2.06,
+          "text": {
+            "masthead": "sponsors.rj11.io",
+            "website_row": "sponsors.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11sponsors-og-web.png"]
+          }
+        },
+        {
+          "key": "11support",
+          "domain": "support.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#EC4899",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.38,
+          "text": {
+            "masthead": "support.rj11.io",
+            "website_row": "support.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11support-og-web.png"]
+          }
+        }
+      ]
+    },
+    "archive": {
+      "brands": [
+        {
+          "key": "11archive-light-bronze",
+          "domain": "archive.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#A16207",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 4.72,
+          "text": {
+            "masthead": "archive.rj11.io",
+            "website_row": "archive.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11archive-light-bronze-og-web.png"]
+          }
+        },
+        {
+          "key": "11archive-light-indigo",
+          "domain": "archive.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#4F46E5",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 6.02,
+          "text": {
+            "masthead": "archive.rj11.io",
+            "website_row": "archive.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11archive-light-indigo-og-web.png"]
+          }
+        },
+        {
+          "key": "11archive-light-indigo700",
+          "domain": "archive.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#4338CA",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 7.57,
+          "text": {
+            "masthead": "archive.rj11.io",
+            "website_row": "archive.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11archive-light-indigo700-og-web.png"]
+          }
+        },
+        {
+          "key": "11archive-light-olive",
+          "domain": "archive.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#4D7C0F",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 4.78,
+          "text": {
+            "masthead": "archive.rj11.io",
+            "website_row": "archive.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11archive-light-olive-og-web.png"]
+          }
+        },
+        {
+          "key": "11archive-light-plum",
+          "domain": "archive.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#6B21A8",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 8.35,
+          "text": {
+            "masthead": "archive.rj11.io",
+            "website_row": "archive.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11archive-light-plum-og-web.png"]
+          }
+        },
+        {
+          "key": "11archive-light-purple",
+          "domain": "archive.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#7E22CE",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 6.69,
+          "text": {
+            "masthead": "archive.rj11.io",
+            "website_row": "archive.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11archive-light-purple-og-web.png"]
+          }
+        },
+        {
+          "key": "11archive-light-sepia",
+          "domain": "archive.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#78350F",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 8.69,
+          "text": {
+            "masthead": "archive.rj11.io",
+            "website_row": "archive.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11archive-light-sepia-og-web.png"]
+          }
+        },
+        {
+          "key": "11archive-light-slate",
+          "domain": "archive.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#475569",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 7.26,
+          "text": {
+            "masthead": "archive.rj11.io",
+            "website_row": "archive.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11archive-light-slate-og-web.png"]
+          }
+        },
+        {
+          "key": "11archive-light-teal",
+          "domain": "archive.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#0F766E",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 5.24,
+          "text": {
+            "masthead": "archive.rj11.io",
+            "website_row": "archive.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11archive-light-teal-og-web.png"]
+          }
+        },
+        {
+          "key": "11archive-light-violet",
+          "domain": "archive.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#6D28D9",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 6.81,
+          "text": {
+            "masthead": "archive.rj11.io",
+            "website_row": "archive.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11archive-light-violet-og-web.png"]
+          }
+        },
+        {
+          "key": "11b2b-antiquegold",
+          "domain": "b2b.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#B8860B",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 6.08,
+          "text": {
+            "masthead": "b2b.rj11.io",
+            "website_row": "b2b.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11b2b-antiquegold-og-web.png"]
+          }
+        },
+        {
+          "key": "11b2b-champagne",
+          "domain": "b2b.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#DCB863",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 10.45,
+          "text": {
+            "masthead": "b2b.rj11.io",
+            "website_row": "b2b.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11b2b-champagne-og-web.png"]
+          }
+        },
+        {
+          "key": "11b2b-honeyamber",
+          "domain": "b2b.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#D97706",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 6.21,
+          "text": {
+            "masthead": "b2b.rj11.io",
+            "website_row": "b2b.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11b2b-honeyamber-og-web.png"]
+          }
+        },
+        {
+          "key": "11b2b-royalgold",
+          "domain": "b2b.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#D4AF37",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 9.42,
+          "text": {
+            "masthead": "b2b.rj11.io",
+            "website_row": "b2b.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11b2b-royalgold-og-web.png"]
+          }
+        },
+        {
+          "key": "11bench-dark-blue",
+          "domain": "bench.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#60A5FA",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 7.79,
+          "text": {
+            "masthead": "bench.rj11.io",
+            "website_row": "bench.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11bench-dark-blue-og-web.png"]
+          }
+        },
+        {
+          "key": "11bench-dark-cyan",
+          "domain": "bench.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#22D3EE",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 10.96,
+          "text": {
+            "masthead": "bench.rj11.io",
+            "website_row": "bench.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11bench-dark-cyan-og-web.png"]
+          }
+        },
+        {
+          "key": "11bench-dark-indigo",
+          "domain": "bench.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#818CF8",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 6.64,
+          "text": {
+            "masthead": "bench.rj11.io",
+            "website_row": "bench.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11bench-dark-indigo-og-web.png"]
+          }
+        },
+        {
+          "key": "11bench-dark-sky",
+          "domain": "bench.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#38BDF8",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 9.24,
+          "text": {
+            "masthead": "bench.rj11.io",
+            "website_row": "bench.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11bench-dark-sky-og-web.png"]
+          }
+        },
+        {
+          "key": "11brands-dark-fuchsia",
+          "domain": "brands.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#E879F9",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 8.05,
+          "text": {
+            "masthead": "brands.rj11.io",
+            "website_row": "brands.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11brands-dark-fuchsia-og-web.png"]
+          }
+        },
+        {
+          "key": "11brands-dark-pink",
+          "domain": "brands.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#F472B6",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 7.48,
+          "text": {
+            "masthead": "brands.rj11.io",
+            "website_row": "brands.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11brands-dark-pink-og-web.png"]
+          }
+        },
+        {
+          "key": "11brands-dark-violet",
+          "domain": "brands.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#A78BFA",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 7.27,
+          "text": {
+            "masthead": "brands.rj11.io",
+            "website_row": "brands.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11brands-dark-violet-og-web.png"]
+          }
+        },
+        {
+          "key": "11brands-light-fuchsia",
+          "domain": "brands.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#A21CAF",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 6.06,
+          "text": {
+            "masthead": "brands.rj11.io",
+            "website_row": "brands.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11brands-light-fuchsia-og-web.png"]
+          }
+        },
+        {
+          "key": "11brands-light-pink",
+          "domain": "brands.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#BE185D",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 5.78,
+          "text": {
+            "masthead": "brands.rj11.io",
+            "website_row": "brands.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11brands-light-pink-og-web.png"]
+          }
+        },
+        {
+          "key": "11brands-light-violet",
+          "domain": "brands.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#7C3AED",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 5.46,
+          "text": {
+            "masthead": "brands.rj11.io",
+            "website_row": "brands.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11brands-light-violet-og-web.png"]
+          }
+        },
+        {
+          "key": "11gw-dark-raspberry",
+          "domain": "gw.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#F0416C",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 5.35,
+          "text": {
+            "masthead": "gw.rj11.io",
+            "website_row": "gw.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11gw-dark-raspberry-og-web.png"]
+          }
+        },
+        {
+          "key": "11gw-dark-red300",
+          "domain": "gw.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#FCA5A5",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 10.43,
+          "text": {
+            "masthead": "gw.rj11.io",
+            "website_row": "gw.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11gw-dark-red300-og-web.png"]
+          }
+        },
+        {
+          "key": "11gw-dark-red400",
+          "domain": "gw.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#F87171",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 7.16,
+          "text": {
+            "masthead": "gw.rj11.io",
+            "website_row": "gw.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11gw-dark-red400-og-web.png"]
+          }
+        },
+        {
+          "key": "11gw-dark-rose400",
+          "domain": "gw.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#FB7185",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 7.36,
+          "text": {
+            "masthead": "gw.rj11.io",
+            "website_row": "gw.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11gw-dark-rose400-og-web.png"]
+          }
+        },
+        {
+          "key": "11gw-dark-salmon",
+          "domain": "gw.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#F98A80",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 8.46,
+          "text": {
+            "masthead": "gw.rj11.io",
+            "website_row": "gw.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11gw-dark-salmon-og-web.png"]
+          }
+        },
+        {
+          "key": "11gw-dark-terracotta",
+          "domain": "gw.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#E77E63",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 7.13,
+          "text": {
+            "masthead": "gw.rj11.io",
+            "website_row": "gw.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11gw-dark-terracotta-og-web.png"]
+          }
+        },
+        {
+          "key": "11gw-light-crimson",
+          "domain": "gw.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#C81E1E",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 5.5,
+          "text": {
+            "masthead": "gw.rj11.io",
+            "website_row": "gw.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11gw-light-crimson-og-web.png"]
+          }
+        },
+        {
+          "key": "11gw-light-red600",
+          "domain": "gw.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#DC2626",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 4.63,
+          "text": {
+            "masthead": "gw.rj11.io",
+            "website_row": "gw.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11gw-light-red600-og-web.png"]
+          }
+        },
+        {
+          "key": "11gw-light-red700",
+          "domain": "gw.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#B91C1C",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 6.2,
+          "text": {
+            "masthead": "gw.rj11.io",
+            "website_row": "gw.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11gw-light-red700-og-web.png"]
+          }
+        },
+        {
+          "key": "11gw-light-red800",
+          "domain": "gw.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#991B1B",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 7.96,
+          "text": {
+            "masthead": "gw.rj11.io",
+            "website_row": "gw.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11gw-light-red800-og-web.png"]
+          }
+        },
+        {
+          "key": "11gw-light-rose600",
+          "domain": "gw.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#E11D48",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 4.5,
+          "text": {
+            "masthead": "gw.rj11.io",
+            "website_row": "gw.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11gw-light-rose600-og-web.png"]
+          }
+        },
+        {
+          "key": "11gw-light-rose800",
+          "domain": "gw.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#9F1239",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 7.68,
+          "text": {
+            "masthead": "gw.rj11.io",
+            "website_row": "gw.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11gw-light-rose800-og-web.png"]
+          }
+        },
+        {
+          "key": "11io-dark-bright",
+          "domain": "www.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#EA580C",
+            "ground": "#0C0907",
+            "ink": "#FAF8F6",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 5.58,
+          "text": {
+            "masthead": "www.rj11.io",
+            "website_row": "www.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11io-dark-bright-og-web.png"]
+          }
+        },
+        {
+          "key": "11labs-light-bright",
+          "domain": "labs.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#EA580C",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.41,
+          "text": {
+            "masthead": "labs.rj11.io",
+            "website_row": "labs.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11labs-light-bright-og-web.png"]
+          }
+        },
+        {
+          "key": "11labs-light-ember",
+          "domain": "labs.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#9A3412",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 7.0,
+          "text": {
+            "masthead": "labs.rj11.io",
+            "website_row": "labs.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11labs-light-ember-og-web.png"]
+          }
+        },
+        {
+          "key": "11labs-light-orange",
+          "domain": "labs.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#C2410C",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 4.96,
+          "text": {
+            "masthead": "labs.rj11.io",
+            "website_row": "labs.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11labs-light-orange-og-web.png"]
+          }
+        },
+        {
+          "key": "11labs-light-warm",
+          "domain": "labs.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#C2410C",
+            "ground": "#FAF8F6",
+            "ink": "#0C0907",
+            "footer": "#676767"
+          },
+          "contrast": 4.89,
+          "text": {
+            "masthead": "labs.rj11.io",
+            "website_row": "labs.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11labs-light-warm-og-web.png"]
+          }
+        },
+        {
+          "key": "11pc-dark-amber500",
+          "domain": "pc.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#F59E0B",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 9.22,
+          "text": {
+            "masthead": "pc.rj11.io",
+            "website_row": "pc.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11pc-dark-amber500-og-web.png"]
+          }
+        },
+        {
+          "key": "11pc-dark-brass600",
+          "domain": "pc.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#BFA100",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 7.84,
+          "text": {
+            "masthead": "pc.rj11.io",
+            "website_row": "pc.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11pc-dark-brass600-og-web.png"]
+          }
+        },
+        {
+          "key": "11pc-dark-citron600",
+          "domain": "pc.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#B8C400",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 10.31,
+          "text": {
+            "masthead": "pc.rj11.io",
+            "website_row": "pc.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11pc-dark-citron600-og-web.png"]
+          }
+        },
+        {
+          "key": "11pc-dark-gold600",
+          "domain": "pc.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#C9A227",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 8.18,
+          "text": {
+            "masthead": "pc.rj11.io",
+            "website_row": "pc.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11pc-dark-gold600-og-web.png"]
+          }
+        },
+        {
+          "key": "11pc-dark-olive500",
+          "domain": "pc.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#9CAF00",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 8.06,
+          "text": {
+            "masthead": "pc.rj11.io",
+            "website_row": "pc.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11pc-dark-olive500-og-web.png"]
+          }
+        },
+        {
+          "key": "11pc-dark-yellow600",
+          "domain": "pc.rj11.io",
+          "mode": "dark",
+          "colors": {
+            "signal": "#CA8A04",
+            "ground": "#0A0A0A",
+            "ink": "#FAFAFA",
+            "footer": "#A1A1A1"
+          },
+          "contrast": 6.74,
+          "text": {
+            "masthead": "pc.rj11.io",
+            "website_row": "pc.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11pc-dark-yellow600-og-web.png"]
+          }
+        },
+        {
+          "key": "11pc-light-amber600",
+          "domain": "pc.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#D97706",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.05,
+          "text": {
+            "masthead": "pc.rj11.io",
+            "website_row": "pc.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11pc-light-amber600-og-web.png"]
+          }
+        },
+        {
+          "key": "11pc-light-amber700",
+          "domain": "pc.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#B45309",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 4.81,
+          "text": {
+            "masthead": "pc.rj11.io",
+            "website_row": "pc.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11pc-light-amber700-og-web.png"]
+          }
+        },
+        {
+          "key": "11pc-light-brass",
+          "domain": "pc.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#B08900",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.13,
+          "text": {
+            "masthead": "pc.rj11.io",
+            "website_row": "pc.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11pc-light-brass-og-web.png"]
+          }
+        },
+        {
+          "key": "11pc-light-gold",
+          "domain": "pc.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#9F7A00",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.83,
+          "text": {
+            "masthead": "pc.rj11.io",
+            "website_row": "pc.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11pc-light-gold-og-web.png"]
+          }
+        },
+        {
+          "key": "11pc-light-mustard",
+          "domain": "pc.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#8A6D0B",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 4.71,
+          "text": {
+            "masthead": "pc.rj11.io",
+            "website_row": "pc.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11pc-light-mustard-og-web.png"]
+          }
+        },
+        {
+          "key": "11pc-light-yellow800",
+          "domain": "pc.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#854D0E",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 6.56,
+          "text": {
+            "masthead": "pc.rj11.io",
+            "website_row": "pc.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11pc-light-yellow800-og-web.png"]
+          }
+        },
+        {
+          "key": "11portfolio-light-blue500",
+          "domain": "portfolio.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#3B82F6",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.52,
+          "text": {
+            "masthead": "portfolio.rj11.io",
+            "website_row": "portfolio.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11portfolio-light-blue500-og-web.png"]
+          }
+        },
+        {
+          "key": "11portfolio-light-blue900",
+          "domain": "portfolio.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#1E3A8A",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 9.92,
+          "text": {
+            "masthead": "portfolio.rj11.io",
+            "website_row": "portfolio.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11portfolio-light-blue900-og-web.png"]
+          }
+        },
+        {
+          "key": "11portfolio-light-cerulean",
+          "domain": "portfolio.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#17638F",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 6.25,
+          "text": {
+            "masthead": "portfolio.rj11.io",
+            "website_row": "portfolio.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11portfolio-light-cerulean-og-web.png"]
+          }
+        },
+        {
+          "key": "11portfolio-light-cobalt",
+          "domain": "portfolio.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#1552B5",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 6.92,
+          "text": {
+            "masthead": "portfolio.rj11.io",
+            "website_row": "portfolio.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11portfolio-light-cobalt-og-web.png"]
+          }
+        },
+        {
+          "key": "11portfolio-light-cyan400",
+          "domain": "portfolio.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#22D3EE",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 1.73,
+          "text": {
+            "masthead": "portfolio.rj11.io",
+            "website_row": "portfolio.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11portfolio-light-cyan400-og-web.png"]
+          }
+        },
+        {
+          "key": "11portfolio-light-cyan600",
+          "domain": "portfolio.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#0891B2",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.53,
+          "text": {
+            "masthead": "portfolio.rj11.io",
+            "website_row": "portfolio.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11portfolio-light-cyan600-og-web.png"]
+          }
+        },
+        {
+          "key": "11portfolio-light-dodger",
+          "domain": "portfolio.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#1E90FF",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.1,
+          "text": {
+            "masthead": "portfolio.rj11.io",
+            "website_row": "portfolio.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11portfolio-light-dodger-og-web.png"]
+          }
+        },
+        {
+          "key": "11portfolio-light-sky600",
+          "domain": "portfolio.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#0284C7",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.92,
+          "text": {
+            "masthead": "portfolio.rj11.io",
+            "website_row": "portfolio.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11portfolio-light-sky600-og-web.png"]
+          }
+        },
+        {
+          "key": "11portfolio-light-sky700",
+          "domain": "portfolio.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#0369A1",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 5.68,
+          "text": {
+            "masthead": "portfolio.rj11.io",
+            "website_row": "portfolio.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11portfolio-light-sky700-og-web.png"]
+          }
+        },
+        {
+          "key": "11portfolio-light-ultramarine",
+          "domain": "portfolio.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#2B3FBF",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 7.84,
+          "text": {
+            "masthead": "portfolio.rj11.io",
+            "website_row": "portfolio.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11portfolio-light-ultramarine-og-web.png"]
+          }
+        },
+        {
+          "key": "11sponsors-light-bloggreen",
+          "domain": "sponsors.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#2BC88F",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 2.06,
+          "text": {
+            "masthead": "sponsors.rj11.io",
+            "website_row": "sponsors.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11sponsors-light-bloggreen-og-web.png"]
+          }
+        },
+        {
+          "key": "11sponsors-light-emerald600",
+          "domain": "sponsors.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#059669",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.61,
+          "text": {
+            "masthead": "sponsors.rj11.io",
+            "website_row": "sponsors.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11sponsors-light-emerald600-og-web.png"]
+          }
+        },
+        {
+          "key": "11sponsors-light-fern",
+          "domain": "sponsors.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#2F7D32",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 4.91,
+          "text": {
+            "masthead": "sponsors.rj11.io",
+            "website_row": "sponsors.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11sponsors-light-fern-og-web.png"]
+          }
+        },
+        {
+          "key": "11sponsors-light-forest",
+          "domain": "sponsors.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#14532D",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 8.73,
+          "text": {
+            "masthead": "sponsors.rj11.io",
+            "website_row": "sponsors.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11sponsors-light-forest-og-web.png"]
+          }
+        },
+        {
+          "key": "11sponsors-light-fuchsia600",
+          "domain": "sponsors.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#C026D3",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 4.51,
+          "text": {
+            "masthead": "sponsors.rj11.io",
+            "website_row": "sponsors.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11sponsors-light-fuchsia600-og-web.png"]
+          }
+        },
+        {
+          "key": "11sponsors-light-green600",
+          "domain": "sponsors.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#16A34A",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.16,
+          "text": {
+            "masthead": "sponsors.rj11.io",
+            "website_row": "sponsors.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11sponsors-light-green600-og-web.png"]
+          }
+        },
+        {
+          "key": "11sponsors-light-moss",
+          "domain": "sponsors.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#3F6212",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 6.78,
+          "text": {
+            "masthead": "sponsors.rj11.io",
+            "website_row": "sponsors.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11sponsors-light-moss-og-web.png"]
+          }
+        },
+        {
+          "key": "11sponsors-light-mulberry",
+          "domain": "sponsors.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#A34A78",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 5.28,
+          "text": {
+            "masthead": "sponsors.rj11.io",
+            "website_row": "sponsors.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11sponsors-light-mulberry-og-web.png"]
+          }
+        },
+        {
+          "key": "11sponsors-light-pink900",
+          "domain": "sponsors.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#831843",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 9.24,
+          "text": {
+            "masthead": "sponsors.rj11.io",
+            "website_row": "sponsors.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11sponsors-light-pink900-og-web.png"]
+          }
+        },
+        {
+          "key": "11sponsors-light-plum",
+          "domain": "sponsors.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#8E3B6B",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 6.73,
+          "text": {
+            "masthead": "sponsors.rj11.io",
+            "website_row": "sponsors.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11sponsors-light-plum-og-web.png"]
+          }
+        },
+        {
+          "key": "11sponsors-light-raspberry",
+          "domain": "sponsors.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#C13B72",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 4.86,
+          "text": {
+            "masthead": "sponsors.rj11.io",
+            "website_row": "sponsors.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11sponsors-light-raspberry-og-web.png"]
+          }
+        },
+        {
+          "key": "11sponsors-light-supportpink",
+          "domain": "sponsors.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#EC4899",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.38,
+          "text": {
+            "masthead": "sponsors.rj11.io",
+            "website_row": "sponsors.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11sponsors-light-supportpink-og-web.png"]
+          }
+        },
+        {
+          "key": "11support-light-bright",
+          "domain": "support.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#DB2777",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 4.4,
+          "text": {
+            "masthead": "support.rj11.io",
+            "website_row": "support.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11support-light-bright-og-web.png"]
+          }
+        },
+        {
+          "key": "11support-light-fuchsia500",
+          "domain": "support.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#D946EF",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.31,
+          "text": {
+            "masthead": "support.rj11.io",
+            "website_row": "support.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11support-light-fuchsia500-og-web.png"]
+          }
+        },
+        {
+          "key": "11support-light-magenta",
+          "domain": "support.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#A21CAF",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 6.06,
+          "text": {
+            "masthead": "support.rj11.io",
+            "website_row": "support.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11support-light-magenta-og-web.png"]
+          }
+        },
+        {
+          "key": "11support-light-pink",
+          "domain": "support.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#BE185D",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 5.78,
+          "text": {
+            "masthead": "support.rj11.io",
+            "website_row": "support.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11support-light-pink-og-web.png"]
+          }
+        },
+        {
+          "key": "11support-light-pink400",
+          "domain": "support.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#F472B6",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 2.54,
+          "text": {
+            "masthead": "support.rj11.io",
+            "website_row": "support.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11support-light-pink400-og-web.png"]
+          }
+        },
+        {
+          "key": "11support-light-pink500",
+          "domain": "support.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#EC4899",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.38,
+          "text": {
+            "masthead": "support.rj11.io",
+            "website_row": "support.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11support-light-pink500-og-web.png"]
+          }
+        },
+        {
+          "key": "11support-light-rose",
+          "domain": "support.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#BE123C",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 6.02,
+          "text": {
+            "masthead": "support.rj11.io",
+            "website_row": "support.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11support-light-rose-og-web.png"]
+          }
+        },
+        {
+          "key": "11support-light-rose500",
+          "domain": "support.rj11.io",
+          "mode": "light",
+          "colors": {
+            "signal": "#F43F5E",
+            "ground": "#FAFAFA",
+            "ink": "#0A0A0A",
+            "footer": "#676767"
+          },
+          "contrast": 3.52,
+          "text": {
+            "masthead": "support.rj11.io",
+            "website_row": "support.rj11.io",
+            "footer_text": "AI / SOFTWARE / PRODUCT / ENGINEERING / TECHNOLOGY",
+            "title": "Lorem Ipsum"
+          },
+          "files": {
+            "favicons": ["apple-touch-icon.png", "favicon-16x16.png", "favicon-32x32.png", "favicon.ico", "icon-192.png", "icon-512.png"],
+            "og-content": ["lorem-ipsum-og-content.png"],
+            "og-web": ["11support-light-rose500-og-web.png"]
+          }
+        }
+      ]
+    },
+    "integrations": {
+      "runs": [
+        {
+          "run": "20260805-232206",
+          "keys": ["11brands"],
+          "sources": ["11brands-www"]
+        }
+      ]
+    }
+  }
+}
