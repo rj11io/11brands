@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/rj11io/11brands/compare/v1.3.0...v1.4.0) (2026-08-11)
+
+
+### Features
+
+* color sweep ([7271a3a](https://github.com/rj11io/11brands/commit/7271a3a7f33a1141d55a7dd67ccd7d36bad629a9))
+
 # [1.3.0](https://github.com/rj11io/11brands/compare/v1.2.0...v1.3.0) (2026-08-07)
 
 
